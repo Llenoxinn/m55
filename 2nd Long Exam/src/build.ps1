@@ -18,6 +18,7 @@ $docs = [ordered]@{
     "lecture-notes-02" = "Lecture Notes 02.pdf"
     "lecture-notes-03" = "Lecture Notes 03.pdf"
     "mock-exams"       = "Mock Exams.pdf"
+    "quiz2-review"     = "Quiz 2 Review.pdf"
 }
 
 foreach ($name in $docs.Keys) {

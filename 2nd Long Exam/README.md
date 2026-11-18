@@ -8,6 +8,7 @@ Coverage (see `Coverage/`):
 | 6 Directional Derivatives and the Gradient Vectors | `Lecture Notes 02.pdf` (No. 6) | source in `src/lecture-notes-02/` |
 | 7 Vector Calculus | `Lecture Notes 03.pdf` (No. 7) | source in `src/lecture-notes-03/` |
 | 5 + 6 + 7 | `Mock Exams.pdf` (two full mock exams with complete solutions) | source in `src/mock-exams/` |
+| Quiz 2 (5 + 6) → 5 + 6 + 7 | `Quiz 2 Review.pdf` (Quiz 2 solved with shortcuts/traps + predicted quiz and drills) | source in `src/quiz2-review/` |
 
 **Scope note:** Slides 7 Parts IV–VI (line integrals, line integrals in space, and the
 Fundamental Theorem for Line Integrals) are **not** covered by this exam and are intentionally excluded.
