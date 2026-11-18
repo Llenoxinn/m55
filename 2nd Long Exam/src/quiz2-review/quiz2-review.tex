@@ -1,0 +1,51 @@
+% =====================================================================
+%  MATH 55 -- Quiz 2 Review: solutions, shortcuts and predicted problems
+%  Source: photos Coverage/Quiz2-Photo{1,2,3}.jpg
+%  Build: latexmk -pdf -outdir=build quiz2-review.tex
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\newcommand{\NotesNumber}{Q2}
+\newcommand{\NotesKind}{Quiz 2 Review}
+\newcommand{\NotesShortTitle}{Solutions and Predicted Problems}
+\newcommand{\NotesPdfTitle}{MATH 55 Quiz 2 Review: Solutions, Shortcuts and Predicted Problems}
+\input{../shared/preamble.tex}
+\graphicspath{{figures/}}
+
+% exam-style helpers (same as the mock exams)
+\newcommand{\pts}[1]{\hfill\textit{[#1 points]}}
+\newcommand{\solhead}[1]{\par\bigskip\noindent\textbf{#1}\ }
+\newenvironment{questions}[1][]%
+  {\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*,itemsep=10pt,#1]}%
+  {\end{enumerate}}
+% labelled side-notes inside solutions
+\newcommand{\shortcut}[1]{\begin{keybox}{Shortcut}#1\end{keybox}}
+\newcommand{\trap}[1]{\par\smallskip\noindent\textbf{Trap.}\ #1}
+\newcommand{\why}[1]{\par\smallskip\noindent\textbf{Why it works.}\ #1}
+\newcommand{\variant}[1]{\par\smallskip\noindent\textbf{If they change it.}\ #1}
+
+\begin{document}
+\pagenumbering{roman}
+
+\makenotestitle{Quiz 2 Review}
+  {Complete Solutions, Shortcuts and Predicted Problems}
+  {MATH 55: Elementary Analysis III -- Second Long Examination}
+  {\textbf{What this is.} Quiz~2 (October) covered vector functions
+   (Slides~5) and directional derivatives and the gradient (Slides~6). It is
+   the best available model of the difficulty of the Second Long Exam.
+   Chapter~1 reproduces the quiz exactly as it was given. Chapter~2 solves
+   every problem in full and adds, for each one, \emph{what it tests}, a
+   \emph{shortcut}, the \emph{traps} and \emph{how it could be changed}.
+   Chapter~3 condenses the recurring patterns into a one-page strategy sheet.
+   Chapters~4--5 give a predicted quiz in the same format plus extra drills,
+   now also covering Slides~7 (vector fields, conservative fields, potential
+   functions; no line integrals), with complete solutions.\par\medskip
+   Every answer has been checked with a computer algebra system.}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/01-quiz}
+
+\end{document}
