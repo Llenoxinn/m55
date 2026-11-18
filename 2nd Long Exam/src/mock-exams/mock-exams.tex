@@ -1,0 +1,46 @@
+% =====================================================================
+%  MATH 55 -- Mock Second Long Examinations (Forms A and B)
+%  Coverage: Slides 5 (Vector Functions), 6 (Directional Derivatives
+%  and Gradient), 7 (Vector Calculus, Parts I-III).
+%  Build: latexmk -pdf -outdir=build mock-exams.tex
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\newcommand{\NotesNumber}{LE2}
+\newcommand{\NotesKind}{Mock Second Long Examinations}
+\newcommand{\NotesShortTitle}{Forms A and B}
+\newcommand{\NotesPdfTitle}{MATH 55 Mock Second Long Examinations with Solutions}
+\input{../shared/preamble.tex}
+
+% exam-specific helpers
+\newcommand{\pts}[1]{\hfill\textit{(#1 pts)}}
+\newcommand{\solhead}[2]{\par\bigskip\noindent\textbf{Problem #1}\ \textit{(#2 pts).}\ }
+% numbered exam questions; use \begin{questions}[resume] to continue numbering
+\newenvironment{questions}[1][]%
+  {\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*,itemsep=10pt,#1]}%
+  {\end{enumerate}}
+
+\begin{document}
+\pagenumbering{roman}
+
+\makenotestitle{Mock Long Exams}
+  {Forms A and B, with Complete Solutions}
+  {MATH 55: Elementary Analysis III -- Second Long Examination}
+  {\textbf{Coverage.} Slides 5 \emph{Vector Functions} (Lecture Notes
+   No.~5), Slides 6 \emph{Directional Derivatives and the Gradient Vectors}
+   (No.~6) and Slides 7 \emph{Vector Calculus}, Parts I--III: vector fields,
+   gradient fields, conservative fields and potential functions (No.~7).
+   Line integrals are not included.\par\medskip
+   \textbf{How to use.} Each form is a full-length exam modelled on the
+   example and exercise patterns of the slides. Print the questions, set a
+   timer for 2 hours, work without notes, then grade yourself with the
+   solutions, which show every step and the point breakdown. Every answer has
+   been checked with a computer algebra system.}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/01-exam-a}
+
+\end{document}
