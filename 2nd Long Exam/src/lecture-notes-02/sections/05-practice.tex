@@ -7,8 +7,11 @@ direction given by an angle (Example~6.1), (ii) by a non-unit vector
 (Example~6.2), (iii) ``from $P$ to $Q$'' (Example~6.4), (iv) the gradient at a
 point (Example~6.3), and (v) the three-part trio activity (rate toward a
 point, direction of fastest increase, maximum rate). Problems marked $(*)$ go
-beyond the slides or combine several ideas. Try each one before reading the
-solution.
+beyond the slides or combine several ideas.
+
+Every solution is written in full, with each step explained in words. When a
+quicker route exists it is shown \emph{after} the full solution, in an
+\emph{Alternative method} box. Try each problem before reading its solution.
 
 % ---------------------------------------------------------------------
 \subsection{Partial derivatives and differentiability}
@@ -17,10 +20,15 @@ solution.
 Let $f(x,y)=x^2y^3-4y$. Find $f_x(2,-1)$ and $f_y(2,-1)$ and interpret them.
 \end{problem}
 \begin{solution}
-$f_x=2xy^3$, so $f_x(2,-1)=2(2)(-1)^3=-4$. $f_y=3x^2y^2-4$, so
-$f_y(2,-1)=3(4)(1)-4=8$. At $(2,-1)$, $f$ decreases at rate $4$ in the
-direction $\vi$ and increases at rate $8$ in the direction $\vj$; in the
-notation of directional derivatives, $D_{\vi}f(2,-1)=-4$ and $D_{\vj}f(2,-1)=8$.
+\step{1}{$f_x$.} Treat $y$ as a constant. The term $x^2y^3$ is $y^3$ times $x^2$, whose derivative
+is $2x$; the term $-4y$ does not contain $x$. So $f_x=2xy^3$.
+\step{2}{$f_y$.} Treat $x$ as a constant. $\pd{}{y}(x^2y^3)=x^2\cdot3y^2$ and $\pd{}{y}(-4y)=-4$. So $f_y=3x^2y^2-4$.
+\step{3}{Evaluate at $(2,-1)$.}
+$f_x(2,-1)=2(2)(-1)^3=-4$ and $f_y(2,-1)=3(2)^2(-1)^2-4=12-4=8$.
+\step{4}{Interpret.} At $(2,-1)$, moving in the positive $x$-direction (direction $\vi$),
+$f$ \emph{decreases} at a rate of $4$ units per unit distance; moving in the positive
+$y$-direction (direction $\vj$), $f$ \emph{increases} at a rate of $8$. In the language of
+this chapter, $D_{\vi}f(2,-1)=-4$ and $D_{\vj}f(2,-1)=8$.
 \end{solution}
 
 \begin{problem}\label{prob:p2}
@@ -28,12 +36,16 @@ Show that $f(x,y)=e^x\cos y$ is differentiable on $\R^2$, and find $\Du f(0,0)$
 for the unit vector at angle $\theta=\frac{3\pi}{4}$.
 \end{problem}
 \begin{solution}
-\step{1}{Differentiability.} $f_x=e^x\cos y$ and $f_y=-e^x\sin y$ are products
-of continuous functions, hence continuous on $\R^2$; by
-Theorem~\ref{thm:C1}, $f$ is differentiable everywhere.
-\step{2}{Gradient at the origin.} $\grad f(0,0)=\ip{e^0\cos0,\,-e^0\sin0}=\ip{1,0}$.
-\step{3}{Direction.} $\vu=\ip{\cos\frac{3\pi}{4},\sin\frac{3\pi}{4}}=\ip{-\frac{\sqrt2}{2},\frac{\sqrt2}{2}}$.
-\step{4}{Answer.} $\Du f(0,0)=1\cdot\left(-\frac{\sqrt2}{2}\right)+0=-\frac{\sqrt2}{2}$.
+\step{1}{Partial derivatives.} $f_x=e^x\cos y$ (the factor $\cos y$ is a constant in $x$) and
+$f_y=e^x\cdot(-\sin y)=-e^x\sin y$.
+\step{2}{Differentiability.} Both partial derivatives are products of continuous functions
+($e^x$, $\cos y$, $\sin y$), so they are continuous on all of $\R^2$. By Theorem~\ref{thm:C1},
+$f$ is differentiable everywhere, and Theorem~\ref{thm:Du-formula} applies.
+\step{3}{Gradient at the origin.} $f_x(0,0)=e^0\cos0=1$ and $f_y(0,0)=-e^0\sin0=0$.
+\step{4}{Unit vector.} $\vu=\ip{\cos\frac{3\pi}{4},\;\sin\frac{3\pi}{4}}=\ip{-\frac{\sqrt2}{2},\;\frac{\sqrt2}{2}}$.
+\step{5}{Directional derivative.}
+$\Du f(0,0)=f_x\cos\theta+f_y\sin\theta=1\cdot\left(-\frac{\sqrt2}{2}\right)+0\cdot\frac{\sqrt2}{2}=-\frac{\sqrt2}{2}$.
+\finalans{$\Du f(0,0)=-\dfrac{\sqrt2}{2}$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -44,20 +56,25 @@ Use the limit definition to find $\Du f(1,-1)$ for $f(x,y)=x^2+3xy$ and
 $\vu=\ip{\frac35,-\frac45}$. Then check with the formula.
 \end{problem}
 \begin{solution}
-\step{1}{Moved point.} $\left(1+\frac35h,\;-1-\frac45h\right)$.
-\step{2}{Evaluate.}
+\step{1}{Check that $\vu$ is a unit vector.} $\frac{9}{25}+\frac{16}{25}=1$.\checkok
+\step{2}{The moved point.} Moving a distance $h$ from $(1,-1)$ in the direction $\vu$ gives
+$\left(1+\frac35h,\;-1-\frac45h\right)$.
+\step{3}{Evaluate $f$ at the moved point.} Expand each term carefully:
 \begin{align*}
-f &= \left(1+\tfrac35h\right)^2+3\left(1+\tfrac35h\right)\left(-1-\tfrac45h\right)\\
-  &= 1+\tfrac65h+\tfrac{9}{25}h^2+3\left(-1-\tfrac45h-\tfrac35h-\tfrac{12}{25}h^2\right)\\
-  &= 1+\tfrac65h+\tfrac{9}{25}h^2-3-\tfrac{21}{5}h-\tfrac{36}{25}h^2
-   = -2-3h-\tfrac{27}{25}h^2 .
+\left(1+\tfrac35h\right)^2&=1+\tfrac65h+\tfrac{9}{25}h^2,\\
+3\left(1+\tfrac35h\right)\left(-1-\tfrac45h\right)&=3\left(-1-\tfrac45h-\tfrac35h-\tfrac{12}{25}h^2\right)
+=-3-\tfrac{21}{5}h-\tfrac{36}{25}h^2 .
 \end{align*}
-\step{3}{Quotient and limit.} $f(1,-1)=1-3=-2$, so
+Adding: $f\!\left(1+\tfrac35h,\,-1-\tfrac45h\right)=-2+\left(\tfrac65-\tfrac{21}{5}\right)h+\left(\tfrac{9}{25}-\tfrac{36}{25}\right)h^2
+=-2-3h-\tfrac{27}{25}h^2$.
+\step{4}{Value at the base point.} $f(1,-1)=1+3(1)(-1)=-2$.
+\step{5}{Difference quotient.}
 \[
-\Du f(1,-1)=\lim_{h\to0}\frac{-3h-\frac{27}{25}h^2}{h}=\lim_{h\to0}\left(-3-\tfrac{27}{25}h\right)=-3 .
+  \frac{f\!\left(1+\frac35h,-1-\frac45h\right)-f(1,-1)}{h}=\frac{-3h-\frac{27}{25}h^2}{h}=-3-\frac{27}{25}h .
 \]
-\step{4}{Check.} $f_x=2x+3y=-1$, $f_y=3x=3$ at $(1,-1)$:
-$-1\cdot\frac35+3\cdot\left(-\frac45\right)=-\frac35-\frac{12}{5}=-3$.\checkok
+\step{6}{Limit.} As $h\to0$, the quotient tends to $-3$. So $\Du f(1,-1)=-3$.
+\step{7}{Check with the formula.} $f_x=2x+3y$ and $f_y=3x$ give $f_x(1,-1)=-1$ and
+$f_y(1,-1)=3$. Then $\Du f=(-1)\cdot\frac35+3\cdot\left(-\frac45\right)=-\frac35-\frac{12}{5}=-3$.\checkok
 \end{solution}
 
 \begin{problem}[$*$]\label{prob:cone}
@@ -66,15 +83,17 @@ any unit vector $\vu$. Why does this not contradict
 Theorem~\ref{thm:Du-formula}?
 \end{problem}
 \begin{solution}
-For $\vu=\ip{a,b}$ with $a^2+b^2=1$:
+\step{1}{Difference quotient.} Let $\vu=\ip{a,b}$ with $a^2+b^2=1$. Since $f(0,0)=0$,
 \[
-  \frac{f(ha,hb)-f(0,0)}{h}=\frac{\sqrt{h^2(a^2+b^2)}}{h}=\frac{|h|}{h}
-  =\begin{cases}\;\;1,&h>0,\\-1,&h<0.\end{cases}
+  \frac{f(0+ha,\,0+hb)-f(0,0)}{h}=\frac{\sqrt{h^2a^2+h^2b^2}}{h}=\frac{\sqrt{h^2(a^2+b^2)}}{h}=\frac{\sqrt{h^2}}{h}=\frac{\abs h}{h}.
 \]
-The one-sided limits differ, so the limit does not exist. There is no
-contradiction: Theorem~\ref{thm:Du-formula} requires differentiability, and
-$f$ is not differentiable at the origin (it has a sharp tip; indeed $f_x(0,0)$
-itself does not exist, since $f(h,0)/h=|h|/h$).
+\step{2}{One-sided limits.} For $h>0$, $\frac{\abs h}{h}=1$; for $h<0$, $\frac{\abs h}{h}=-1$. As $h\to0^+$
+the quotient tends to $1$, and as $h\to0^-$ it tends to $-1$.
+\step{3}{Conclusion.} The two one-sided limits are different, so the limit does not exist, for
+every direction $\vu$.
+\step{4}{No contradiction.} Theorem~\ref{thm:Du-formula} assumes that $f$ is \emph{differentiable}.
+The cone has a sharp tip at the origin and is not differentiable there; in fact even
+$f_x(0,0)$ does not exist, since $\frac{f(h,0)-f(0,0)}{h}=\frac{\abs h}{h}$ as well.
 \end{solution}
 
 \begin{problem}[$*$]\label{prob:nondiff}
@@ -84,19 +103,25 @@ Let $f(x,y)=\dfrac{x^2y}{x^2+y^2}$ for $(x,y)\neq(0,0)$ and $f(0,0)=0$.
 (c) Conclude that $f$ is not differentiable at $(0,0)$.
 \end{problem}
 \begin{solution}
-\textbf{(a)} $f(h,0)=0$ and $f(0,h)=0$ for all $h$, so both difference quotients
-are $0$ and $f_x(0,0)=f_y(0,0)=0$.
+\textbf{(a)} On the $x$-axis, $f(h,0)=\frac{h^2\cdot0}{h^2}=0$, so
+$f_x(0,0)=\lim_{h\to0}\frac{f(h,0)-f(0,0)}{h}=\lim_{h\to0}\frac{0-0}{h}=0$. On the $y$-axis,
+$f(0,h)=\frac{0\cdot h}{h^2}=0$, so in the same way $f_y(0,0)=0$.
 
 \textbf{(b)} For $h\neq0$,
-$f(ha,hb)=\dfrac{h^3a^2b}{h^2(a^2+b^2)}=ha^2b$ (as $a^2+b^2=1$), so
-$\dfrac{f(ha,hb)-0}{h}=a^2b\to a^2b$.
+\[
+  f(ha,hb)=\frac{(ha)^2(hb)}{(ha)^2+(hb)^2}=\frac{h^3a^2b}{h^2(a^2+b^2)}=\frac{h^3a^2b}{h^2}=ha^2b,
+\]
+using $a^2+b^2=1$. So the difference quotient is $\dfrac{ha^2b-0}{h}=a^2b$, which does not depend on
+$h$; its limit is $a^2b$. Hence $\Du f(0,0)=a^2b$.
 
-\textbf{(c)} If $f$ were differentiable, Theorem~\ref{thm:Du-formula} would give
-$\Du f(0,0)=\grad f(0,0)\cdot\vu=\ip{0,0}\cdot\vu=0$ for every $\vu$. But for
-$\vu=\ip{\frac{1}{\sqrt2},\frac{1}{\sqrt2}}$ part (b) gives
-$\frac12\cdot\frac{1}{\sqrt2}=\frac{\sqrt2}{4}\neq0$. Hence $f$ is not
-differentiable at the origin, even though all its directional derivatives
-exist. (Moral: always justify differentiability before using the formula.)
+\textbf{(c)} Suppose $f$ were differentiable at the origin. Then Theorem~\ref{thm:Du-formula} would give
+$\Du f(0,0)=f_x(0,0)a+f_y(0,0)b=0\cdot a+0\cdot b=0$ for every $\vu$. But take
+$\vu=\ip{\frac{1}{\sqrt2},\frac{1}{\sqrt2}}$: by (b), $\Du f(0,0)=\left(\frac{1}{\sqrt2}\right)^2\cdot\frac{1}{\sqrt2}=\frac{1}{2\sqrt2}=\frac{\sqrt2}{4}\neq0$.
+This contradiction shows that $f$ is \textbf{not differentiable} at the origin, even though
+\emph{all} its directional derivatives exist there.
+
+\emph{Moral.} Before using $\Du f=f_xa+f_yb$, justify differentiability (for example by
+continuity of the partial derivatives).
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -106,21 +131,32 @@ exist. (Moral: always justify differentiability before using the formula.)
 Find $\Du f(2,-1)$ for $f(x,y)=x^2y^3-4y$ and $\theta=\frac{2\pi}{3}$.
 \end{problem}
 \begin{solution}
-From Problem~\ref{prob:p1}, $\grad f(2,-1)=\ip{-4,8}$. Also
-$\vu=\ip{\cos\frac{2\pi}{3},\sin\frac{2\pi}{3}}=\ip{-\frac12,\frac{\sqrt3}{2}}$. So
+\step{1}{Gradient at the point.} From Problem~\ref{prob:p1}, $f_x(2,-1)=-4$ and $f_y(2,-1)=8$. The
+partial derivatives are polynomials, hence continuous, so $f$ is differentiable.
+\step{2}{Unit vector.} $\cos\frac{2\pi}{3}=-\frac12$ and $\sin\frac{2\pi}{3}=\frac{\sqrt3}{2}$ (the angle is
+$120^\circ$, in the second quadrant), so $\vu=\ip{-\frac12,\frac{\sqrt3}{2}}$.
+\step{3}{Angle form.}
 \[
-  \Du f(2,-1)=-4\left(-\tfrac12\right)+8\left(\tfrac{\sqrt3}{2}\right)=2+4\sqrt3\approx8.93 .
+  \Du f(2,-1)=f_x\cos\theta+f_y\sin\theta=(-4)\left(-\tfrac12\right)+8\left(\tfrac{\sqrt3}{2}\right)=2+4\sqrt3\approx8.93 .
 \]
+\finalans{$\Du f(2,-1)=2+4\sqrt3$.}
 \end{solution}
 
 \begin{problem}\label{prob:p4}
 Find $\Du f(0,1)$ for $f(x,y)=y\cos(xy)$ and $\theta=\frac\pi4$.
 \end{problem}
 \begin{solution}
-\step{1}{Partials.} $f_x=y\cdot(-\sin(xy))\cdot y=-y^2\sin(xy)$;
-$f_y=\cos(xy)+y\cdot(-\sin(xy))\cdot x=\cos(xy)-xy\sin(xy)$ (product rule).
-\step{2}{At $(0,1)$.} $xy=0$: $f_x=0$, $f_y=1$.
-\step{3}{Answer.} $\Du f(0,1)=0\cdot\frac{\sqrt2}{2}+1\cdot\frac{\sqrt2}{2}=\frac{\sqrt2}{2}$.
+\step{1}{$f_x$.} Here $y$ is a constant factor, and by the chain rule
+$\pd{}{x}\cos(xy)=-\sin(xy)\cdot y$. So $f_x=y\cdot(-\sin(xy))\cdot y=-y^2\sin(xy)$.
+\step{2}{$f_y$.} Now both factors $y$ and $\cos(xy)$ depend on $y$, so we use the product rule,
+with $\pd{}{y}\cos(xy)=-\sin(xy)\cdot x$:
+\[
+  f_y=1\cdot\cos(xy)+y\cdot\left(-x\sin(xy)\right)=\cos(xy)-xy\sin(xy).
+\]
+\step{3}{Evaluate at $(0,1)$.} Here $xy=0$, $\sin0=0$, $\cos0=1$: $f_x=0$ and $f_y=1-0=1$.
+\step{4}{Directional derivative.} $\cos\frac\pi4=\sin\frac\pi4=\frac{\sqrt2}{2}$, so
+$\Du f(0,1)=0\cdot\frac{\sqrt2}{2}+1\cdot\frac{\sqrt2}{2}=\frac{\sqrt2}{2}$.
+\finalans{$\Du f(0,1)=\dfrac{\sqrt2}{2}$.}
 \end{solution}
 
 \begin{problem}\label{prob:p5}
@@ -128,12 +164,15 @@ Find $\Du f(2,1)$ for $f(x,y)=\ln(x^2+y^2)$ and $\theta=\frac\pi3$. Also write t
 general formula $\Du f(x,y)$ for this $\theta$.
 \end{problem}
 \begin{solution}
-$f_x=\dfrac{2x}{x^2+y^2}$, $f_y=\dfrac{2y}{x^2+y^2}$ (continuous for $(x,y)\neq(0,0)$). So
+\step{1}{Partial derivatives.} By the chain rule ($\frac{\dd}{\dd u}\ln u=\frac1u$):
+$f_x=\dfrac{2x}{x^2+y^2}$ and $f_y=\dfrac{2y}{x^2+y^2}$. They are continuous wherever
+$(x,y)\neq(0,0)$, so $f$ is differentiable there.
+\step{2}{General formula.} With $\cos\frac\pi3=\frac12$ and $\sin\frac\pi3=\frac{\sqrt3}{2}$:
 \[
-  \Du f(x,y)=\frac{2x}{x^2+y^2}\cdot\frac12+\frac{2y}{x^2+y^2}\cdot\frac{\sqrt3}{2}
-  =\frac{x+\sqrt3\,y}{x^2+y^2}.
+  \Du f(x,y)=\frac{2x}{x^2+y^2}\cdot\frac12+\frac{2y}{x^2+y^2}\cdot\frac{\sqrt3}{2}=\frac{x+\sqrt3\,y}{x^2+y^2}.
 \]
-At $(2,1)$: $\Du f(2,1)=\dfrac{2+\sqrt3}{5}\approx0.746$.
+\step{3}{Evaluate at $(2,1)$.} $x^2+y^2=5$, so $\Du f(2,1)=\dfrac{2+\sqrt3}{5}\approx0.746$.
+\finalans{$\Du f(x,y)=\dfrac{x+\sqrt3\,y}{x^2+y^2}$ and $\Du f(2,1)=\dfrac{2+\sqrt3}{5}$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -144,13 +183,19 @@ Find $\Du f(x,y)$ and then $\Du f\left(0,\frac\pi3\right)$ for
 $f(x,y)=e^x\sin y$ in the direction of $\vv=-6\vi+8\vj$.
 \end{problem}
 \begin{solution}
-\step{1}{Unit vector.} $\norm{\vv}=\sqrt{36+64}=10$, $\vu=\ip{-\frac35,\frac45}$.
-\step{2}{General formula.} $f_x=e^x\sin y$, $f_y=e^x\cos y$ (continuous):
+\step{1}{Unit vector.} $\vv$ is not a unit vector: $\norm{\vv}=\sqrt{36+64}=10$, so
+$\vu=\frac{\vv}{10}=\ip{-\frac35,\frac45}$.
+\step{2}{Partial derivatives.} $f_x=e^x\sin y$ and $f_y=e^x\cos y$; both are continuous, so $f$ is
+differentiable.
+\step{3}{General formula.}
 \[
-  \Du f(x,y)=-\tfrac35e^x\sin y+\tfrac45e^x\cos y=\tfrac15e^x(4\cos y-3\sin y).
+  \Du f(x,y)=e^x\sin y\cdot\left(-\tfrac35\right)+e^x\cos y\cdot\tfrac45=\tfrac15e^x\left(4\cos y-3\sin y\right).
 \]
-\step{3}{Evaluate.} At $\left(0,\frac\pi3\right)$:
-$\tfrac15\left(4\cdot\frac12-3\cdot\frac{\sqrt3}{2}\right)=\dfrac{4-3\sqrt3}{10}\approx-0.120$.
+\step{4}{Evaluate at $\left(0,\frac\pi3\right)$.} $e^0=1$, $\cos\frac\pi3=\frac12$, $\sin\frac\pi3=\frac{\sqrt3}{2}$:
+\[
+  \Du f\left(0,\tfrac\pi3\right)=\tfrac15\left(4\cdot\tfrac12-3\cdot\tfrac{\sqrt3}{2}\right)=\tfrac15\left(2-\tfrac{3\sqrt3}{2}\right)=\frac{4-3\sqrt3}{10}\approx-0.120 .
+\]
+\finalans{$\Du f(x,y)=\frac15e^x(4\cos y-3\sin y)$ and $\Du f\left(0,\frac\pi3\right)=\dfrac{4-3\sqrt3}{10}$.}
 \end{solution}
 
 \begin{problem}\label{prob:p7}
@@ -158,9 +203,11 @@ Find the directional derivative of $f(x,y)=x^2y+y^3$ at $P(1,-1)$ in the
 direction toward $Q(4,3)$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{2xy,\;x^2+3y^2}$, so $\grad f(1,-1)=\ip{-2,4}$.
-$\vecPQ=\ip{3,4}$, $\norm{\vecPQ}=5$, $\vu=\ip{\frac35,\frac45}$.
-$\Du f(1,-1)=-\frac65+\frac{16}{5}=2$.
+\step{1}{Gradient.} $f_x=2xy$ and $f_y=x^2+3y^2$ (continuous), so
+$\grad f(1,-1)=\ip{2(1)(-1),\;1+3(1)}=\ip{-2,4}$.
+\step{2}{Direction.} $\vecPQ=\ip{4-1,\;3-(-1)}=\ip{3,4}$, with length $5$; so $\vu=\ip{\frac35,\frac45}$.
+\step{3}{Directional derivative.} $\Du f(1,-1)=(-2)\cdot\frac35+4\cdot\frac45=-\frac65+\frac{16}{5}=\frac{10}{5}=2$.
+\finalans{$\Du f(1,-1)=2$.}
 \end{solution}
 
 \begin{problem}\label{prob:p8}
@@ -169,19 +216,22 @@ $(1,1)$ in the direction toward the origin, and explain the answer
 geometrically.
 \end{problem}
 \begin{solution}
-\step{1}{Partials.} With $\frac{\dd}{\dd s}\arctan s=\frac{1}{1+s^2}$:
+\step{1}{Partial derivatives.} With $\frac{\dd}{\dd s}\arctan s=\frac{1}{1+s^2}$ and the chain rule
+(inner function $s=\frac yx$, with $s_x=-\frac{y}{x^2}$ and $s_y=\frac1x$):
 \[
-  f_x=\frac{1}{1+y^2/x^2}\cdot\left(-\frac{y}{x^2}\right)=\frac{-y}{x^2+y^2},\qquad
-  f_y=\frac{1}{1+y^2/x^2}\cdot\frac1x=\frac{x}{x^2+y^2}.
+  f_x=\frac{1}{1+\frac{y^2}{x^2}}\cdot\left(-\frac{y}{x^2}\right)=\frac{x^2}{x^2+y^2}\cdot\left(-\frac{y}{x^2}\right)=\frac{-y}{x^2+y^2},\qquad
+  f_y=\frac{x^2}{x^2+y^2}\cdot\frac1x=\frac{x}{x^2+y^2}.
 \]
-\step{2}{At $(1,1)$.} $\grad f(1,1)=\ip{-\frac12,\frac12}$.
-\step{3}{Direction.} Toward the origin: $\ip{0-1,0-1}=\ip{-1,-1}$, so
-$\vu=\ip{-\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$.
-\step{4}{Answer.} $\Du f(1,1)=\frac{1}{2\sqrt2}-\frac{1}{2\sqrt2}=0$.
-
-\emph{Geometry:} $\arctan(y/x)$ is the polar angle $\theta$ of the point. Moving
-toward the origin we stay on the ray $\theta=\frac\pi4$, so the angle does not
-change: rate $0$. (Equivalently, $\vu\perp\grad f(1,1)$.)
+\step{2}{At $(1,1)$.} $x^2+y^2=2$, so $\grad f(1,1)=\ip{-\frac12,\frac12}$.
+\step{3}{Direction toward the origin.} From $(1,1)$ to $(0,0)$: $\ip{-1,-1}$, length $\sqrt2$,
+so $\vu=\ip{-\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$.
+\step{4}{Directional derivative.}
+$\Du f(1,1)=\left(-\frac12\right)\left(-\frac{1}{\sqrt2}\right)+\frac12\left(-\frac{1}{\sqrt2}\right)=\frac{1}{2\sqrt2}-\frac{1}{2\sqrt2}=0$.
+\step{5}{Geometric explanation.} For $x>0$, $\arctan\frac yx$ is the polar angle $\theta$ of the point
+$(x,y)$. Moving from $(1,1)$ toward the origin, we stay on the ray $\theta=\frac\pi4$, so the angle
+does not change, and its rate of change is $0$. Equivalently, $\vu$ is perpendicular to
+$\grad f(1,1)$ (their dot product is $0$).
+\finalans{$\Du f(1,1)=0$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -192,11 +242,15 @@ Find $\Du f(0,0,0)$ for $f(x,y,z)=xe^y+ye^z+ze^x$ in the direction of
 $\vv=\ip{5,1,-2}$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{e^y+ze^x,\;xe^y+e^z,\;ye^z+e^x}$, so $\grad f(0,0,0)=\ip{1,1,1}$.
-$\norm{\vv}=\sqrt{25+1+4}=\sqrt{30}$. Hence
+\step{1}{Partial derivatives.} Each term is a product of one variable and an exponential of another:
 \[
-  \Du f(0,0,0)=\frac{5+1-2}{\sqrt{30}}=\frac{4}{\sqrt{30}}=\frac{2\sqrt{30}}{15}\approx0.730 .
+  f_x=e^y+ze^x,\qquad f_y=xe^y+e^z,\qquad f_z=ye^z+e^x .
 \]
+\step{2}{At the origin.} $e^0=1$, so $f_x=1+0=1$, $f_y=0+1=1$, $f_z=0+1=1$: $\grad f(0,0,0)=\ip{1,1,1}$.
+\step{3}{Unit vector.} $\norm{\vv}=\sqrt{25+1+4}=\sqrt{30}$, so $\vu=\frac{1}{\sqrt{30}}\ip{5,1,-2}$.
+\step{4}{Directional derivative.}
+$\Du f(0,0,0)=\frac{1}{\sqrt{30}}(1\cdot5+1\cdot1+1\cdot(-2))=\frac{4}{\sqrt{30}}=\frac{4\sqrt{30}}{30}=\frac{2\sqrt{30}}{15}\approx0.730$.
+\finalans{$\Du f(0,0,0)=\dfrac{2\sqrt{30}}{15}$.}
 \end{solution}
 
 \begin{problem}\label{prob:p12}
@@ -204,11 +258,12 @@ Find the rate of change of $f(x,y,z)=xy^2z^3$ at $P(1,-2,1)$ in the direction
 toward $Q(3,0,2)$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{y^2z^3,\;2xyz^3,\;3xy^2z^2}$, so $\grad f(1,-2,1)=\ip{4,-4,12}$.
-$\vecPQ=\ip{2,2,1}$, $\norm{\vecPQ}=\sqrt{4+4+1}=3$, $\vu=\frac13\ip{2,2,1}$.
-\[
-  \Du f(P)=\tfrac13(8-8+12)=4 .
-\]
+\step{1}{Partial derivatives.} $f_x=y^2z^3$, $f_y=2xyz^3$, $f_z=3xy^2z^2$.
+\step{2}{At $P(1,-2,1)$.} $f_x=4\cdot1=4$, $f_y=2(1)(-2)(1)=-4$, $f_z=3(1)(4)(1)=12$: $\grad f(P)=\ip{4,-4,12}$.
+\step{3}{Direction.} $\vecPQ=\ip{3-1,\;0-(-2),\;2-1}=\ip{2,2,1}$, with length $\sqrt{4+4+1}=3$, so
+$\vu=\frac13\ip{2,2,1}$.
+\step{4}{Rate.} $\Du f(P)=\frac13(4\cdot2+(-4)\cdot2+12\cdot1)=\frac13(8-8+12)=4$.
+\finalans{$\Du f(P)=4$.}
 \end{solution}
 
 \begin{problem}\label{prob:p13}
@@ -216,11 +271,13 @@ Let $f(x,y,z)=\sqrt{x^2+y^2+z^2}$. Find $\Du f(1,2,-2)$ in the direction of
 $\ip{1,1,1}$.
 \end{problem}
 \begin{solution}
-By Example~\ref{ex:grad-r}, $\grad f=\dfrac{\ip{x,y,z}}{\sqrt{x^2+y^2+z^2}}$, so
-$\grad f(1,2,-2)=\frac13\ip{1,2,-2}$. With $\vu=\frac{1}{\sqrt3}\ip{1,1,1}$:
-\[
-  \Du f=\frac{1}{3\sqrt3}(1+2-2)=\frac{1}{3\sqrt3}=\frac{\sqrt3}{9}\approx0.192 .
-\]
+\step{1}{Partial derivatives.} Write $r=\sqrt{x^2+y^2+z^2}$. By the chain rule,
+$f_x=\frac{1}{2r}\cdot2x=\frac xr$, and similarly $f_y=\frac yr$, $f_z=\frac zr$.
+\step{2}{At $(1,2,-2)$.} $r=\sqrt{1+4+4}=3$, so $\grad f=\ip{\frac13,\frac23,-\frac23}$.
+\step{3}{Unit vector.} $\norm{\ip{1,1,1}}=\sqrt3$, so $\vu=\frac{1}{\sqrt3}\ip{1,1,1}$.
+\step{4}{Directional derivative.}
+$\Du f=\frac{1}{\sqrt3}\left(\frac13+\frac23-\frac23\right)=\frac{1}{3\sqrt3}=\frac{\sqrt3}{9}\approx0.192$.
+\finalans{$\Du f(1,2,-2)=\dfrac{\sqrt3}{9}$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -231,27 +288,35 @@ Find the maximum rate of change of $f(x,y)=4y\sqrt x$ at $(4,1)$ and the
 direction in which it occurs.
 \end{problem}
 \begin{solution}
-$f_x=4y\cdot\frac{1}{2\sqrt x}=\frac{2y}{\sqrt x}$, $f_y=4\sqrt x$.
-$\grad f(4,1)=\ip{\frac22,\,8}=\ip{1,8}$. Maximum rate
-$\norm{\ip{1,8}}=\sqrt{65}\approx8.06$, in the direction
-$\frac{1}{\sqrt{65}}\ip{1,8}$.
+\step{1}{Partial derivatives.} Writing $\sqrt x=x^{1/2}$: $f_x=4y\cdot\frac12x^{-1/2}=\frac{2y}{\sqrt x}$ and $f_y=4\sqrt x$.
+\step{2}{Gradient at $(4,1)$.} $f_x=\frac{2}{2}=1$ and $f_y=4\cdot2=8$, so $\grad f(4,1)=\ip{1,8}$.
+\step{3}{Apply the maximum-rate theorem.} The maximum rate is the length of the gradient,
+$\sqrt{1+64}=\sqrt{65}\approx8.06$, and it occurs in the direction of the gradient, i.e. of the
+unit vector $\frac{1}{\sqrt{65}}\ip{1,8}$.
+\finalans{maximum rate $\sqrt{65}$, in the direction $\frac{1}{\sqrt{65}}\ip{1,8}$.}
 \end{solution}
 
 \begin{problem}\label{prob:p15}
 Same question for $f(x,y)=\sin(xy)$ at $(1,0)$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{y\cos(xy),\;x\cos(xy)}$, so $\grad f(1,0)=\ip{0,1}$. Maximum rate $1$,
-in the direction $\vj$.
+\step{1}{Partial derivatives.} By the chain rule, $f_x=\cos(xy)\cdot y$ and $f_y=\cos(xy)\cdot x$.
+\step{2}{At $(1,0)$.} $xy=0$ and $\cos0=1$: $f_x=0$ and $f_y=1$, so $\grad f(1,0)=\ip{0,1}$.
+\step{3}{Maximum rate.} $\norm{\ip{0,1}}=1$, in the direction of $\ip{0,1}=\vj$.
+\finalans{maximum rate $1$, in the direction $\vj$.}
 \end{solution}
 
 \begin{problem}\label{prob:p16}
 Same question for $f(x,y,z)=x\ln(yz)$ at $\left(1,2,\frac12\right)$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{\ln(yz),\;\frac{x}{y},\;\frac{x}{z}}$ (since $\pd{}{y}\ln(yz)=\frac{z}{yz}=\frac1y$).
-At $\left(1,2,\frac12\right)$: $yz=1$, so $\grad f=\ip{0,\frac12,2}$. Maximum rate
-$\sqrt{\frac14+4}=\frac{\sqrt{17}}{2}\approx2.06$, in the direction of $\ip{0,1,4}$.
+\step{1}{Partial derivatives.} $f_x=\ln(yz)$. For $f_y$, the chain rule gives
+$\pd{}{y}\ln(yz)=\frac{1}{yz}\cdot z=\frac1y$, so $f_y=\frac xy$. Similarly $f_z=\frac xz$.
+\step{2}{At $\left(1,2,\frac12\right)$.} $yz=1$, so $\ln(yz)=0$; $f_y=\frac12$, $f_z=\frac{1}{1/2}=2$.
+Hence $\grad f=\ip{0,\frac12,2}$.
+\step{3}{Maximum rate.} $\norm{\grad f}=\sqrt{0+\frac14+4}=\sqrt{\frac{17}{4}}=\frac{\sqrt{17}}{2}\approx2.06$, in the
+direction of $\ip{0,\frac12,2}$, equivalently of $\ip{0,1,4}$ (unit vector $\frac{1}{\sqrt{17}}\ip{0,1,4}$).
+\finalans{maximum rate $\frac{\sqrt{17}}{2}$, in the direction $\frac{1}{\sqrt{17}}\ip{0,1,4}$.}
 \end{solution}
 
 \begin{problem}\label{prob:tdec}
@@ -260,10 +325,13 @@ cool off as quickly as possible. In which direction should it move, and how
 fast does the temperature drop initially?
 \end{problem}
 \begin{solution}
-$\grad T=\ip{-8x,-2y}$, so $\grad T(2,-3)=\ip{-16,6}$. Fastest decrease is in the
-direction $-\grad T=\ip{16,-6}$, i.e. unit vector $\frac{1}{\sqrt{73}}\ip{8,-3}$.
-The rate there is $-\norm{\grad T}=-\sqrt{256+36}=-\sqrt{292}=-2\sqrt{73}\approx-17.1$
-degrees per unit distance.
+\step{1}{Gradient.} $T_x=-8x$ and $T_y=-2y$, so $\grad T(2,-3)=\ip{-16,\;6}$.
+\step{2}{Direction of fastest decrease.} The temperature decreases fastest in the direction
+\emph{opposite} to the gradient: $-\grad T(2,-3)=\ip{16,-6}$. Its length is
+$\sqrt{256+36}=\sqrt{292}=2\sqrt{73}$, so the unit vector is $\frac{1}{2\sqrt{73}}\ip{16,-6}=\frac{1}{\sqrt{73}}\ip{8,-3}$.
+\step{3}{Rate.} In that direction the rate of change is $-\norm{\grad T}=-2\sqrt{73}\approx-17.1$:
+the temperature drops by about $17.1$ degrees per unit of distance.
+\finalans{move in the direction $\frac{1}{\sqrt{73}}\ip{8,-3}$; the temperature drops at the rate $2\sqrt{73}$.}
 \end{solution}
 
 \begin{problem}\label{prob:p17}
@@ -273,19 +341,24 @@ Let $f(x,y)=xy$ and $P(3,4)$.
 (c) Is $\Du f(P)=6$ possible?
 \end{problem}
 \begin{solution}
-$\grad f=\ip{y,x}$, so $\grad f(3,4)=\ip{4,3}$ and $\norm{\grad f(P)}=5$.
+\stepx{Gradient.} $f_x=y$, $f_y=x$, so $\grad f(3,4)=\ip{4,3}$ with $\norm{\grad f(P)}=5$.
 
-\textbf{(a)} Solve $4a+3b=4$, $a^2+b^2=1$. From the first, $b=\frac{4-4a}{3}$:
+\textbf{(a)} Let $\vu=\ip{a,b}$. The two conditions are $4a+3b=4$ and $a^2+b^2=1$.
+From the first, $b=\frac{4-4a}{3}$. Substituting into the second and multiplying by $9$:
 \[
-  a^2+\frac{(4-4a)^2}{9}=1\iff9a^2+16-32a+16a^2=9\iff25a^2-32a+7=0\iff(a-1)(25a-7)=0 .
+  9a^2+(4-4a)^2=9\;\Longrightarrow\;9a^2+16-32a+16a^2=9\;\Longrightarrow\;25a^2-32a+7=0 .
 \]
-$a=1\Rightarrow b=0$; $a=\frac{7}{25}\Rightarrow b=\frac{4-28/25}{3}=\frac{24}{25}$. So
-$\vu=\ip{1,0}$ or $\vu=\ip{\frac{7}{25},\frac{24}{25}}$.
+Factor: $25a^2-32a+7=(a-1)(25a-7)$, so $a=1$ or $a=\frac{7}{25}$.
+\begin{itemize}
+\item $a=1$: $b=\frac{4-4}{3}=0$, giving $\vu=\ip{1,0}$.
+\item $a=\frac{7}{25}$: $b=\frac{4-\frac{28}{25}}{3}=\frac{72/25}{3}=\frac{24}{25}$, giving $\vu=\ip{\frac{7}{25},\frac{24}{25}}$.
+\end{itemize}
+Check: $4\cdot1+0=4$\checkok\ and $\frac{28}{25}+\frac{72}{25}=4$\checkok.
 
-\textbf{(b)} $-5=-\norm{\grad f(P)}$ is the minimum, attained only in the direction
-of $-\grad f$: $\vu=\ip{-\frac45,-\frac35}$.
+\textbf{(b)} The smallest possible value of $\Du f(P)$ is $-\norm{\grad f(P)}=-5$, attained only in the
+direction of $-\grad f(P)=\ip{-4,-3}$. As a unit vector: $\vu=\ip{-\frac45,-\frac35}$.
 
-\textbf{(c)} No, because $6>5=\norm{\grad f(P)}$.
+\textbf{(c)} No. Every directional derivative satisfies $\abs{\Du f(P)}\le\norm{\grad f(P)}=5$, and $6>5$.
 \end{solution}
 
 \begin{problem}[$*$]\label{prob:p25}
@@ -294,13 +367,14 @@ $3\sqrt2$ in the direction of $\vi+\vj$ and $-2$ in the direction of $3\vi-4\vj$
 Find $\grad f(P)$ and the maximum rate of change of $f$ at $P$.
 \end{problem}
 \begin{solution}
-Let $\grad f(P)=\ip{p,q}$. The unit vectors are $\frac{1}{\sqrt2}\ip{1,1}$ and
-$\frac15\ip{3,-4}$, so
-\[
-  \frac{p+q}{\sqrt2}=3\sqrt2\iff p+q=6,\qquad\frac{3p-4q}{5}=-2\iff3p-4q=-10 .
-\]
-Substituting $q=6-p$: $3p-24+4p=-10$, so $p=2$ and $q=4$. Thus $\grad f(P)=\ip{2,4}$
-and the maximum rate is $\norm{\ip{2,4}}=2\sqrt5$.
+\step{1}{Unknowns.} Let $\grad f(P)=\ip{p,q}$.
+\step{2}{Unit vectors.} The direction of $\vi+\vj$ is $\vu_1=\frac{1}{\sqrt2}\ip{1,1}$; the direction of
+$3\vi-4\vj$ is $\vu_2=\frac15\ip{3,-4}$.
+\step{3}{Equations.} $\grad f\cdot\vu_1=3\sqrt2$ gives $\frac{p+q}{\sqrt2}=3\sqrt2$, i.e. $p+q=6$.
+$\grad f\cdot\vu_2=-2$ gives $\frac{3p-4q}{5}=-2$, i.e. $3p-4q=-10$.
+\step{4}{Solve.} From the first, $q=6-p$. Then $3p-4(6-p)=-10\Rightarrow7p-24=-10\Rightarrow p=2$, and $q=4$.
+\step{5}{Maximum rate.} $\norm{\ip{2,4}}=\sqrt{4+16}=\sqrt{20}=2\sqrt5$.
+\finalans{$\grad f(P)=\ip{2,4}$; maximum rate $2\sqrt5$.}
 \end{solution}
 
 \begin{problem}[$*$]\label{prob:p23}
@@ -308,11 +382,14 @@ Find all points at which the direction of fastest increase of
 $f(x,y)=x^2+y^2-2x-4y$ is $\vi+\vj$.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{2x-2,\;2y-4}$. We need $\grad f=\lambda\ip{1,1}$ with $\lambda>0$
-(a \emph{positive} multiple, otherwise $\vi+\vj$ would be the direction of fastest
-\emph{decrease}). So $2x-2=2y-4=\lambda>0$, i.e. $y=x+1$ with $x>1$. The answer
-is the open half-line $\{(x,x+1):x>1\}$. (At $(1,2)$, $\grad f=\vzero$ and there is no
-direction of fastest increase.)
+\step{1}{Gradient.} $\grad f=\ip{2x-2,\;2y-4}$.
+\step{2}{Condition.} The direction of fastest increase is the direction of $\grad f$. It equals the
+direction of $\vi+\vj$ exactly when $\grad f$ is a \emph{positive} multiple of $\ip{1,1}$:
+$2x-2=\lambda$ and $2y-4=\lambda$ with $\lambda>0$.
+\step{3}{Solve.} Equal components: $2x-2=2y-4\Rightarrow y=x+1$. Positivity: $2x-2>0\Rightarrow x>1$.
+\step{4}{Excluded point.} At $(1,2)$, $\grad f=\vzero$ and there is no direction of fastest increase; for
+$x<1$ the gradient points in the \emph{opposite} direction $-(\vi+\vj)$.
+\finalans{the open half-line $\{(x,x+1):x>1\}$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -323,20 +400,26 @@ Use a gradient to find the tangent line to the ellipse $\frac{x^2}{4}+y^2=2$
 at $(-2,1)$.
 \end{problem}
 \begin{solution}
-$F=\frac{x^2}{4}+y^2$, $\grad F=\ip{\frac x2,2y}$, $\grad F(-2,1)=\ip{-1,2}$ is normal to
-the ellipse. Tangent line: $-1(x+2)+2(y-1)=0\iff x-2y+4=0$. (Check:
-$-2-2+4=0$.\checkok)
+\step{1}{View the ellipse as a level curve.} Let $F(x,y)=\frac{x^2}{4}+y^2$; the ellipse is the level curve
+$F=2$, and $(-2,1)$ is on it since $\frac44+1=2$.
+\step{2}{Normal vector.} $\grad F=\ip{\frac x2,\;2y}$, so $\grad F(-2,1)=\ip{-1,2}$. By
+Theorem~\ref{thm:grad-perp}, this vector is perpendicular to the ellipse at $(-2,1)$.
+\step{3}{Line through $(-2,1)$ perpendicular to $\ip{-1,2}$.}
+$-1\cdot(x-(-2))+2\cdot(y-1)=0\Rightarrow-x-2+2y-2=0\Rightarrow x-2y+4=0$.
+\step{4}{Check.} $(-2,1)$: $-2-2+4=0$.\checkok
+\finalans{$x-2y+4=0$.}
 \end{solution}
 
 \begin{problem}\label{prob:p21}
 Find the tangent plane and the normal line to $xy+yz+zx=11$ at $(1,2,3)$.
 \end{problem}
 \begin{solution}
-Check: $2+6+3=11$.\checkok\ $\grad F=\ip{y+z,\;x+z,\;x+y}$, so $\grad F(1,2,3)=\ip{5,4,3}$.
-\begin{itemize}
-\item Tangent plane: $5(x-1)+4(y-2)+3(z-3)=0\iff5x+4y+3z=22$.
-\item Normal line: $x=1+5t,\;y=2+4t,\;z=3+3t$.
-\end{itemize}
+\step{1}{Check the point.} $1\cdot2+2\cdot3+3\cdot1=2+6+3=11$.\checkok
+\step{2}{Gradient.} With $F=xy+yz+zx$: $F_x=y+z$, $F_y=x+z$, $F_z=y+x$. At $(1,2,3)$:
+$\grad F=\ip{5,4,3}$, which is normal to the surface there.
+\step{3}{Tangent plane.} $5(x-1)+4(y-2)+3(z-3)=0\Rightarrow5x+4y+3z=5+8+9=22$.
+\step{4}{Normal line.} Through $(1,2,3)$ in the direction $\ip{5,4,3}$: $x=1+5t$, $y=2+4t$, $z=3+3t$.
+\finalans{tangent plane $5x+4y+3z=22$; normal line $\ip{1+5t,\;2+4t,\;3+3t}$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -351,20 +434,20 @@ $y$ points north. You stand at $(60,40,966)$.
 angle above the horizontal does the path begin?
 \end{problem}
 \begin{solution}
-\stepx{Gradient.} $\grad z=\ip{-0.01x,\;-0.02y}$, so at $(60,40)$:
-$\grad z=\ip{-0.6,-0.8}$. (Check the height: $1000-18-16=966$.\checkok)
+\step{1}{Gradient.} $z_x=-0.01x$ and $z_y=-0.02y$, so at $(60,40)$: $\grad z=\ip{-0.6,\;-0.8}$.
+(Check of the height: $1000-0.005(3600)-0.01(1600)=1000-18-16=966$.\checkok)
 
-\textbf{(a)} South is $\vu=\ip{0,-1}$: $\Du z=(-0.8)(-1)=0.8>0$. Ascending,
-$0.8$ m per metre walked.
+\textbf{(a)} Due south is the unit vector $\vu=\ip{0,-1}$.
+$\Du z=(-0.6)(0)+(-0.8)(-1)=0.8>0$. You are \emph{ascending}, at $0.8$ m per metre walked.
 
-\textbf{(b)} North-west is $\vu=\frac{1}{\sqrt2}\ip{-1,1}$:
-$\Du z=\frac{0.6-0.8}{\sqrt2}=-\frac{0.2}{\sqrt2}=-\frac{\sqrt2}{10}\approx-0.141$.
-Descending at about $0.14$ m per metre.
+\textbf{(b)} North-west is halfway between north $\ip{0,1}$ and west $\ip{-1,0}$: $\vu=\frac{1}{\sqrt2}\ip{-1,1}$.
+$\Du z=\frac{1}{\sqrt2}\big((-0.6)(-1)+(-0.8)(1)\big)=\frac{-0.2}{\sqrt2}=-\frac{\sqrt2}{10}\approx-0.141$. You are
+\emph{descending}, at about $0.14$ m per metre.
 
-\textbf{(c)} Steepest ascent in the direction of $\grad z=\ip{-0.6,-0.8}$
-(unit vector $\ip{-\frac35,-\frac45}$, roughly south-south-west), with rate
-$\norm{\grad z}=\sqrt{0.36+0.64}=1$. A slope of $1$ means an angle
-$\arctan1=45^\circ$ above the horizontal.
+\textbf{(c)} The steepest ascent is in the direction of $\grad z=\ip{-0.6,-0.8}$, i.e. the unit vector
+$\ip{-\frac35,-\frac45}$ (roughly south-south-west). The rate is $\norm{\grad z}=\sqrt{0.36+0.64}=1$.
+A slope (rise over run) of $1$ corresponds to an angle $\alpha$ with $\tan\alpha=1$, i.e. $\alpha=45^\circ$
+above the horizontal.
 \end{solution}
 
 \begin{problem}\label{prob:p19}
@@ -375,16 +458,15 @@ $\vv=\vi+\vj-\vk$.
 (c) What is the maximum rate of change at $P$?
 \end{problem}
 \begin{solution}
-\step{1}{Gradient.} $\grad V=\ip{10x-3y+yz,\;-3x+xz,\;xy}$. At $(3,4,5)$:
-\[
-  \grad V(3,4,5)=\ip{30-12+20,\;-9+15,\;12}=\ip{38,6,12}.
-\]
-\textbf{(a)} $\vu=\frac{1}{\sqrt3}\ip{1,1,-1}$:
-$\Du V=\frac{38+6-12}{\sqrt3}=\frac{32}{\sqrt3}=\frac{32\sqrt3}{3}\approx18.5$.
+\step{1}{Gradient.} $V_x=10x-3y+yz$, $V_y=-3x+xz$, $V_z=xy$. At $(3,4,5)$:
+$V_x=30-12+20=38$, $V_y=-9+15=6$, $V_z=12$, so $\grad V(P)=\ip{38,6,12}$.
 
-\textbf{(b)} In the direction of $\ip{38,6,12}$, equivalently of $\ip{19,3,6}$.
+\textbf{(a)} $\norm{\vv}=\sqrt3$, so $\vu=\frac{1}{\sqrt3}\ip{1,1,-1}$ and
+$\Du V=\frac{1}{\sqrt3}(38+6-12)=\frac{32}{\sqrt3}=\frac{32\sqrt3}{3}\approx18.5$.
 
-\textbf{(c)} $\norm{\ip{38,6,12}}=\sqrt{1444+36+144}=\sqrt{1624}=2\sqrt{406}\approx40.3$.
+\textbf{(b)} In the direction of $\grad V(P)=\ip{38,6,12}$, equivalently of $\ip{19,3,6}$.
+
+\textbf{(c)} $\norm{\ip{38,6,12}}=\sqrt{1444+36+144}=\sqrt{1624}=\sqrt{4\cdot406}=2\sqrt{406}\approx40.3$.
 \end{solution}
 
 \begin{problem}[Trio-style]\label{prob:p24}
@@ -395,33 +477,37 @@ Let $f(x,y)=x^2e^{-y}$, $P(-2,0)$ and $Q(2,-3)$.
 (d) Find the directions in which the rate of change at $P$ is zero.
 \end{problem}
 \begin{solution}
-\step{1}{Gradient.} $\grad f=\ip{2xe^{-y},\;-x^2e^{-y}}$ (continuous), so
-$\grad f(-2,0)=\ip{-4,-4}$, with $\norm{\grad f(P)}=4\sqrt2$.
+\step{1}{Gradient.} $f_x=2xe^{-y}$ and, by the chain rule, $f_y=x^2\cdot e^{-y}\cdot(-1)=-x^2e^{-y}$.
+Both are continuous. At $P(-2,0)$: $f_x=2(-2)(1)=-4$ and $f_y=-(4)(1)=-4$, so
+$\grad f(P)=\ip{-4,-4}$ with length $\sqrt{32}=4\sqrt2$.
 
-\textbf{(a)} $\vecPQ=\ip{4,-3}$, $\norm{\vecPQ}=5$, $\vu=\ip{\frac45,-\frac35}$:
-$\Du f(P)=-\frac{16}{5}+\frac{12}{5}=-\frac45$.
+\textbf{(a)} $\vecPQ=\ip{2-(-2),\;-3-0}=\ip{4,-3}$, length $5$, $\vu=\ip{\frac45,-\frac35}$:
+$\Du f(P)=(-4)\cdot\frac45+(-4)\cdot\left(-\frac35\right)=-\frac{16}{5}+\frac{12}{5}=-\frac45$.
 
-\textbf{(b)} Direction $\ip{-4,-4}$, unit $\ip{-\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$;
-maximum rate $4\sqrt2\approx5.66$.
+\textbf{(b)} Direction of $\grad f(P)=\ip{-4,-4}$; unit vector $\ip{-\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$.
+Maximum rate $4\sqrt2\approx5.66$.
 
-\textbf{(c)} Direction $\ip{\frac{1}{\sqrt2},\frac{1}{\sqrt2}}$; minimum rate
-$-4\sqrt2$.
+\textbf{(c)} Direction of $-\grad f(P)=\ip{4,4}$; unit vector $\ip{\frac{1}{\sqrt2},\frac{1}{\sqrt2}}$.
+Minimum rate $-4\sqrt2$.
 
-\textbf{(d)} $\vu\perp\ip{-4,-4}$: $\vu=\pm\ip{\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$.
+\textbf{(d)} The rate is zero for unit vectors perpendicular to $\ip{-4,-4}$. A perpendicular
+vector is $\ip{1,-1}$ (dot product $-4+4=0$); normalizing, $\vu=\pm\ip{\frac{1}{\sqrt2},-\frac{1}{\sqrt2}}$.
 \end{solution}
 
 \begin{problem}[$*$]\label{prob:angle-between}
 For $f(x,y)=x^2-y^2$ at $P(2,1)$, find the angle between the direction of
 fastest increase and the vector $\vecPQ$ toward $Q(5,5)$, and use it to find
-$\Du f(P)$ in that direction without computing a dot product with $\vu$.
+$\Du f(P)$ in that direction.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{2x,-2y}$, $\grad f(2,1)=\ip{4,-2}$, $\norm{\grad f}=2\sqrt5$.
-$\vecPQ=\ip{3,4}$ with length $5$. The angle $\theta$ between them satisfies
+\step{1}{Gradient.} $\grad f=\ip{2x,-2y}$, so $\grad f(2,1)=\ip{4,-2}$, with length $\sqrt{16+4}=2\sqrt5$.
+\step{2}{Direction vector.} $\vecPQ=\ip{5-2,\;5-1}=\ip{3,4}$, with length $5$.
+\step{3}{Angle between them.} By the dot-product formula,
 \[
-  \cos\theta=\frac{\ip{4,-2}\cdot\ip{3,4}}{2\sqrt5\cdot5}=\frac{12-8}{10\sqrt5}=\frac{2}{5\sqrt5},
+  \cos\theta=\frac{\ip{4,-2}\cdot\ip{3,4}}{\norm{\ip{4,-2}}\,\norm{\ip{3,4}}}=\frac{12-8}{2\sqrt5\cdot5}=\frac{4}{10\sqrt5}=\frac{2}{5\sqrt5},
 \]
-so $\theta=\arccos\frac{2}{5\sqrt5}\approx79.7^\circ$, and
-$\Du f(P)=\norm{\grad f}\cos\theta=2\sqrt5\cdot\frac{2}{5\sqrt5}=\frac45$.
-(Direct check: $\ip{4,-2}\cdot\ip{\frac35,\frac45}=\frac{12-8}{5}=\frac45$.\checkok)
+so $\theta=\arccos\frac{2}{5\sqrt5}\approx79.7^\circ$.
+\step{4}{Directional derivative.} $\Du f(P)=\norm{\grad f(P)}\cos\theta=2\sqrt5\cdot\frac{2}{5\sqrt5}=\frac45$.
+\step{5}{Check directly.} $\vu=\ip{\frac35,\frac45}$ and $\ip{4,-2}\cdot\ip{\frac35,\frac45}=\frac{12}{5}-\frac85=\frac45$.\checkok
+\finalans{$\theta\approx79.7^\circ$ and $\Du f(P)=\frac45$.}
 \end{solution}
