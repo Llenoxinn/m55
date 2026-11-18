@@ -1,0 +1,37 @@
+% =====================================================================
+\section{Interactive Graphs: Desmos and Python}\label{app:interactive}
+% =====================================================================
+
+\subsection{Desmos 3D: surfaces, slices and tangent lines}
+
+Open \extlink{\desmosTD}{Desmos 3D} and type the following lines.
+\begin{enumerate}
+\item The surface of Example~\ref{ex:6.1}: \ \texttt{z=4-x\^{}2-y\^{}2/4}.
+\item The point: \texttt{(1,2,2)}.
+\item A slider \texttt{a=pi/3} and the cut curve (a parametric curve in $t$):\\
+      \texttt{(1+t*cos(a), 2+t*sin(a), 4-(1+t*cos(a))\^{}2-(2+t*sin(a))\^{}2/4)}
+      with $-3\le t\le3$.
+\item The tangent line, whose slope is $\Du f(1,2)=-2\cos a-\sin a$:\\
+      \texttt{(1+t*cos(a), 2+t*sin(a), 2+t*(-2cos(a)-sin(a)))}.
+\end{enumerate}
+Drag the slider $a$ from $0$ to $2\pi$: the tangent line swings around the
+point, steepest uphill when $(\cos a,\sin a)$ points along
+$\grad f(1,2)=\ip{-2,-1}$ ($a\approx3.61$) and level when it is perpendicular
+to it. This is Theorem~\ref{thm:max} made visible.
+
+\subsection{Desmos 2D: contour maps and gradient vectors}
+
+In the \extlink{\desmosTwoD}{Desmos graphing calculator}, type
+\texttt{4-x\^{}2-y\^{}2/4=k} with a slider $k$ to draw level curves, and draw a
+gradient vector at a point $(p,q)$ with the segment
+\texttt{(p+s(-2p), q+s(-q/2))}, $0\le s\le0.3$. Moving $(p,q)$ shows that the
+gradient is always perpendicular to the level curve through its base point
+(Theorem~\ref{thm:grad-perp}).
+
+\subsection{Python}
+
+All figures in these notes are produced by \texttt{figures/make\_figures.py}
+(Python~3 with \texttt{numpy} and \texttt{matplotlib}). Changing a function or a
+point there and re-running the script regenerates the pictures; in a Jupyter or
+Google Colab notebook, replace \texttt{matplotlib.use("Agg")} by
+\texttt{\%matplotlib widget} to rotate the 3D figures with the mouse.

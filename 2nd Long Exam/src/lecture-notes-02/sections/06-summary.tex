@@ -1,0 +1,58 @@
+% =====================================================================
+\section{Summary of Formulas}\label{ch:summary}
+% =====================================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.3\linewidth}X}
+\toprule
+\textbf{Concept} & \textbf{Formula / fact}\\
+\midrule
+Partial derivatives &
+$f_x=\lim\limits_{h\to0}\frac{f(x+h,y)-f(x,y)}{h}$, \
+$f_y=\lim\limits_{h\to0}\frac{f(x,y+h)-f(x,y)}{h}$; $D_{\vi}f=f_x$, $D_{\vj}f=f_y$\\
+Differentiability test & $f_x,f_y$ (and $f_z$) continuous $\Rightarrow$ $f$ differentiable\\
+Directional derivative (definition) &
+$\Du f(x_0,y_0)=\lim\limits_{h\to0}\frac{f(x_0+ha,\,y_0+hb)-f(x_0,y_0)}{h}$, \ $\vu=\ip{a,b}$ unit\\
+Formula (2 variables) & $\Du f=f_xa+f_yb$\\
+Angle form & $\Du f=f_x\cos\theta+f_y\sin\theta$\\
+Formula (3 variables) & $\Du f=f_xa+f_yb+f_zc$, \ $\vu=\ip{a,b,c}$ unit\\
+Unit vectors & $\vu=\vv/\norm{\vv}$; \ $\vu=\vecPQ/\norm{\vecPQ}$; \ $\vu=\ip{\cos\theta,\sin\theta}$\\
+Gradient & $\grad f=\ip{f_x,f_y}$ or $\ip{f_x,f_y,f_z}$\\
+Dot-product form & $\Du f=\grad f\cdot\vu=\norm{\grad f}\cos\theta$\\
+Maximum rate & $\max\Du f=\norm{\grad f}$, in the direction of $\grad f$\\
+Minimum rate & $\min\Du f=-\norm{\grad f}$, in the direction of $-\grad f$\\
+Zero rate & $\vu\perp\grad f$ (tangent to the level curve)\\
+Level curves / surfaces & $\grad f\perp$ level set $f=k$\\
+Tangent line to $f(x,y)=k$ & $f_x(P)(x-x_0)+f_y(P)(y-y_0)=0$\\
+Tangent plane to $F(x,y,z)=k$ & $F_x(P)(x-x_0)+F_y(P)(y-y_0)+F_z(P)(z-z_0)=0$\\
+Normal line & $\ip{x,y,z}=\ip{x_0,y_0,z_0}+t\,\grad F(P)$\\
+Gradient rules & $\grad(fg)=f\grad g+g\grad f$, \ $\grad F(f)=F'(f)\grad f$, \ $\grad r=\vx/r$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection*{Common mistakes to avoid}
+
+\begin{enumerate}
+  \item \textbf{Not normalizing the direction.} $\vv=\ip{3,-4}$ is not a unit
+        vector; use $\ip{\frac35,-\frac45}$. Forgetting this multiplies the answer
+        by $\norm{\vv}$.
+  \item \textbf{Wrong direction vector from two points.} ``From $P$ to $Q$'' is
+        $Q-P$, not $P-Q$; and the derivative is evaluated at $P$, not at $Q$.
+  \item \textbf{Mixing scalars and vectors.} $\grad f$ is a vector; $\Du f$ and
+        $\norm{\grad f}$ are numbers. ``The maximum rate is $\ip{1,2}$'' is wrong; it is
+        $\sqrt5$, occurring in the direction $\ip{1,2}$.
+  \item \textbf{Evaluating too early or too late.} Differentiate first, then
+        substitute the point. Substituting first (e.g.\ setting $y=2$ before
+        computing $f_x$) is fine for $f_x$ but not for $f_y$.
+  \item \textbf{Forgetting the chain rule} inside $e^{g}$, $\sin g$, $\ln g$:
+        $\pd{}{y}\sin2y=2\cos2y$, $\pd{}{x}e^{-x^2-3y^2}=-2xe^{-x^2-3y^2}$.
+  \item \textbf{Skipping the differentiability justification.} One sentence
+        (``the partial derivatives are continuous, hence $f$ is
+        differentiable'') is required by the theorem and earns credit.
+  \item \textbf{Fastest decrease.} The direction is $-\grad f$ and the rate is
+        $-\norm{\grad f}$ (negative), not $+\norm{\grad f}$.
+  \item \textbf{Impossible rates.} $\Du f$ can never exceed $\norm{\grad f}$ in
+        absolute value; if your answer does, recheck your unit vector.
+\end{enumerate}
