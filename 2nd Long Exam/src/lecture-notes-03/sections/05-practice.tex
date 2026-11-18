@@ -6,8 +6,9 @@ The problems follow the patterns of the slides: sketching and matching vector
 fields (Example~7.1, Exercises~1--3), computing gradient fields
 (Example~7.2), the component test in the plane and in space
 (Examples~7.4--7.5) and the three-step potential method (Example~7.6,
-Exercise~4). Problems marked $(*)$ go further. Try each problem before reading
-its solution.
+Exercise~4). Problems marked $(*)$ go further. Every solution is written in
+full, with each step explained; when a quicker route exists it is shown
+\emph{after} the full solution in an \emph{Alternative method} box.
 
 % ---------------------------------------------------------------------
 \subsection{Sketching, describing and matching vector fields}
@@ -17,34 +18,46 @@ Sketch $\vF(x,y)=\frac12x\,\vi+\frac12y\,\vj$ at the points $(\pm1,0)$, $(0,\pm1
 $(\pm1,\pm1)$ and $(\pm2,0)$, and describe the field.
 \end{problem}
 \begin{solution}
-$\vF(x,y)=\frac12\ip{x,y}=\frac12\vx$:
+\step{1}{Compute the vectors.} $\vF(x,y)=\ip{\frac x2,\frac y2}$. Substituting each point:
 \begin{center}
-\renewcommand{\arraystretch}{1.2}
-\begin{tabular}{cccccc}
+\renewcommand{\arraystretch}{1.25}
+\begin{tabular}{cc@{\qquad}cc@{\qquad}cc}
 \toprule
-$(x,y)$ & $(1,0)$ & $(0,1)$ & $(1,1)$ & $(-1,1)$ & $(2,0)$\\
-$\vF$ & $\ip{\frac12,0}$ & $\ip{0,\frac12}$ & $\ip{\frac12,\frac12}$ & $\ip{-\frac12,\frac12}$ & $\ip{1,0}$\\
+point & $\vF$ & point & $\vF$ & point & $\vF$\\
+\midrule
+$(1,0)$ & $\ip{\frac12,0}$ & $(1,1)$ & $\ip{\frac12,\frac12}$ & $(2,0)$ & $\ip{1,0}$\\
+$(-1,0)$ & $\ip{-\frac12,0}$ & $(-1,1)$ & $\ip{-\frac12,\frac12}$ & $(-2,0)$ & $\ip{-1,0}$\\
+$(0,1)$ & $\ip{0,\frac12}$ & $(-1,-1)$ & $\ip{-\frac12,-\frac12}$ & & \\
+$(0,-1)$ & $\ip{0,-\frac12}$ & $(1,-1)$ & $\ip{\frac12,-\frac12}$ & & \\
 \bottomrule
 \end{tabular}
 \end{center}
-(and symmetrically at the other points, e.g. $\vF(-1,0)=\ip{-\frac12,0}$,
-$\vF(-1,-1)=\ip{-\frac12,-\frac12}$). Every arrow points directly away from the
-origin (it is a positive multiple of the position vector) and has length
-$\frac12r$: a \emph{radial outward} field growing linearly with distance, like the
-orange panel of Exercise~2.
+\step{2}{Draw.} At each point, draw the arrow starting at that point. For example, at
+$(1,1)$ draw an arrow from $(1,1)$ to $(1.5,1.5)$.
+\step{3}{Describe.} Since $\vF=\frac12\ip{x,y}=\frac12\vx$, each arrow is half of the position
+vector of its base point. Therefore each arrow points \emph{directly away from the origin},
+and its length is $\frac12\sqrt{x^2+y^2}=\frac12r$: the farther from the origin, the longer the
+arrow. At the origin itself, $\vF=\vzero$. This is a \emph{radial outward} field, the same
+type as the orange panel of Exercise~2.
 \end{solution}
 
 \begin{problem}\label{q:saddle}
 Describe the field $\vF(x,y)=\ip{x,-y}$. Where is it horizontal? vertical? zero?
 \end{problem}
 \begin{solution}
-$\vF=\vzero$ only at the origin. On the $x$-axis ($y=0$), $\vF=\ip{x,0}$ is
-horizontal and points \emph{away} from the origin; on the $y$-axis ($x=0$),
-$\vF=\ip{0,-y}$ is vertical and points \emph{toward} the origin. In the first
-quadrant arrows point right and down, etc. Length $\norm{\vF}=\sqrt{x^2+y^2}=r$.
-The picture is a ``saddle'' flow: in along the $y$-axis, out along the
-$x$-axis, following the hyperbolas $xy=\text{const}$. (It is
-$\grad\left(\frac12x^2-\frac12y^2\right)$.)
+\step{1}{Zero.} $\vF=\ip{0,0}$ requires $x=0$ and $-y=0$, so only at the origin.
+\step{2}{Horizontal arrows.} An arrow is horizontal when its second component is zero:
+$-y=0$, i.e. on the $x$-axis. There $\vF=\ip{x,0}$, which points to the right for $x>0$ and
+to the left for $x<0$, i.e. \emph{away} from the origin.
+\step{3}{Vertical arrows.} An arrow is vertical when its first component is zero: $x=0$,
+i.e. on the $y$-axis. There $\vF=\ip{0,-y}$, which points down when $y>0$ and up when
+$y<0$, i.e. \emph{toward} the origin.
+\step{4}{Other points and length.} In the first quadrant ($x,y>0$) the arrows point
+right and down; in the second, left and down; and so on. The length is
+$\sqrt{x^2+(-y)^2}=\sqrt{x^2+y^2}=r$.
+\step{5}{Overall picture.} The flow comes in along the $y$-axis and goes out along the
+$x$-axis, sliding along the hyperbolas $xy=$ constant: a ``saddle'' flow. (In fact
+$\vF=\grad\left(\frac12x^2-\frac12y^2\right)$.)
 \end{solution}
 
 \begin{problem}\label{q:match}
@@ -60,27 +73,35 @@ A. $\vF=\ip{y,-x}$\qquad B. $\vF=\ip{2,1}$\qquad C. $\vF=\ip{x,-y}$\qquad D. $\v
 \end{figure}
 
 \begin{solution}
+The method is to find one feature of each formula that can be recognized in a picture.
 \begin{itemize}
-\item B is constant: all arrows identical. Only plot \textbf{IV}.
-\item D $=\ip{y,0}$ is always horizontal, pointing right above the $x$-axis and
-      left below it, zero on it, longer farther from it. Plot \textbf{III}.
-\item A $=\ip{y,-x}$ satisfies $\vF\cdot\vx=xy-yx=0$: tangent to circles. At
-      $(0,1)$ it is $\ip{1,0}$ (to the right), so the rotation is
-      \emph{clockwise}. Plot \textbf{II}.
-\item C $=\ip{x,-y}$ is the saddle flow of Problem~\ref{q:saddle}. Plot \textbf{I}.
+\item \textbf{B $=\ip{2,1}$} does not depend on $x$ or $y$, so every arrow is the same
+      vector (pointing right and slightly up). Only plot \textbf{IV} has all arrows identical.
+\item \textbf{D $=\ip{y,0}$} has second component $0$, so every arrow is horizontal. It points
+      right when $y>0$, left when $y<0$, vanishes on the $x$-axis, and gets longer as $\abs y$
+      grows. This is plot \textbf{III}.
+\item \textbf{A $=\ip{y,-x}$}: the dot product with the position vector is $x\cdot y+y\cdot(-x)=0$,
+      so every arrow is perpendicular to the position vector, i.e. tangent to a circle
+      about the origin. At $(0,1)$ the arrow is $\ip{1,0}$ (pointing right), so going over the
+      top of the circle from left to right: the rotation is \emph{clockwise}. This is plot \textbf{II}.
+\item \textbf{C $=\ip{x,-y}$} is the saddle flow of Problem~\ref{q:saddle}: out along the
+      $x$-axis, in along the $y$-axis. This is plot \textbf{I}.
 \end{itemize}
-Answer: A--II, B--IV, C--I, D--III.
+\finalans{A--II, B--IV, C--I, D--III.}
 \end{solution}
 
 \begin{problem}\label{q:3d}
 Describe the vector field $\vF(x,y,z)=\ip{x,y,0}$ in space.
 \end{problem}
 \begin{solution}
-Every arrow is horizontal (no $\vk$-component). At $(x,y,z)$ the arrow $\ip{x,y,0}$
-points directly away from the $z$-axis, with length $\sqrt{x^2+y^2}$, the
-distance to the $z$-axis. The field is the same in every horizontal plane: in
-each plane $z=c$ it looks like the radial field $\ip{x,y}$. (Compare Exercise~3,
-where the extra constant upward component $3\vk$ tilts every arrow upward.)
+\step{1}{Direction.} The $\vk$-component is $0$, so every arrow is horizontal. The
+horizontal part $\ip{x,y}$ is the vector from the point $(0,0,z)$ on the $z$-axis to the
+point $(x,y,z)$; hence each arrow points directly away from the $z$-axis.
+\step{2}{Length.} $\norm{\vF}=\sqrt{x^2+y^2}$, which is the distance from the point to the
+$z$-axis. Arrows are zero on the $z$-axis and grow linearly with the distance from it.
+\step{3}{Dependence on $z$.} $\vF$ does not involve $z$, so the picture is the same in every
+horizontal plane $z=c$: the planar radial field $\ip{x,y}$ repeated at every height.
+(Compare Exercise~3, where an extra constant $3\vk$ tilts every arrow upward.)
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -91,15 +112,23 @@ Find the gradient vector field of (a) $f(x,y)=xe^{xy}$;
 (b) $f(x,y,z)=x\cos\left(\dfrac yz\right)$.
 \end{problem}
 \begin{solution}
-\textbf{(a)} Product and chain rule: $f_x=e^{xy}+x\cdot ye^{xy}=(1+xy)e^{xy}$,
-$f_y=x\cdot xe^{xy}=x^2e^{xy}$. So $\grad f=\ip{(1+xy)e^{xy},\;x^2e^{xy}}$.
-
-\textbf{(b)} $f_x=\cos\frac yz$;
-$f_y=x\cdot\left(-\sin\frac yz\right)\cdot\frac1z=-\frac xz\sin\frac yz$;
-$f_z=x\cdot\left(-\sin\frac yz\right)\cdot\left(-\frac{y}{z^2}\right)=\frac{xy}{z^2}\sin\frac yz$. Hence
+\textbf{(a)}
+\step{1}{$f_x$.} $f$ is a product of $x$ and $e^{xy}$, both depending on $x$, so we use the
+product rule; by the chain rule $\pd{}{x}e^{xy}=e^{xy}\cdot y$:
 \[
-  \grad f=\ip{\cos\frac yz,\;-\frac xz\sin\frac yz,\;\frac{xy}{z^2}\sin\frac yz}.
+  f_x=1\cdot e^{xy}+x\cdot ye^{xy}=(1+xy)e^{xy}.
 \]
+\step{2}{$f_y$.} Now $x$ is a constant factor, and $\pd{}{y}e^{xy}=e^{xy}\cdot x$:
+\[
+  f_y=x\cdot xe^{xy}=x^2e^{xy}.
+\]
+\finalans{$\grad f=\ip{(1+xy)e^{xy},\;x^2e^{xy}}$.}
+
+\textbf{(b)} The inner function is $u=\frac yz$, with $u_x=0$, $u_y=\frac1z$, $u_z=-\frac{y}{z^2}$.
+\step{1}{$f_x$.} Only the factor $x$ depends on $x$: $f_x=\cos\frac yz$.
+\step{2}{$f_y$.} Chain rule: $f_y=x\cdot\left(-\sin\frac yz\right)\cdot\frac1z=-\frac xz\sin\frac yz$.
+\step{3}{$f_z$.} Chain rule: $f_z=x\cdot\left(-\sin\frac yz\right)\cdot\left(-\frac{y}{z^2}\right)=\frac{xy}{z^2}\sin\frac yz$.
+\finalans{$\grad f=\ip{\cos\frac yz,\;-\frac xz\sin\frac yz,\;\frac{xy}{z^2}\sin\frac yz}$.}
 \end{solution}
 
 \begin{problem}\label{q:grad2}
@@ -108,10 +137,14 @@ curve $f=3$ at $(2,1)$, and identify the field among those of
 Problem~\ref{q:match}.
 \end{problem}
 \begin{solution}
-$\grad f=\ip{2x,-2y}$, so $\grad f(2,1)=\ip{4,-2}$. The level curve $x^2-y^2=3$ passes
-through $(2,1)$; implicit differentiation gives $2x-2yy'=0$, $y'=x/y=2$, so a
-tangent vector is $\ip{1,2}$, and $\ip{4,-2}\cdot\ip{1,2}=4-4=0$.\checkok\
-$\grad f=2\ip{x,-y}$ is twice field C (plot~I): the saddle flow.
+\step{1}{Gradient.} $f_x=2x$ and $f_y=-2y$, so $\grad f=\ip{2x,-2y}$ and $\grad f(2,1)=\ip{4,-2}$.
+\step{2}{The level curve.} $f(2,1)=4-1=3$, so $(2,1)$ lies on the level curve $x^2-y^2=3$.
+\step{3}{A tangent vector to the level curve.} Differentiate $x^2-y^2=3$ implicitly with
+respect to $x$: $2x-2y\,y'=0$, so $y'=\frac xy$. At $(2,1)$ the slope is $2$, so a tangent
+vector is $\ip{1,2}$.
+\step{4}{Perpendicularity.} $\ip{4,-2}\cdot\ip{1,2}=4-4=0$. Since the dot product is zero, the
+gradient is perpendicular to the level curve at $(2,1)$.\checkok
+\step{5}{Identify.} $\grad f=2\ip{x,-y}$ is twice field C, the saddle flow of plot~I.
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -123,14 +156,20 @@ Which of the following are conservative?\\
 (e) $\ip{e^x\cos y,\,e^x\sin y}$\quad (f) $\ip{e^x\cos y,\,-e^x\sin y}$
 \end{problem}
 \begin{solution}
+For each field we compute the required cross partial derivatives. All components are
+smooth on the whole plane/space, so the test gives the answer directly.
 \begin{enumerate}[label=(\alph*)]
-\item $M_y=1=N_x$: conservative ($f=xy$).
-\item $M_y=1$, $N_x=-1$: \textbf{not} conservative.
-\item All cross partials are $0$: conservative ($f=x^2+y^2+z^2$).
-\item $P_x=-1$ but $M_z=1$: \textbf{not} conservative.
-\item $M_y=-e^x\sin y$, $N_x=e^x\sin y$: these differ wherever $\sin y\neq0$, so
-      \textbf{not} conservative.
-\item $M_y=-e^x\sin y=N_x$: conservative ($f=e^x\cos y$).
+\item $M=y$, $N=x$: $M_y=1$ and $N_x=1$. Equal, so \textbf{conservative}. (A potential is $f=xy$,
+      since $f_x=y$ and $f_y=x$.)
+\item $M=y$, $N=-x$: $M_y=1$ but $N_x=-1$. Not equal, so \textbf{not conservative}.
+\item $M=2x$, $N=2y$, $P=2z$: every cross partial ($M_y,N_x,N_z,P_y,P_x,M_z$) is $0$, so all three
+      conditions hold: \textbf{conservative}, with $f=x^2+y^2+z^2$.
+\item $M=z$, $N=0$, $P=-x$: $M_y=0=N_x$ and $N_z=0=P_y$, but $P_x=-1$ while $M_z=1$. One condition
+      fails, so \textbf{not conservative}.
+\item $M=e^x\cos y$, $N=e^x\sin y$: $M_y=-e^x\sin y$ and $N_x=e^x\sin y$. These are negatives of each
+      other and are equal only where $\sin y=0$, not everywhere, so \textbf{not conservative}.
+\item $M=e^x\cos y$, $N=-e^x\sin y$: $M_y=-e^x\sin y$ and $N_x=-e^x\sin y$. Equal, so
+      \textbf{conservative}, with $f=e^x\cos y$ ($f_x=e^x\cos y$, $f_y=-e^x\sin y$).
 \end{enumerate}
 \end{solution}
 
@@ -138,10 +177,15 @@ Which of the following are conservative?\\
 Show that $\vF=\ip{xyz^2,\;x^2yz^2,\;x^2y^2z}$ is not conservative.
 \end{problem}
 \begin{solution}
-$M_y=xz^2$ while $N_x=2xyz^2$. These are not identically equal (at $(1,0,1)$:
-$1\neq0$). One failed condition is enough: $\vF$ is not conservative. (The
-other conditions need not be checked; in fact $N_z=2x^2yz=P_y$ holds, which
-shows that \emph{all three} must be verified before concluding ``conservative''.)
+\step{1}{First condition.} $M=xyz^2$ gives $M_y=xz^2$; $N=x^2yz^2$ gives $N_x=2xyz^2$.
+\step{2}{Compare.} These are not equal as functions: for example at $(1,0,1)$, $M_y=1$ but
+$N_x=0$. Since the condition $M_y=N_x$ must hold \emph{everywhere} for a conservative
+field, it already fails.
+\step{3}{Conclusion.} $\vF$ is \textbf{not conservative}. One failed condition is enough.
+
+\emph{Remark.} The second condition happens to hold ($N_z=2x^2yz=P_y$). This shows why
+all three conditions must be checked before concluding that a field \emph{is}
+conservative.
 \end{solution}
 
 \begin{problem}\label{q:const}
@@ -149,12 +193,22 @@ shows that \emph{all three} must be verified before concluding ``conservative''.
 (b) Find $a,b$ such that $\mathbf{G}=\ip{yz,\;axz,\;bxy+2z}$ is conservative.
 \end{problem}
 \begin{solution}
-\textbf{(a)} $M_y=3x^2+a$ and $N_x=3x^2+2$, equal for all $(x,y)$ iff $a=2$. Then
-$\vF=\grad(x^3y+2xy)$.
+\textbf{(a)}
+\step{1}{Cross partials.} $M=3x^2y+ay$ gives $M_y=3x^2+a$; $N=x^3+2x$ gives $N_x=3x^2+2$.
+\step{2}{Require equality for all $(x,y)$.} $3x^2+a=3x^2+2$ for all $x$ exactly when $a=2$.
+\step{3}{Potential (for completeness).} With $a=2$: $f=\int(3x^2y+2y)\,\dd x=x^3y+2xy+g(y)$, and
+$f_y=x^3+2x+g'(y)=x^3+2x$ gives $g'=0$. So $\vF=\grad(x^3y+2xy)$.
+\finalans{$a=2$.}
 
-\textbf{(b)} $M_y=z$, $N_x=az\Rightarrow a=1$. $N_z=ax$, $P_y=bx\Rightarrow b=a=1$.
-$P_x=by$, $M_z=y\Rightarrow b=1$. All consistent: $a=b=1$, and then $\mathbf{G}=\grad(xyz+z^2)$
-(Problem~\ref{q:pot3a}).
+\textbf{(b)} Write $M=yz$, $N=axz$, $P=bxy+2z$. Each condition gives an equation.
+\begin{itemize}
+\item $M_y=z$ and $N_x=az$: equal for all $z$ iff $a=1$.
+\item $N_z=ax$ and $P_y=bx$: equal iff $b=a$.
+\item $P_x=by$ and $M_z=y$: equal iff $b=1$.
+\end{itemize}
+These are consistent: $a=1$, $b=1$. Then $\mathbf G=\ip{yz,xz,xy+2z}=\grad(xyz+z^2)$
+(see Problem~\ref{q:pot3a}).
+\finalans{$a=b=1$.}
 \end{solution}
 
 \begin{problem}[$*$]\label{q:radial2d}
@@ -163,11 +217,24 @@ that, unlike the vortex field of Example~\ref{ex:vortex}, this field \emph{is}
 conservative on the whole punctured plane.
 \end{problem}
 \begin{solution}
-$M_y=\dfrac{-2xy}{(x^2+y^2)^2}=N_x$. A potential defined on the entire punctured
-plane is $f=\frac12\ln(x^2+y^2)$: $f_x=\frac{x}{x^2+y^2}$, $f_y=\frac{y}{x^2+y^2}$.\checkok\
-So on a non-simply-connected region the component test is inconclusive: it
-holds for both fields, but one is conservative and the other is not. To prove
-conservativeness there, exhibit a potential.
+\step{1}{Cross partials.} By the quotient rule (the numerator of $M$ does not contain $y$):
+\[
+  M_y=\frac{(x^2+y^2)\cdot0-x\cdot2y}{(x^2+y^2)^2}=\frac{-2xy}{(x^2+y^2)^2},\qquad
+  N_x=\frac{(x^2+y^2)\cdot0-y\cdot2x}{(x^2+y^2)^2}=\frac{-2xy}{(x^2+y^2)^2}.
+\]
+So $M_y=N_x$ everywhere on the punctured plane.
+\step{2}{Why the test alone is not enough here.} The punctured plane has a hole, so the
+test does not \emph{guarantee} that $\vF$ is conservative (the vortex field also
+passes the test but is not conservative). To prove conservativeness we must
+exhibit a potential defined on the whole punctured plane.
+\step{3}{A potential.} Try $f=\frac12\ln(x^2+y^2)$, defined for all $(x,y)\neq(0,0)$:
+\[
+  f_x=\frac12\cdot\frac{2x}{x^2+y^2}=\frac{x}{x^2+y^2},\qquad f_y=\frac12\cdot\frac{2y}{x^2+y^2}=\frac{y}{x^2+y^2}.
+\]
+So $\grad f=\vF$ on the whole punctured plane, and $\vF$ \textbf{is} conservative.
+
+\emph{Lesson.} On a region with a hole, $M_y=N_x$ is necessary but not sufficient: it holds
+for both this field and the vortex field, yet only this one is conservative.
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -177,75 +244,113 @@ conservativeness there, exhibit a potential.
 Show that $\vF=\ip{2x-3y,\;-3x+4y-8}$ is conservative and find a potential.
 \end{problem}
 \begin{solution}
-\step{1}{Test.} $M_y=-3=N_x$ (polynomials, continuous on $\R^2$): conservative.
-\step{2}{Integrate in $x$.} $f=x^2-3xy+g(y)$.
-\step{3}{Match $f_y$.} $f_y=-3x+g'(y)=-3x+4y-8\Rightarrow g'(y)=4y-8\Rightarrow g=2y^2-8y+K$.
-
-\textbf{Answer.} $f=x^2-3xy+2y^2-8y+K$. Check: $f_x=2x-3y$\checkok, $f_y=-3x+4y-8$\checkok.
+\step{1}{Test.} $M=2x-3y$ gives $M_y=-3$; $N=-3x+4y-8$ gives $N_x=-3$. They are equal, and $M,N$ are
+polynomials (continuous partials on $\R^2$), so $\vF$ is conservative.
+\step{2}{Integrate $f_x=M$ with respect to $x$.} Holding $y$ fixed:
+$f=\int(2x-3y)\,\dd x=x^2-3xy+g(y)$, where $g(y)$ is still unknown.
+\step{3}{Differentiate with respect to $y$ and compare with $N$.}
+$f_y=-3x+g'(y)$ must equal $-3x+4y-8$, so $g'(y)=4y-8$ (no $x$ appears, as expected).
+\step{4}{Integrate.} $g(y)=2y^2-8y+K$.
+\step{5}{Assemble and check.} $f=x^2-3xy+2y^2-8y+K$; $f_x=2x-3y=M$\checkok\ and
+$f_y=-3x+4y-8=N$\checkok.
+\finalans{$f(x,y)=x^2-3xy+2y^2-8y+K$.}
 \end{solution}
 
 \begin{problem}\label{q:pot2b}
 Find a potential for $\vF=\ip{(1+xy)e^{xy},\;x^2e^{xy}}$.
 \end{problem}
 \begin{solution}
-\step{1}{Test.} $M_y=xe^{xy}+(1+xy)xe^{xy}=(2x+x^2y)e^{xy}$;
-$N_x=2xe^{xy}+x^2ye^{xy}=(2x+x^2y)e^{xy}$. Equal: conservative.
-\step{2}{Integrate the \emph{easier} component.} Integrating $N$ in $y$ is easier
-than $M$ in $x$: $f=\int x^2e^{xy}\,\dd y=xe^{xy}+g(x)$.
-\step{3}{Match $f_x$.} $f_x=e^{xy}+xye^{xy}+g'(x)=(1+xy)e^{xy}\Rightarrow g'(x)=0$.
+\step{1}{Test.} For $M=(1+xy)e^{xy}$, the product rule in $y$ gives
+$M_y=x\,e^{xy}+(1+xy)\cdot xe^{xy}=(2x+x^2y)e^{xy}$.
+For $N=x^2e^{xy}$, the product rule in $x$ gives $N_x=2xe^{xy}+x^2\cdot ye^{xy}=(2x+x^2y)e^{xy}$.
+They are equal on $\R^2$, so $\vF$ is conservative.
+\step{2}{Integrate $f_x=M$ with respect to $x$.} $\int(1+xy)e^{xy}\,\dd x$ is not obvious at
+first sight, so we integrate by parts with $u=1+xy$, $\dd v=e^{xy}\dd x$ (so $\dd u=y\,\dd x$,
+$v=\frac{e^{xy}}{y}$ for $y\neq0$):
+\[
+  \int(1+xy)e^{xy}\,\dd x=(1+xy)\frac{e^{xy}}{y}-\int y\cdot\frac{e^{xy}}{y}\,\dd x
+  =\frac{e^{xy}}{y}+xe^{xy}-\frac{e^{xy}}{y}=xe^{xy}.
+\]
+So $f=xe^{xy}+g(y)$. (Check: $\pd{}{x}\left(xe^{xy}\right)=e^{xy}+xye^{xy}=M$.)
+\step{3}{Compare with $N$.} $f_y=x\cdot xe^{xy}+g'(y)=x^2e^{xy}+g'(y)$ must equal $x^2e^{xy}$, so
+$g'(y)=0$ and $g=K$.
+\finalans{$f(x,y)=xe^{xy}+K$ (compare Problem~\ref{q:grad1}(a)).}
 
-\textbf{Answer.} $f=xe^{xy}+K$ (compare Problem~\ref{q:grad1}(a)).
-\emph{Tip:} the order of the three steps may be changed; start with whichever
-component is easiest to integrate.
+\begin{altmethod}
+The steps of the method may be done in any order. Integrating $N$ with respect to
+$y$ is much easier here: $\int x^2e^{xy}\,\dd y=x^2\cdot\frac{e^{xy}}{x}=xe^{xy}$, so
+$f=xe^{xy}+g(x)$. Then $f_x=(1+xy)e^{xy}+g'(x)=M$ gives $g'=0$, the same answer.
+\end{altmethod}
 \end{solution}
 
 \begin{problem}\label{q:pot2c}
 Find a potential for $\vF=\ip{ye^x+\sin y,\;e^x+x\cos y}$.
 \end{problem}
 \begin{solution}
-Test: $M_y=e^x+\cos y=N_x$. Integrate in $x$: $f=ye^x+x\sin y+g(y)$. Then
-$f_y=e^x+x\cos y+g'(y)=N\Rightarrow g'(y)=0$. Answer: $f=ye^x+x\sin y+K$.
+\step{1}{Test.} $M_y=\pd{}{y}(ye^x+\sin y)=e^x+\cos y$ and $N_x=\pd{}{x}(e^x+x\cos y)=e^x+\cos y$.
+Equal on $\R^2$: conservative.
+\step{2}{Integrate $M$ in $x$.} Holding $y$ fixed, $\int ye^x\,\dd x=ye^x$ and
+$\int\sin y\,\dd x=x\sin y$ (since $\sin y$ is a constant here). So $f=ye^x+x\sin y+g(y)$.
+\step{3}{Compare with $N$.} $f_y=e^x+x\cos y+g'(y)$ must equal $e^x+x\cos y$, so $g'(y)=0$, $g=K$.
+\finalans{$f(x,y)=ye^x+x\sin y+K$.}
 \end{solution}
 
 \begin{problem}\label{q:pot2d}
 Find a potential for $\vF=\ip{\ln y+2xy^3,\;3x^2y^2+\dfrac xy}$, $y>0$.
 \end{problem}
 \begin{solution}
-Test: $M_y=\frac1y+6xy^2$, $N_x=6xy^2+\frac1y$: equal, and the half-plane $y>0$ is
-simply connected. Integrate in $x$: $f=x\ln y+x^2y^3+g(y)$. Then
-$f_y=\frac xy+3x^2y^2+g'(y)=N\Rightarrow g'(y)=0$. Answer: $f=x\ln y+x^2y^3+K$.
+\step{1}{Test.} $M_y=\pd{}{y}(\ln y+2xy^3)=\frac1y+6xy^2$ and
+$N_x=\pd{}{x}\left(3x^2y^2+\frac xy\right)=6xy^2+\frac1y$. Equal. The domain $y>0$ is a half-plane,
+which has no holes, so $\vF$ is conservative there.
+\step{2}{Integrate $M$ in $x$.} $\int\ln y\,\dd x=x\ln y$ (constant in $x$) and $\int2xy^3\,\dd x=x^2y^3$.
+So $f=x\ln y+x^2y^3+g(y)$.
+\step{3}{Compare with $N$.} $f_y=\frac xy+3x^2y^2+g'(y)$ must equal $3x^2y^2+\frac xy$, so $g'=0$, $g=K$.
+\finalans{$f(x,y)=x\ln y+x^2y^3+K$.}
 \end{solution}
 
 \begin{problem}\label{q:pot3a}
 Show that $\vF=\ip{yz,\;xz,\;xy+2z}$ is conservative and find a potential.
 \end{problem}
 \begin{solution}
-\step{1}{Test.} $M_y=z=N_x$; $N_z=x=P_y$; $P_x=y=M_z$. Conservative on $\R^3$.
-\step{2}{$x$.} $f=xyz+g(y,z)$.
-\step{3}{$y$.} $f_y=xz+g_y=xz\Rightarrow g_y=0\Rightarrow g=h(z)$.
-\step{4}{$z$.} $f_z=xy+h'(z)=xy+2z\Rightarrow h'(z)=2z\Rightarrow h=z^2+K$.
-
-\textbf{Answer.} $f=xyz+z^2+K$.
+\step{1}{Test.} $M=yz$, $N=xz$, $P=xy+2z$:
+$M_y=z=N_x$;\quad $N_z=x=P_y$;\quad $P_x=y=M_z$. All three hold on $\R^3$: conservative.
+\step{2}{Integrate $f_x=M$ in $x$.} $f=\int yz\,\dd x=xyz+g(y,z)$.
+\step{3}{Compare $f_y$ with $N$.} $f_y=xz+g_y(y,z)=xz\Rightarrow g_y=0$, so $g$ does not
+depend on $y$: $g=h(z)$, and $f=xyz+h(z)$.
+\step{4}{Compare $f_z$ with $P$.} $f_z=xy+h'(z)=xy+2z\Rightarrow h'(z)=2z\Rightarrow h(z)=z^2+K$.
+\step{5}{Check.} $f=xyz+z^2+K$: $f_x=yz$, $f_y=xz$, $f_z=xy+2z$.\checkok
+\finalans{$f(x,y,z)=xyz+z^2+K$.}
 \end{solution}
 
 \begin{problem}\label{q:pot3b}
 Find a potential for $\vF=\ip{1,\;\sin z,\;y\cos z}$.
 \end{problem}
 \begin{solution}
-Test: $M_y=0=N_x$; $N_z=\cos z=P_y$; $P_x=0=M_z$. Conservative.\\
-$x$: $f=x+g(y,z)$. $y$: $g_y=\sin z\Rightarrow g=y\sin z+h(z)$.
-$z$: $f_z=y\cos z+h'(z)=y\cos z\Rightarrow h=K$.\\
-\textbf{Answer.} $f=x+y\sin z+K$.
+\step{1}{Test.} $M=1$, $N=\sin z$, $P=y\cos z$: $M_y=0=N_x$;\ $N_z=\cos z=P_y$;\ $P_x=0=M_z$.
+Conservative on $\R^3$.
+\step{2}{Integrate $M$ in $x$.} $f=\int1\,\dd x=x+g(y,z)$.
+\step{3}{Compare with $N$.} $f_y=g_y=\sin z$. Integrating in $y$ (with $z$ fixed):
+$g=y\sin z+h(z)$. So $f=x+y\sin z+h(z)$.
+\step{4}{Compare with $P$.} $f_z=y\cos z+h'(z)=y\cos z\Rightarrow h'(z)=0\Rightarrow h=K$.
+\finalans{$f(x,y,z)=x+y\sin z+K$.}
 \end{solution}
 
 \begin{problem}\label{q:pot3c}
 Find a potential for $\vF=\ip{e^{yz},\;xze^{yz},\;xye^{yz}}$.
 \end{problem}
 \begin{solution}
-Test: $M_y=ze^{yz}=N_x$; $N_z=xe^{yz}+xyze^{yz}=P_y$; $P_x=ye^{yz}=M_z$. Conservative.\\
-$x$: $f=xe^{yz}+g(y,z)$. $y$: $f_y=xze^{yz}+g_y=xze^{yz}\Rightarrow g=h(z)$.
-$z$: $f_z=xye^{yz}+h'(z)=xye^{yz}\Rightarrow h=K$.\\
-\textbf{Answer.} $f=xe^{yz}+K$.
+\step{1}{Test.}
+\begin{itemize}
+\item $M_y=\pd{}{y}e^{yz}=ze^{yz}$ and $N_x=\pd{}{x}\left(xze^{yz}\right)=ze^{yz}$: equal.
+\item $N_z=\pd{}{z}\left(xze^{yz}\right)=xe^{yz}+xz\cdot ye^{yz}$ (product rule) and
+      $P_y=\pd{}{y}\left(xye^{yz}\right)=xe^{yz}+xy\cdot ze^{yz}$: equal.
+\item $P_x=ye^{yz}$ and $M_z=ye^{yz}$: equal.
+\end{itemize}
+Conservative on $\R^3$.
+\step{2}{Integrate $M$ in $x$.} $e^{yz}$ is constant with respect to $x$, so $f=xe^{yz}+g(y,z)$.
+\step{3}{Compare with $N$.} $f_y=xze^{yz}+g_y=xze^{yz}\Rightarrow g_y=0\Rightarrow g=h(z)$.
+\step{4}{Compare with $P$.} $f_z=xye^{yz}+h'(z)=xye^{yz}\Rightarrow h'=0\Rightarrow h=K$.
+\finalans{$f(x,y,z)=xe^{yz}+K$.}
 \end{solution}
 
 \begin{problem}\label{q:hx}
@@ -253,9 +358,10 @@ Find all functions $h(x)$ for which $\vF=\ip{h(x)\,y,\;x^3+y}$ is conservative,
 and find the corresponding potentials.
 \end{problem}
 \begin{solution}
-$M_y=h(x)$ and $N_x=3x^2$, so we need $h(x)=3x^2$. Then
-$f=\int3x^2y\,\dd x=x^3y+g(y)$, $f_y=x^3+g'(y)=x^3+y\Rightarrow g=\frac12y^2+K$.
-Answer: $h(x)=3x^2$ and $f=x^3y+\frac12y^2+K$.
+\step{1}{Test.} $M=h(x)y$ gives $M_y=h(x)$; $N=x^3+y$ gives $N_x=3x^2$.
+\step{2}{Require equality.} $h(x)=3x^2$ for all $x$. So the only possibility is $h(x)=3x^2$.
+\step{3}{Potential.} $f=\int3x^2y\,\dd x=x^3y+g(y)$; $f_y=x^3+g'(y)=x^3+y\Rightarrow g'(y)=y\Rightarrow g=\frac12y^2+K$.
+\finalans{$h(x)=3x^2$, and $f(x,y)=x^3y+\frac12y^2+K$.}
 \end{solution}
 
 % ---------------------------------------------------------------------
@@ -270,21 +376,27 @@ Let $\vF(x,y,z)=\ip{2x\cos y-2z^3,\;3+2ye^z-x^2\sin y,\;y^2e^z-6xz^2}$.
 \end{enumerate}
 \end{problem}
 \begin{solution}
-\textbf{(a)}
-$M_y=-2x\sin y=N_x$;\quad $N_z=2ye^z=P_y$;\quad $P_x=-6z^2=M_z$. All continuous on
-$\R^3$: conservative.
+\textbf{(a)} With $M=2x\cos y-2z^3$, $N=3+2ye^z-x^2\sin y$, $P=y^2e^z-6xz^2$:
+\begin{itemize}
+\item $M_y=-2x\sin y$ and $N_x=-2x\sin y$: equal.
+\item $N_z=2ye^z$ and $P_y=2ye^z$: equal.
+\item $P_x=-6z^2$ and $M_z=-6z^2$: equal.
+\end{itemize}
+All partials are continuous on $\R^3$, so $\vF$ is conservative.
 
-\textbf{(b)} \step{1}{$x$.} $f=\int(2x\cos y-2z^3)\,\dd x=x^2\cos y-2xz^3+g(y,z)$.
-\step{2}{$y$.} $f_y=-x^2\sin y+g_y=3+2ye^z-x^2\sin y\Rightarrow g_y=3+2ye^z\Rightarrow
-g=3y+y^2e^z+h(z)$.
-\step{3}{$z$.} $f_z=-6xz^2+y^2e^z+h'(z)=y^2e^z-6xz^2\Rightarrow h'=0\Rightarrow h=K$.\\
-So $f=x^2\cos y+y^2e^z+3y-2xz^3+K$, and $f(0,0,0)=K=1$:
-\[
-  f(x,y,z)=x^2\cos y+y^2e^z+3y-2xz^3+1 .
-\]
-\textbf{(c)} The direction of fastest increase is $\grad f(0,0,0)=\vF(0,0,0)=\ip{0,3,0}$,
-i.e. the direction $\vj$, and the maximum rate is $\norm{\ip{0,3,0}}=3$
-(Lecture Notes No.~6, Theorem~3.4).
+\textbf{(b)}
+\step{1}{Integrate $M$ in $x$.} $f=\int(2x\cos y-2z^3)\,\dd x=x^2\cos y-2xz^3+g(y,z)$.
+\step{2}{Compare with $N$.} $f_y=-x^2\sin y+g_y$ must equal $3+2ye^z-x^2\sin y$, so
+$g_y=3+2ye^z$. Integrating in $y$: $g=3y+y^2e^z+h(z)$.
+\step{3}{Compare with $P$.} $f=x^2\cos y-2xz^3+3y+y^2e^z+h(z)$, so
+$f_z=-6xz^2+y^2e^z+h'(z)$, which must equal $y^2e^z-6xz^2$. Hence $h'(z)=0$, $h=K$.
+\step{4}{Condition.} $f(0,0,0)=0-0+0+0+K=K=1$.
+\finalans{$f(x,y,z)=x^2\cos y+y^2e^z+3y-2xz^3+1$.}
+
+\textbf{(c)} Because $\grad f=\vF$, the gradient at the origin is
+$\vF(0,0,0)=\ip{0-0,\;3+0-0,\;0-0}=\ip{0,3,0}$. By the maximum-rate theorem
+(Lecture Notes No.~6, Theorem~3.4), $f$ increases fastest in the direction of $\ip{0,3,0}$,
+i.e. the unit vector $\vj$, and the maximum rate is $\norm{\ip{0,3,0}}=3$.
 \end{solution}
 
 \begin{problem}\label{q:mixed2}
@@ -294,14 +406,17 @@ Let $f(x,y)=x^2y-y^3$ (Slides, Example~7.2) and $\vF=\grad f$.
 (c) Find the points where the field $\vF$ is horizontal.
 \end{problem}
 \begin{solution}
-\textbf{(a)} $\vF=\ip{2xy,\;x^2-3y^2}$: $M_y=2x=N_x$.\checkok\ (As it must be: every
-gradient field with continuous second partials passes the test.)
+\textbf{(a)} $\vF=\grad f=\ip{2xy,\;x^2-3y^2}$, so $M_y=2x$ and $N_x=2x$: equal.\checkok\ This must
+happen for every gradient field with continuous second partials, because
+$M_y=f_{xy}=f_{yx}=N_x$ (Clairaut).
 
-\textbf{(b)} $\vF(1,1)=\ip{2,-2}$, so $\Du f(1,1)=\frac65-\frac85=-\frac25$.
+\textbf{(b)} $\vF(1,1)=\ip{2,\;1-3}=\ip{2,-2}$, and $\vu$ is already a unit vector, so
+$\Du f(1,1)=2\cdot\frac35+(-2)\cdot\frac45=\frac65-\frac85=-\frac25$.
 
-\textbf{(c)} Horizontal (and nonzero) when the $\vj$-component vanishes:
-$x^2-3y^2=0$, i.e. on the lines $y=\pm\frac{x}{\sqrt3}$, excluding the origin
-(where $\vF=\vzero$).
+\textbf{(c)} An arrow is horizontal when its second component is $0$ while the arrow itself is
+not zero. $x^2-3y^2=0\iff x^2=3y^2\iff y=\pm\frac{x}{\sqrt3}$. At the origin both components vanish
+($\vF=\vzero$), so it is excluded.
+\finalans{the two lines $y=\pm\frac{x}{\sqrt3}$, without the origin.}
 \end{solution}
 
 \begin{problem}\label{q:mixed3}
@@ -309,8 +424,12 @@ Decide whether each field is a gradient field; if it is, find all its
 potentials. (a) $\vF=\ip{2xy+z^2,\;x^2,\;2xz+\cos z}$\quad (b) $\vF=\ip{y,\;x+z,\;-y}$
 \end{problem}
 \begin{solution}
-\textbf{(a)} This is Example~\ref{ex:pot3d}: conservative, $f=x^2y+xz^2+\sin z+C$.
+\textbf{(a)} Test: $M_y=2x=N_x$; $N_z=0=P_y$; $P_x=2z=M_z$. Conservative. Potential:
+$f=\int(2xy+z^2)\,\dd x=x^2y+xz^2+g(y,z)$; $f_y=x^2+g_y=x^2\Rightarrow g=h(z)$;
+$f_z=2xz+h'(z)=2xz+\cos z\Rightarrow h=\sin z+C$.
+\finalans{gradient field; all potentials are $f=x^2y+xz^2+\sin z+C$ (Example~\ref{ex:pot3d}).}
 
-\textbf{(b)} $M_y=1=N_x$ and $P_x=0=M_z$, but $N_z=1$ while $P_y=-1$. Not
-conservative, so it is not a gradient field.
+\textbf{(b)} $M=y$, $N=x+z$, $P=-y$: $M_y=1=N_x$ and $P_x=0=M_z$, but $N_z=1$ while $P_y=-1$.
+One condition fails, so $\vF$ is not conservative.
+\finalans{not a gradient field.}
 \end{solution}
