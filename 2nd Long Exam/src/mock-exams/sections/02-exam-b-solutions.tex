@@ -1,0 +1,220 @@
+% =====================================================================
+\subsection{Solutions to Form B}\label{sec:sol-b}
+% =====================================================================
+
+As for Form A, every step is written out in full; faster routes appear only in
+\emph{Alternative method} boxes after the full solution.
+
+% ---------------------------------------------------------------------
+\solhead{1}{5}
+\step{1}{Look for a relation between components.} The second and third components
+are $y=\cos2t$ and $z=\sin2t$. Squaring and adding,
+\[
+  y^2+z^2=\cos^22t+\sin^22t=1 .
+\]
+So every point of the curve lies on the circular cylinder $y^2+z^2=1$, whose axis is
+the $x$-axis and whose radius is $1$.
+\step{2}{Look at the remaining component.} $x=t$ increases steadily as $t$ increases.
+\step{3}{Combine.} While $x$ moves steadily forward, the point $(y,z)$ goes around
+the unit circle. One full turn of $(\cos2t,\sin2t)$ takes $\Delta t=\pi$ (the period of
+$\cos2t$), during which $x$ increases by $\pi$.
+
+\finalans{The curve is a \textbf{helix of radius $1$ winding around the $x$-axis},
+advancing $\pi$ units along the $x$-axis per turn; at $t=0$ it passes through $(0,1,0)$.}
+
+% ---------------------------------------------------------------------
+\solhead{2}{5}
+The limit of a vector function is taken component by component.
+\begin{itemize}
+\item $\displaystyle\lim_{t\to0}\frac{e^t-1}{t}=1$: this is a standard limit (or apply
+      L'H\^opital's rule: $\lim_{t\to0}\frac{e^t}{1}=1$).
+\item $\displaystyle\lim_{t\to0}\frac{\sqrt{1+t}-1}{t}$: direct substitution gives $\frac00$, so
+      multiply numerator and denominator by the conjugate $\sqrt{1+t}+1$:
+      \[
+        \frac{\sqrt{1+t}-1}{t}\cdot\frac{\sqrt{1+t}+1}{\sqrt{1+t}+1}
+        =\frac{(1+t)-1}{t\left(\sqrt{1+t}+1\right)}=\frac{1}{\sqrt{1+t}+1}\;\xrightarrow[t\to0]{}\;\frac{1}{1+1}=\frac12 .
+      \]
+\item $\displaystyle\lim_{t\to0}\frac{3}{1+t}=\frac31=3$ (the function is continuous at $0$).
+\end{itemize}
+\finalans{$\boxed{\ip{1,\;\frac12,\;3}}$.}
+
+% ---------------------------------------------------------------------
+\solhead{3}{5}
+\step{1}{Vector equation.} The segment from $\vr_0$ to $\vr_1$ is
+$\vr(t)=(1-t)\vr_0+t\vr_1$, $0\le t\le1$. With $\vr_0=\ip{1,-2,3}$ and $\vr_1=\ip{4,0,-1}$:
+\[
+  \vr(t)=(1-t)\ip{1,-2,3}+t\ip{4,0,-1}=\ip{1+3t,\;-2+2t,\;3-4t},\qquad0\le t\le1 .
+\]
+\step{2}{Parametric equations.} $x=1+3t$, $y=-2+2t$, $z=3-4t$, $0\le t\le1$.
+\step{3}{Midpoint.} The midpoint is halfway between $t=0$ and $t=1$, at $t=\frac12$:
+\[
+  \vr\!\left(\tfrac12\right)=\ip{1+\tfrac32,\;-2+1,\;3-2}=\ip{\tfrac52,\;-1,\;1}.
+\]
+\finalans{Midpoint $\boxed{\left(\frac52,-1,1\right)}$, which agrees with
+$\left(\frac{1+4}{2},\frac{-2+0}{2},\frac{3+(-1)}{2}\right)$.}
+
+% ---------------------------------------------------------------------
+\solhead{4}{6}
+\step{1}{Differentiate.} The first two components use the chain rule; the third uses the
+product rule, $\frac{\dd}{\dd t}\left(t\,e^{2t}\right)=1\cdot e^{2t}+t\cdot2e^{2t}$:
+\[
+  \vr\,'(t)=\ip{2e^{2t},\;-2e^{-2t},\;e^{2t}+2te^{2t}}.
+\]
+\step{2}{Evaluate at $t=0$.} $\vr\,'(0)=\ip{2,\;-2,\;1+0}=\ip{2,-2,1}$.
+\step{3}{Normalize.} $\norm{\vr\,'(0)}=\sqrt{4+4+1}=3$, so
+\[
+  \vT(0)=\frac{\vr\,'(0)}{\norm{\vr\,'(0)}}=\boxed{\ip{\frac23,\;-\frac23,\;\frac13}}.
+\]
+
+% ---------------------------------------------------------------------
+\solhead{5}{6}
+\step{1}{Speed.} $\vr\,'(t)=\ip{2,-3,4}$, so $\norm{\vr\,'(t)}=\sqrt{4+9+16}=\sqrt{29}$ (constant).
+\step{2}{Arc-length function from $t=0$.} $s(t)=\displaystyle\int_0^t\sqrt{29}\,\dd u=\sqrt{29}\,t$.
+\step{3}{Solve for $t$.} $t=\dfrac{s}{\sqrt{29}}$.
+\step{4}{Substitute into $\vr$.}
+\[
+  \vr\big(t(s)\big)=\ip{2\cdot\frac{s}{\sqrt{29}},\;1-3\cdot\frac{s}{\sqrt{29}},\;5+4\cdot\frac{s}{\sqrt{29}}}
+  =\boxed{\ip{\frac{2s}{\sqrt{29}},\;1-\frac{3s}{\sqrt{29}},\;5+\frac{4s}{\sqrt{29}}}},\quad s\ge0 .
+\]
+\step{5}{Check.} The derivative with respect to $s$ is $\frac{1}{\sqrt{29}}\ip{2,-3,4}$, whose length is
+$\frac{\sqrt{29}}{\sqrt{29}}=1$, as it must be for an arc-length parametrization.\checkok
+
+% ---------------------------------------------------------------------
+\solhead{6}{8}
+\step{1}{Speed.} $\vr\,'(t)=\ip{2\cos t,\;-2\sin t,\;\sqrt5}$, so
+$\norm{\vr\,'(t)}=\sqrt{4\cos^2t+4\sin^2t+5}=\sqrt{4+5}=3$.
+\step{2}{Unit tangent.} $\vT(t)=\dfrac{\vr\,'(t)}{\norm{\vr\,'(t)}}=\dfrac13\ip{2\cos t,\;-2\sin t,\;\sqrt5}$.
+\step{3}{Derivative of $\vT$.} $\vT\,'(t)=\dfrac13\ip{-2\sin t,\;-2\cos t,\;0}$, with length
+$\frac13\sqrt{4\sin^2t+4\cos^2t}=\frac23$.
+\step{4}{Unit normal.}
+\[
+  \vN(t)=\frac{\vT\,'(t)}{\norm{\vT\,'(t)}}=\frac{\frac13\ip{-2\sin t,-2\cos t,0}}{\frac23}=\ip{-\sin t,\;-\cos t,\;0}.
+\]
+\step{5}{Binormal $\vB=\vT\times\vN$.}
+\[
+  \vB(t)=\frac13\begin{vmatrix}\vi&\vj&\vk\\2\cos t&-2\sin t&\sqrt5\\-\sin t&-\cos t&0\end{vmatrix}.
+\]
+Expanding along the first row:
+\begin{itemize}
+\item $\vi$: $(-2\sin t)(0)-(\sqrt5)(-\cos t)=\sqrt5\cos t$;
+\item $\vj$: $-\big[(2\cos t)(0)-(\sqrt5)(-\sin t)\big]=-\sqrt5\sin t$;
+\item $\vk$: $(2\cos t)(-\cos t)-(-2\sin t)(-\sin t)=-2\cos^2t-2\sin^2t=-2$.
+\end{itemize}
+So $\vB(t)=\dfrac13\ip{\sqrt5\cos t,\;-\sqrt5\sin t,\;-2}$.
+\step{6}{Curvature.} $\kappa(t)=\dfrac{\norm{\vT\,'(t)}}{\norm{\vr\,'(t)}}=\dfrac{2/3}{3}=\dfrac29$.
+
+\finalans{$\vT=\frac13\ip{2\cos t,-2\sin t,\sqrt5}$, $\vN=\ip{-\sin t,-\cos t,0}$,
+$\vB=\frac13\ip{\sqrt5\cos t,-\sqrt5\sin t,-2}$, $\boxed{\kappa=\frac29}$ (constant).}
+
+\begin{altmethod}
+For a helix $\ip{a\cos t,a\sin t,bt}$ (here traversed with $\sin$ and $\cos$ swapped,
+which does not change the shape) the curvature is $\frac{a}{a^2+b^2}=\frac{2}{4+5}=\frac29$.
+Also check that $\vT,\vN,\vB$ are mutually perpendicular unit vectors, e.g.
+$\vT\cdot\vN=\frac13(-2\sin t\cos t+2\sin t\cos t+0)=0$.
+\end{altmethod}
+
+% ---------------------------------------------------------------------
+\solhead{7}{8}
+\textbf{Idea.} Use the definition
+$\Du f(x_0,y_0)=\displaystyle\lim_{h\to0}\frac{f(x_0+ha,\,y_0+hb)-f(x_0,y_0)}{h}$, not the formula.
+
+\step{1}{The moved point.} With $\vu=\ip{\frac35,\frac45}$: $\left(1+\frac35h,\;1+\frac45h\right)$.
+\step{2}{Evaluate $f$ there.}
+\[
+  f\!\left(1+\tfrac35h,\;1+\tfrac45h\right)=\left(1+\tfrac35h\right)^2-\left(1+\tfrac45h\right)
+  =1+\tfrac65h+\tfrac{9}{25}h^2-1-\tfrac45h=\tfrac25h+\tfrac{9}{25}h^2 .
+\]
+\step{3}{Value at the base point.} $f(1,1)=1^2-1=0$.
+\step{4}{Difference quotient.}
+\[
+  \frac{\left(\frac25h+\frac{9}{25}h^2\right)-0}{h}=\frac25+\frac{9}{25}h .
+\]
+\step{5}{Limit.} As $h\to0$ the quotient tends to $\boxed{\frac25}$.
+\step{6}{Check with the formula.} $\grad f=\ip{2x,-1}$, $\grad f(1,1)=\ip{2,-1}$, and
+$\ip{2,-1}\cdot\ip{\frac35,\frac45}=\frac65-\frac45=\frac25$.\checkok
+
+% ---------------------------------------------------------------------
+\solhead{8}{7}
+\step{1}{Gradient.} By the chain rule, $f_x=\cos(2x+3y)\cdot2$ and $f_y=\cos(2x+3y)\cdot3$.
+\step{2}{At $(-6,4)$.} $2x+3y=-12+12=0$ and $\cos0=1$, so $\grad f(-6,4)=\ip{2,3}$.
+\step{3}{Unit vector.} $\vu=\ip{\cos\left(-\frac\pi6\right),\;\sin\left(-\frac\pi6\right)}=\ip{\frac{\sqrt3}{2},\;-\frac12}$
+(cosine is even, sine is odd).
+\step{4}{Directional derivative.}
+\[
+  \Du f(-6,4)=2\cdot\frac{\sqrt3}{2}+3\cdot\left(-\frac12\right)=\sqrt3-\frac32=\boxed{\frac{2\sqrt3-3}{2}}\approx0.232 .
+\]
+
+% ---------------------------------------------------------------------
+\solhead{9}{12}
+\step{1}{Gradient.} $\grad f=\ip{2x,\;4y,\;6z}$, so $\grad f(4,-1,1)=\ip{8,\;-4,\;6}$.
+
+\textbf{(a)} The maximum rate of change is the length of the gradient:
+$\norm{\ip{8,-4,6}}=\sqrt{64+16+36}=\sqrt{116}=\boxed{2\sqrt{29}}\approx10.8$. It occurs in the
+direction of the gradient, equivalently of $\ip{4,-2,3}$ (unit vector $\frac{1}{\sqrt{29}}\ip{4,-2,3}$).
+
+\textbf{(b)} First check that the point is on the ellipsoid: $16+2(1)+3(1)=21$.\checkok\
+The ellipsoid is the level surface $f=21$, so $\grad f(4,-1,1)=\ip{8,-4,6}$ is normal to it.
+\begin{itemize}
+\item Tangent plane: $8(x-4)-4(y+1)+6(z-1)=0$. Dividing by $2$:
+      $4x-16-2y-2+3z-3=0$, i.e. $\boxed{4x-2y+3z=21}$.
+\item Normal line: through $(4,-1,1)$ in the direction $\ip{4,-2,3}$:
+      $\boxed{x=4+4t,\quad y=-1-2t,\quad z=1+3t}$.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\solhead{10}{8}
+\step{1}{Gradient.} The directional derivative in the direction $\vi$ is $f_x$, and in the
+direction $\vj$ it is $f_y$. So $f_x(P)=-3$, $f_y(P)=4$, and $\grad f(P)=\boxed{\ip{-3,4}}$.
+\step{2}{Direction of fastest decrease.} It is the direction of $-\grad f(P)=\ip{3,-4}$. Since
+$\norm{\ip{3,-4}}=5$, the unit vector is $\boxed{\ip{\frac35,-\frac45}}$, and the rate there is $-5$.
+\step{3}{Rate in the direction of $\vi+\vj$.} Normalize: $\vu=\frac{1}{\sqrt2}\ip{1,1}$. Then
+\[
+  \Du f(P)=\ip{-3,4}\cdot\frac{1}{\sqrt2}\ip{1,1}=\frac{-3+4}{\sqrt2}=\frac{1}{\sqrt2}=\boxed{\frac{\sqrt2}{2}}.
+\]
+
+% ---------------------------------------------------------------------
+\solhead{11}{6}
+\begin{itemize}
+\item \textbf{(i) -- R.} $\norm{\ip{-y,x}}=\sqrt{x^2+y^2}$, so dividing by $\sqrt{x^2+y^2}$ gives arrows of
+      length $1$. The dot product with the position vector is $x(-y)+y(x)=0$, so each arrow is
+      tangent to the circle through its point. At $(1,0)$ the arrow is $\ip{0,1}$, pointing up:
+      counterclockwise.
+\item \textbf{(ii) -- S.} $\ip{x,y}$ is the position vector itself: it points away from the origin and its
+      length $\sqrt{x^2+y^2}$ grows with the distance.
+\item \textbf{(iii) -- Q.} The first component is $0$, so every arrow is vertical; the second component
+      is $x$, positive (up) when $x>0$ and negative (down) when $x<0$.
+\item \textbf{(iv) -- P.} $\ip{1,1}$ is the same at every point: all arrows are equal.
+\end{itemize}
+
+% ---------------------------------------------------------------------
+\solhead{12}{8}
+\step{1}{Component test.} $M=e^x\sin y+2x$, $N=e^x\cos y-1$.
+$M_y=e^x\cos y$ (the term $2x$ does not contain $y$) and $N_x=e^x\cos y$ (the constant $-1$ disappears).
+They are equal and continuous on $\R^2$, so $\vF$ is conservative.
+\step{2}{Integrate $M$ in $x$.} $f=\int(e^x\sin y+2x)\,\dd x=e^x\sin y+x^2+g(y)$.
+\step{3}{Match $N$.} $f_y=e^x\cos y+g'(y)=e^x\cos y-1\Rightarrow g'(y)=-1\Rightarrow g(y)=-y+K$.
+\finalans{$\boxed{f(x,y)=e^x\sin y+x^2-y+K}$. Check: $f_x=e^x\sin y+2x$\checkok, $f_y=e^x\cos y-1$\checkok.}
+
+% ---------------------------------------------------------------------
+\solhead{13}{8}
+\step{1}{Component test.} $M=y^2z^3$, $N=2xyz^3$, $P=3xy^2z^2$:
+$M_y=2yz^3=N_x$;\ $N_z=6xyz^2=P_y$;\ $P_x=3y^2z^2=M_z$. Conservative on $\R^3$.
+\step{2}{Integrate $M$ in $x$.} $f=xy^2z^3+g(y,z)$.
+\step{3}{Match $N$.} $f_y=2xyz^3+g_y=2xyz^3\Rightarrow g_y=0\Rightarrow g=h(z)$.
+\step{4}{Match $P$.} $f_z=3xy^2z^2+h'(z)=3xy^2z^2\Rightarrow h'=0\Rightarrow h=K$.
+\step{5}{Condition.} $f(1,1,1)=1+K=4\Rightarrow K=3$.
+\finalans{$\boxed{f(x,y,z)=xy^2z^3+3}$.}
+
+% ---------------------------------------------------------------------
+\solhead{14}{8}
+\step{1}{Component test.} $M=y$, $N=x$, $P=xyz$.
+\begin{itemize}
+\item $M_y=1$ and $N_x=1$: equal.
+\item $N_z=0$ but $P_y=xz$: not equal (e.g.\ at $(1,1,1)$, $0\neq1$).
+\item $P_x=yz$ but $M_z=0$: not equal.
+\end{itemize}
+Since at least one condition fails, $\vF$ is \textbf{not conservative}.
+\step{2}{Where the method breaks down.} Integrating $M$: $f=xy+g(y,z)$. Then
+$f_y=x+g_y=x$ gives $g_y=0$, so $g=h(z)$ and $f=xy+h(z)$. Finally $f_z=h'(z)$ would have to
+equal $P=xyz$. But $h'(z)$ depends only on $z$, while $xyz$ depends on $x$ and $y$ as well:
+no such $h$ exists. This contradiction is exactly the failure of $N_z=P_y$ and $P_x=M_z$.
