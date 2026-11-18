@@ -186,54 +186,6 @@ def fig_matching_practice():
     save(fig, HERE, "matching_practice")
 
 
-def fig_fence():
-    """Line integral w.r.t. arc length as the area of a fence:
-    f(x,y) = 2 + x^2 y over the upper unit semicircle."""
-    fig = plt.figure(figsize=(5.0, 3.9))
-    ax = fig.add_subplot(projection="3d")
-    t = np.linspace(0, np.pi, 120)
-    cx, cy = np.cos(t), np.sin(t)
-    h = 2 + cx**2 * cy
-    T, S = np.meshgrid(t, np.linspace(0, 1, 2))
-    ax.plot_surface(np.cos(T), np.sin(T), S * (2 + np.cos(T)**2 * np.sin(T)),
-                    color=ORANGE, alpha=0.45, linewidth=0)
-    ax.plot(cx, cy, 0 * t, color=BLUE, lw=2)
-    ax.plot(cx, cy, h, color=RED, lw=1.6)
-    ax.text(0, 1.15, 0, "$C$", color=BLUE)
-    ax.text(0.2, 1.0, 2.6, r"$z=f(x,y)$", color=RED, fontsize=9)
-    ax.set_xlabel("$x$")
-    ax.set_ylabel("$y$")
-    ax.set_zlabel("$z$")
-    ax.set_zlim(0, 2.6)
-    ax.view_init(elev=22, azim=-70)
-    save(fig, HERE, "fence")
-
-
-def fig_work():
-    """Work of F = <x^2, -xy> along the quarter circle; arrows on the curve."""
-    fig, ax = plt.subplots(figsize=(4.4, 4.2))
-    g = np.linspace(-0.2, 1.4, 9)
-    X, Y = np.meshgrid(g, g)
-    ax.quiver(X, Y, X**2, -X * Y, color=GREY, angles="xy", scale_units="xy", scale=5,
-              width=0.004)
-    t = np.linspace(0, np.pi / 2, 100)
-    ax.plot(np.cos(t), np.sin(t), color=BLUE, lw=2)
-    for tk in np.linspace(0.15, np.pi / 2 - 0.15, 5):
-        x0, y0 = np.cos(tk), np.sin(tk)
-        ax.annotate("", xy=(x0 + x0**2 / 2.5, y0 - x0 * y0 / 2.5), xytext=(x0, y0),
-                    arrowprops=dict(arrowstyle="-|>", color=RED, lw=1.3))
-        ax.annotate("", xy=(x0 - 0.18 * y0, y0 + 0.18 * x0), xytext=(x0, y0),
-                    arrowprops=dict(arrowstyle="-|>", color=GREEN, lw=1.3))
-    ax.text(0.05, 1.07, r"$C$: $\mathbf{r}(t)=\langle\cos t,\sin t\rangle$", color=BLUE, fontsize=8,
-            bbox=BOX)
-    ax.set_aspect("equal")
-    ax.set_xlim(-0.25, 1.5)
-    ax.set_ylim(-0.25, 1.4)
-    ax.set_xlabel("$x$")
-    ax.set_ylabel("$y$")
-    save(fig, HERE, "work_quarter_circle")
-
-
 def fig_vortex():
     """F = <-y, x>/(x^2+y^2): curl-free but not conservative on the punctured plane."""
     fig, ax = plt.subplots(figsize=(4.2, 4.2))
@@ -249,33 +201,13 @@ def fig_vortex():
     th = np.linspace(0, 2 * np.pi, 200)
     ax.plot(np.cos(th), np.sin(th), color=RED, lw=1.5)
     ax.plot([0], [0], "o", mfc="white", mec="k", ms=6)
-    ax.text(0.75, -1.15, r"$\oint_C=2\pi$", color=RED, fontsize=10, bbox=BOX)
+    ax.text(0.55, -1.25, r"$\theta$ gains $2\pi$", color=RED, fontsize=9, bbox=BOX)
     ax.set_aspect("equal")
     ax.set_xlim(-2.3, 2.3)
     ax.set_ylim(-2.3, 2.3)
     ax.set_xlabel("$x$")
     ax.set_ylabel("$y$")
     save(fig, HERE, "vortex")
-
-
-def fig_ftli():
-    """FTLI example: path r(t)=e^t<sin t, cos t> over contours of f=3x+x^2y-y^3."""
-    fig, ax = plt.subplots(figsize=(4.8, 4.6))
-    t = np.linspace(0, np.pi, 300)
-    px, py = np.exp(t) * np.sin(t), np.exp(t) * np.cos(t)
-    X, Y = np.meshgrid(np.linspace(-6, 10, 300), np.linspace(-26, 6, 300))
-    F = 3 * X + X**2 * Y - Y**3
-    ax.contour(X, Y, F, levels=20, colors=GREY, linewidths=0.5, linestyles="solid")
-    ax.plot(px, py, color=RED, lw=2)
-    ax.plot([0, 0], [1, -np.exp(np.pi)], "o", color="k", ms=4)
-    ax.plot([0, 0], [1, -np.exp(np.pi)], color=GREEN, lw=1.4, ls="--")
-    ax.text(0.4, 1.6, "$A(0,1)$", fontsize=9, bbox=BOX)
-    ax.text(0.4, -np.exp(np.pi) - 0.5, r"$B(0,-e^{\pi})$", fontsize=9, bbox=BOX)
-    ax.text(3.0, 4.0, r"$C$: $\mathbf{r}(t)=e^t\langle\sin t,\cos t\rangle$", color=RED,
-            fontsize=8, bbox=BOX)
-    ax.set_xlabel("$x$")
-    ax.set_ylabel("$y$")
-    save(fig, HERE, "ftli_path")
 
 
 if __name__ == "__main__":
@@ -287,7 +219,4 @@ if __name__ == "__main__":
     fig_gradient_field()
     fig_gravity()
     fig_matching_practice()
-    fig_fence()
-    fig_work()
     fig_vortex()
-    fig_ftli()

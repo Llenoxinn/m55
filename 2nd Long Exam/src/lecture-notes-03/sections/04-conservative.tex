@@ -18,10 +18,9 @@ differentiable function $f$ such that $\vF=\grad f$. The function $f$ is called 
 (1) If $f$ is a potential for $\vF$, so is $f+C$ for every constant $C$, since
 $\grad C=\vzero$. On a connected domain these are \emph{all} the potentials, so
 the answer to ``find the potential'' is always ``$f+C$''.
-(2) The name comes from physics: for a conservative force, the work done
-between two points does not depend on the path, and energy is conserved
-(Chapter~\ref{ch:ftli}). Physicists usually write $\vF=-\grad U$, with $U=-f$
-the \emph{potential energy}.
+(2) The name comes from physics: for a conservative force, mechanical energy
+is conserved. Physicists usually write $\vF=-\grad U$, with $U=-f$ the
+\emph{potential energy}; e.g.\ gravity is $\grad(mMG/r)$ (Example~\ref{ex:gradfield3}).
 \end{remark}
 
 \begin{example}[Slides, Example 7.3]\label{ex:7.3}
@@ -285,10 +284,16 @@ plane $\R^2\setminus\{(0,0)\}$. Show that $M_y=N_x$ everywhere on this domain.
   N_x=\frac{(x^2+y^2)(1)-x(2x)}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2}.
 \]
 They agree. Nevertheless, $\vF$ is \emph{not} conservative on the punctured
-plane: in Example~\ref{ex:vortex-loop} we show that its line integral around
-the unit circle is $2\pi\neq0$, which is impossible for a gradient field
-(Corollary~\ref{cor:closed}). The hole at the origin is responsible
-(Figure~\ref{fig:vortex}).
+plane. Suppose, for contradiction, that $\vF=\grad f$ there. Walk once around
+the unit circle, $\vr(t)=\ip{\cos t,\sin t}$, and let $g(t)=f(\cos t,\sin t)$.
+By the chain rule (Lecture Notes No.~6, Theorem~1.11),
+\[
+  g'(t)=\grad f(\vr(t))\cdot\vr\,'(t)=\vF(\cos t,\sin t)\cdot\ip{-\sin t,\cos t}
+  =\ip{-\sin t,\cos t}\cdot\ip{-\sin t,\cos t}=1 ,
+\]
+using $x^2+y^2=1$ on the circle. Hence $g(2\pi)-g(0)=\int_0^{2\pi}1\,\dd t=2\pi$.
+But $\vr(2\pi)=\vr(0)$ is the same point, so $g(2\pi)=g(0)$: a contradiction.
+The hole at the origin is responsible (Figure~\ref{fig:vortex}).
 
 On the right half-plane $x>0$ (simply connected), $\vF=\grad\theta$ with
 $\theta=\arctan(y/x)$ the polar angle (Lecture Notes No.~6,
@@ -301,7 +306,8 @@ on the whole punctured plane.
   \centering
   \includegraphics[width=0.46\linewidth]{vortex}
   \caption{The vortex field (arrow lengths capped near the origin). $M_y=N_x$
-  everywhere, yet the circulation around the red circle is $2\pi$.}
+  everywhere, yet a would-be potential would have to increase by $2\pi$ on each
+trip around the red circle, which is impossible.}
   \label{fig:vortex}
 \end{figure}
 
