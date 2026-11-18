@@ -9,6 +9,21 @@ Coverage (see `Coverage/`):
 | 7 Vector Calculus | `Lecture Notes 03.pdf` (No. 7) | source in `src/lecture-notes-03/` |
 | 5 + 6 + 7 | `Mock Exams.pdf` (two full mock exams with complete solutions) | source in `src/mock-exams/` |
 
+**Scope note:** Slides 7 Parts IV–VI (line integrals, line integrals in space, and the
+Fundamental Theorem for Line Integrals) are **not** covered by this exam and are intentionally excluded.
+
+What each reviewer contains:
+
+- **No. 6 – Directional Derivatives:** preliminaries (partials, differentiability, chain rule),
+  limit definition and formula for `D_u f` (with proof), the gradient and the maximum-rate
+  theorem, the trio activity solved, level curves/tangent planes/steepest ascent,
+  26 practice problems with full solutions, formula summary, common mistakes.
+- **No. 7 – Vector Calculus:** vector fields (Example 7.1, Exercises 1–3 solved with figures),
+  gradient fields, the component test and why it works, the three-step potential method
+  (Example 7.6, Exercise 4), the domain caveat (vortex field), 21 practice problems, summary.
+- **Mock Exams:** Form A (12 problems) and Form B (14 problems), 100 pts each, full
+  solutions with point breakdowns, and a one-page answer key mapping each problem to the notes.
+
 ## Source layout
 
 ```
