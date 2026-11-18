@@ -1,0 +1,196 @@
+% =====================================================================
+%  MATH 55 -- Shared preamble for the Second Long Exam reviewers
+%  Reproduces the look of "Lecture Notes 01" (Lecture Notes & Reviewer
+%  No. 5): Latin Modern, small-caps running heads, ruled chapter titles,
+%  amsthm environments numbered within chapters, framed strategy boxes.
+%
+%  Each document defines, BEFORE \input-ing this file:
+%     \NotesNumber      e.g. 6
+%     \NotesKind        e.g. Lecture Notes \& Reviewer No.~6
+%     \NotesShortTitle  e.g. Directional Derivatives and Gradient
+%     \NotesPdfTitle    plain-text title for the PDF metadata
+% =====================================================================
+
+% ---------- Fonts and encoding --------------------------------------
+\usepackage[T1]{fontenc}
+\usepackage[utf8]{inputenc}
+\usepackage{lmodern}
+\usepackage{microtype}
+
+% ---------- Page geometry -------------------------------------------
+\usepackage[a4paper,top=1in,bottom=1in,left=1.05in,right=1.05in,
+            headheight=15pt,footskip=30pt]{geometry}
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{6pt plus 2pt minus 1pt}
+
+% ---------- Mathematics ---------------------------------------------
+\usepackage{amsmath,amssymb,amsthm,mathtools}
+\usepackage{bm}
+
+% ---------- Graphics, tables, lists ---------------------------------
+\usepackage{graphicx}
+\usepackage[dvipsnames]{xcolor}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,calc,angles,quotes,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.17}
+\usepackage{booktabs,array,tabularx,multirow}
+\usepackage{caption}
+\usepackage{subcaption}
+\captionsetup{font=small,labelfont=bf,width=0.92\linewidth}
+\usepackage{enumitem}
+\setlist{itemsep=2pt,topsep=4pt}
+\usepackage{float}
+\usepackage[most]{tcolorbox}
+
+% ---------- Headings --------------------------------------------------
+\usepackage{titlesec}
+% "Chapter N" over a ruled small-caps title, each on a new page
+\titleformat{\section}[display]
+  {\normalfont\centering}
+  {\large\scshape Chapter \thesection}
+  {8pt}
+  {\titlerule\vspace{10pt}\LARGE\scshape}
+  [\vspace{4pt}\titlerule]
+\titlespacing*{\section}{0pt}{0pt}{22pt}
+\newcommand{\sectionbreak}{\clearpage}
+\titleformat{\subsection}{\normalfont\large\bfseries}{\thesubsection}{1em}{}
+\titleformat{\subsubsection}{\normalfont\normalsize\bfseries}{\thesubsubsection}{1em}{}
+\setcounter{tocdepth}{2}
+
+% Appendices are titled "Appendix A" instead of "Chapter A"
+\newcommand{\startappendix}{%
+  \appendix
+  \titleformat{\section}[display]
+    {\normalfont\centering}
+    {\large\scshape Appendix \thesection}
+    {8pt}
+    {\titlerule\vspace{10pt}\LARGE\scshape}
+    [\vspace{4pt}\titlerule]%
+}
+
+% ---------- Running heads and feet ----------------------------------
+\usepackage{fancyhdr}
+\newcommand{\NotesAuthor}{Juevesano, D.}
+\fancypagestyle{m55}{%
+  \fancyhf{}%
+  \fancyhead[L]{\small\textsc{\NotesKind}}%
+  \fancyhead[R]{\small\textsc{Math 55 -- \NotesShortTitle}}%
+  \fancyfoot[L]{\small\NotesAuthor\ 2026 ALL RIGHTS RESERVED. Not for redistribution.}%
+  \fancyfoot[R]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0.4pt}%
+}
+% chapter-opening pages use "plain": keep the same head/foot there too
+\fancypagestyle{plain}{%
+  \fancyhf{}%
+  \fancyhead[L]{\small\textsc{\NotesKind}}%
+  \fancyhead[R]{\small\textsc{Math 55 -- \NotesShortTitle}}%
+  \fancyfoot[L]{\small\NotesAuthor\ 2026 ALL RIGHTS RESERVED. Not for redistribution.}%
+  \fancyfoot[R]{\small\thepage}%
+  \renewcommand{\headrulewidth}{0.4pt}%
+  \renewcommand{\footrulewidth}{0.4pt}%
+}
+\pagestyle{m55}
+
+% ---------- Theorem-like environments --------------------------------
+\theoremstyle{definition}
+\newtheorem{definition}{Definition}[section]
+\newtheorem{example}[definition]{Example}
+\newtheorem{problem}[definition]{Problem}
+\newtheorem{exercise}[definition]{Exercise}
+\theoremstyle{plain}
+\newtheorem{theorem}[definition]{Theorem}
+\newtheorem{proposition}[definition]{Proposition}
+\newtheorem{corollary}[definition]{Corollary}
+\newtheorem{lemma}[definition]{Lemma}
+\theoremstyle{remark}
+\newtheorem{remark}[definition]{Remark}
+\newtheorem{warning}[definition]{Warning}
+
+\newenvironment{solution}{\begin{proof}[Solution]}{\end{proof}}
+% bold step labels inside solutions, e.g. \step{1}{Partial derivatives.}
+\newcommand{\step}[2]{\par\smallskip\noindent\textbf{Step #1: #2}\ }
+\newcommand{\stepx}[1]{\par\smallskip\noindent\textbf{#1}\ }
+\newcommand{\checkok}{\ \checkmark}
+
+% ---------- Boxes -----------------------------------------------------
+% Framed "Strategy" box (as on p. 7 of Lecture Notes 01)
+\newtcolorbox{strategy}[1]{%
+  enhanced,breakable,colback=white,colframe=black!75,boxrule=0.6pt,
+  sharp corners,left=10pt,right=10pt,top=8pt,bottom=8pt,
+  before upper={\textbf{#1}\par\smallskip}}
+% Highlighted key-result box
+\newtcolorbox{keybox}[1]{%
+  enhanced,breakable,colback=black!3,colframe=black!75,boxrule=0.6pt,
+  sharp corners,left=10pt,right=10pt,top=8pt,bottom=8pt,
+  before upper={\textbf{#1}\par\smallskip}}
+
+% ---------- Notation --------------------------------------------------
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\vb}[1]{\mathbf{#1}}
+\newcommand{\vi}{\mathbf{i}}
+\newcommand{\vj}{\mathbf{j}}
+\newcommand{\vk}{\mathbf{k}}
+\newcommand{\vu}{\mathbf{u}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\vr}{\mathbf{r}}
+\newcommand{\vx}{\mathbf{x}}
+\newcommand{\vF}{\mathbf{F}}
+\newcommand{\vT}{\mathbf{T}}
+\newcommand{\vN}{\mathbf{N}}
+\newcommand{\vB}{\mathbf{B}}
+\newcommand{\vzero}{\mathbf{0}}
+\newcommand{\ip}[1]{\left\langle #1 \right\rangle}
+\DeclarePairedDelimiter{\norm}{\lVert}{\rVert}
+\DeclarePairedDelimiter{\abs}{\lvert}{\rvert}
+\newcommand{\dd}{\mathrm{d}}
+\newcommand{\Du}{D_{\mathbf{u}}}
+\newcommand{\grad}{\nabla}
+\newcommand{\pd}[2]{\frac{\partial #1}{\partial #2}}
+\newcommand{\vecPQ}{\overrightarrow{PQ}}
+\newcommand{\eval}[1]{\Big|_{#1}}
+
+% ---------- Interactive links (underlined, like Lecture Notes 01) ----
+\newcommand{\extlink}[2]{\href{#1}{\underline{#2}}}
+\newcommand{\interactive}[2]{%
+  \par\noindent\textit{Interactive:} \extlink{#1}{#2}\ }
+\newcommand{\desmosTD}{https://www.desmos.com/3d}
+\newcommand{\desmosTwoD}{https://www.desmos.com/calculator}
+
+% ---------- Hyperref (load last) -------------------------------------
+\usepackage[hidelinks]{hyperref}
+\hypersetup{pdfauthor={Juevesano, D.},pdftitle={\NotesPdfTitle}}
+
+% ---------- Title page -----------------------------------------------
+% \makenotestitle{Title}{Subtitle}{Line under "No. N"}{About text}
+\newcommand{\makenotestitle}[4]{%
+  \begingroup
+    \thispagestyle{plain}
+    \centering
+    \vspace*{1.6cm}
+    {\large\scshape University of the Philippines Cebu\par
+     Mathematics Program\par}
+    \vspace{1.6cm}
+    \rule{\linewidth}{0.5pt}\par\vspace{0.8cm}
+    {\Huge\scshape #1\par}
+    \vspace{0.5cm}
+    {\large #2\par}
+    \vspace{0.8cm}\rule{\linewidth}{0.5pt}\par
+    \vspace{1.4cm}
+    {\large\scshape \NotesKind\par}
+    \vspace{0.4cm}
+    {#3\par}
+    \vfill
+    \begin{minipage}{0.84\linewidth}
+      \small\raggedright #4
+    \end{minipage}
+    \vfill
+    {\NotesAuthor\quad 2026\par}
+    \vspace{0.6cm}
+  \clearpage
+  \endgroup
+}
+
+% The table of contents is a starred \section, so it automatically gets
+% the centred, ruled small-caps title used for chapters.
