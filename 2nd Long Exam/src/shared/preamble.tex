@@ -126,6 +126,14 @@
   sharp corners,left=10pt,right=10pt,top=8pt,bottom=8pt,
   before upper={\textbf{#1}\par\smallskip}}
 
+% "Alternative method" box: a quicker route shown AFTER the full solution
+\newtcolorbox{altmethod}{%
+  enhanced,breakable,colback=white,colframe=black!45,boxrule=0.5pt,
+  sharp corners,left=10pt,right=10pt,top=6pt,bottom=6pt,
+  before upper={\textbf{Alternative method (optional).}\ }}
+% Boxed concluding sentence of a solution
+\newcommand{\finalans}[1]{\par\smallskip\noindent\textbf{Final answer.}\ #1}
+
 % ---------- Notation --------------------------------------------------
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\vb}[1]{\mathbf{#1}}
