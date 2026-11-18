@@ -1,0 +1,34 @@
+% =====================================================================
+\section{Interactive Graphs: Desmos and Python}\label{app:interactive}
+% =====================================================================
+
+\subsection{Desmos}
+
+The slide's graph \extlink{https://www.desmos.com/calculator/cho2h9ztfa}{desmos.com/calculator/cho2h9ztfa}
+draws the gradient field of Example~\ref{ex:7.2} as arrows on a grid. To draw
+your own planar field $\vF=\ip{M,N}$ in the
+\extlink{\desmosTwoD}{Desmos calculator}:
+\begin{enumerate}
+\item Define the components, e.g. \texttt{M(x,y)=-y} and \texttt{N(x,y)=x}.
+\item Make a grid of base points: \texttt{X=[-3,-2,...,3]}, \texttt{Y=[-3,-2,...,3]}.
+\item Draw the arrows with \texttt{vector((X,Y),(X+0.3M(X,Y),Y+0.3N(X,Y)))}
+      (repeat with \texttt{Y} fixed or use a list of points); the factor $0.3$
+      scales the arrows.
+\end{enumerate}
+Adding the level curves \texttt{x\^{}2y-y\^{}3=k} with a slider $k$ shows that a
+gradient field is perpendicular to the level curves of its potential.
+
+\subsection{Python}
+
+All figures are produced by \texttt{figures/make\_figures.py}. The core of a
+vector-field plot is two lines of \texttt{matplotlib}:
+\begin{center}
+\begin{minipage}{0.85\linewidth}
+\small
+\texttt{X, Y = np.meshgrid(np.linspace(-2, 2, 11), np.linspace(-2, 2, 11))}\\
+\texttt{plt.quiver(X, Y, -Y, X)\quad\# the field <-y, x>}
+\end{minipage}
+\end{center}
+Replace \texttt{-Y, X} by any components $M(X,Y)$, $N(X,Y)$; for fields in space use
+\texttt{ax.quiver(X, Y, Z, M, N, P)} on a 3D axis. In Jupyter or Google Colab,
+\texttt{\%matplotlib widget} makes the 3D plots rotatable.

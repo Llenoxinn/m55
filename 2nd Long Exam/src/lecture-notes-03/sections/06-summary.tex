@@ -1,0 +1,45 @@
+% =====================================================================
+\section{Summary of Formulas}\label{ch:summary}
+% =====================================================================
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabularx}{\linewidth}{>{\raggedright\arraybackslash}p{0.3\linewidth}X}
+\toprule
+\textbf{Concept} & \textbf{Formula / fact}\\
+\midrule
+Vector field on $\R^2$ & $\vF(x,y)=\ip{M,N}=M\vi+N\vj$\\
+Vector field on $\R^3$ & $\vF(x,y,z)=\ip{M,N,P}=M\vi+N\vj+P\vk$\\
+Position notation & $\vx=\ip{x,y}$ or $\ip{x,y,z}$; \ $\vF(\vx)$\\
+Rotation field & $\ip{-y,x}$: tangent to circles ($\vF\cdot\vx=0$), $\norm{\vF}=r$, counterclockwise\\
+Radial fields & $c\,\vx$ (out if $c>0$); \ $-\vx/\norm{\vx}$ (unit, inward); \ $-\vx/\norm{\vx}^3$ (inverse square)\\
+Gradient field & $\grad f=\ip{f_x,f_y}$ or $\ip{f_x,f_y,f_z}$; perpendicular to level sets\\
+Conservative & $\vF=\grad f$ for some $f$ (potential function); potentials differ by constants\\
+Test in the plane & $M_y=N_x$ (on a disk / simply connected region)\\
+Test in space & $M_y=N_x,\ N_z=P_y,\ P_x=M_z$ (on a ball / simply connected region)\\
+Why & Clairaut: $f_{xy}=f_{yx}$, $f_{yz}=f_{zy}$, $f_{zx}=f_{xz}$\\
+Potential method & $f=\int M\,\dd x+g(y,z)$; \ $f_y=N\Rightarrow g$ up to $h(z)$; \ $f_z=P\Rightarrow h$; \ check $\grad f=\vF$\\
+Useful potentials & $\grad\frac12\ln(x^2+y^2+z^2)=\vx/r^2$; \ $\grad\frac1r=-\vx/r^3$; \ $\grad\frac12r^2=\vx$\\
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection*{Common mistakes to avoid}
+
+\begin{enumerate}
+\item \textbf{Constant instead of function.} After integrating in $x$, add
+      $g(y,z)$ (or $g(y)$ in 2D), not $C$.
+\item \textbf{Checking only one condition in space.} All three of $M_y=N_x$,
+      $N_z=P_y$, $P_x=M_z$ must hold. (A single failure proves ``not
+      conservative''.)
+\item \textbf{Pairing the wrong partials.} It is $M_y$ with $N_x$, \emph{not}
+      $M_x$ with $N_y$.
+\item \textbf{An $x$ left in $g'(y)$.} If $g'(y)$ or $h'(z)$ still contains another
+      variable, there is an algebra error or the field is not conservative.
+\item \textbf{Forgetting to check.} Always differentiate your $f$ and compare with
+      $\vF$; it takes thirty seconds.
+\item \textbf{Ignoring the domain.} The component test can fail on regions with
+      holes (vortex field, Section~\ref{sec:caveat}).
+\item \textbf{Sketching arrows from the origin.} The arrow $\vF(x,y)$ is drawn
+      starting at the point $(x,y)$.
+\end{enumerate}
