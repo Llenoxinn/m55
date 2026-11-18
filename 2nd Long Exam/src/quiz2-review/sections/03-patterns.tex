@@ -1,0 +1,62 @@
+% =====================================================================
+\section{Strategy Sheet: the Patterns Behind the Quiz}\label{ch:patterns}
+% =====================================================================
+
+\begin{strategy}{Curve of intersection (surface $\cap$ plane).}
+\begin{enumerate}
+\item Solve the plane (or simpler surface) for one variable, usually the one
+      \emph{not} wanted ``from above'' ($z$).
+\item Substitute to get the shadow curve in the other two variables; write it as
+      $\frac{(x-h)^2}{a^2}+\frac{(y-k)^2}{b^2}=1$.
+\item $x=h+a\cos t$, $y=k+b\sin t$ gives counterclockwise from above, starting at
+      $(h+a,k)$. For clockwise use $-\sin t$; for another start, shift $t$ or swap.
+\item Recover the last coordinate from step~1. \textbf{Check}: both equations, the
+      start point, and the orientation.
+\end{enumerate}
+\textbf{Sphere $\cap$ plane through the centre} = great circle of radius $R$:
+constant speed, arc length $=R\times$(angle swept in $t$), curvature $\frac1R$.
+\end{strategy}
+
+\begin{strategy}{Arc length and ``move $d$ units''.}
+\begin{itemize}
+\item Compute $\norm{\vr\,'}$ first and \emph{simplify} ($\sin^2+\cos^2$ almost always appears).
+\item Find the parameter values of both endpoints and respect the orientation.
+\item $s(t)=\int_{t_0}^t\norm{\vr\,'(u)}\,\dd u$; solve $s(t)=d$ for $t$, then evaluate $\vr(t)$.
+      Constant speed $v$: $t=t_0+d/v$.
+\end{itemize}
+\end{strategy}
+
+\begin{strategy}{Curvature.}
+\begin{itemize}
+\item General: $\kappa=\dfrac{\norm{\vr\,'\times\vr\,''}}{\norm{\vr\,'}^3}$ (put plane curves in 3D with $z=0$).
+\item Graph $y=g(x)$: $\kappa=\dfrac{\abs{g''}}{(1+g'^2)^{3/2}}$. At a point with $g'=0$: $\kappa=\abs{g''}$.
+\item Constant speed $v$: $\kappa=\norm{\vr\,''}/v^2$. Circle: $1/R$. Ellipse $\ip{a\cos t,b\sin t}$:
+      $\kappa=\frac{ab}{(a^2\sin^2t+b^2\cos^2t)^{3/2}}$; $\frac{a}{b^2}$ at $(\pm a,0)$, $\frac{b}{a^2}$ at $(0,\pm b)$.
+\item An unknown constant appears inside $\abs{\cdot}$: expect \textbf{two} answers.
+\end{itemize}
+\end{strategy}
+
+\begin{strategy}{Directional derivative / gradient package.}
+\begin{enumerate}
+\item Differentiate term by term (product, chain inside $\ln$/$e$/trig, $\frac{c}{y}=cy^{-1}$).
+\item Evaluate $\grad f$ at the \emph{base point} $P$. Note differentiability.
+\item Unit vector: $\vecPQ/\norm{\vecPQ}$, $\vv/\norm{\vv}$ or $\ip{\cos\theta,\sin\theta}$.
+\item $\Du f=\grad f\cdot\vu$; max rate $\norm{\grad f}$ along $\grad f/\norm{\grad f}$; min $-\norm{\grad f}$.
+\item Sanity: $\abs{\Du f}\le\norm{\grad f}$.
+\end{enumerate}
+\textbf{Prescribed value $c$:} solve $\grad f\cdot\ip{a,b}=c$, $a^2+b^2=1$, or use
+$\cos\theta=c/\norm{\grad f}$ and rotate $\pm\theta$ from $\grad f$.\\
+\textbf{Prescribed direction $\vv$ of fastest increase:} $\grad f=\lambda\vv$ with $\lambda>0$
+(remember the inequality, and exclude points with $\grad f=\vzero$).
+\end{strategy}
+
+\begin{strategy}{Conservative fields (Slides 7).}
+\begin{enumerate}
+\item Test: $M_y=N_x$ (2D); also $N_z=P_y$, $P_x=M_z$ (3D). One failure $\Rightarrow$ not conservative.
+\item Potential: $f=\int M\,\dd x+g(y,z)$; $f_y=N$ gives $g$ up to $h(z)$; $f_z=P$ gives $h$.
+\item Check $\grad f=\vF$; impose any condition like $f(P_0)=c$ to fix the constant.
+\item Unknown constants: each cross-partial condition gives one equation.
+\item Bridge to Slides 6: if $\vF=\grad f$, then $\vF(P)$ \emph{is} the gradient at $P$, so the
+      fastest increase of $f$ at $P$ is along $\vF(P)$ at rate $\norm{\vF(P)}$.
+\end{enumerate}
+\end{strategy}
