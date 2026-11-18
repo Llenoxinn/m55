@@ -1,0 +1,239 @@
+% =====================================================================
+\subsection{Solutions to Form A}\label{sec:sol-a}
+% =====================================================================
+
+Each solution is written in full, the way it should appear on an exam paper.
+Point allocations are shown in square brackets. Faster routes, when they
+exist, are shown only afterwards in an \emph{Alternative method} box.
+
+% ---------------------------------------------------------------------
+\solhead{1}{5}
+\textbf{Idea.} A vector function is defined exactly where \emph{all} of its
+component functions are defined, so the domain is the intersection of the three
+component domains.
+\begin{itemize}
+\item $\sqrt{4-t^2}$ requires $4-t^2\ge0$, i.e. $t^2\le4$, i.e. $-2\le t\le2$.
+\item $\ln(t+1)$ requires $t+1>0$, i.e. $t>-1$ (the logarithm needs a \emph{positive} argument).
+\item $\dfrac{1}{t-1}$ requires $t-1\neq0$, i.e. $t\neq1$.
+\end{itemize}
+Intersecting: from $[-2,2]$ and $t>-1$ we get $(-1,2]$; removing $t=1$ leaves
+\[
+  \boxed{(-1,1)\cup(1,2]}.
+\]
+\textit{[2 pts for the three conditions, 3 pts for the correct intersection.]}
+
+% ---------------------------------------------------------------------
+\solhead{2}{10}
+\textbf{(a)} The cylinder $x^2+y^2=4$ is a circle of radius $2$ when seen from above,
+so we parametrize it by $x=2\cos t$, $y=2\sin t$, $0\le t\le2\pi$. Every point of the
+curve also lies on the plane $x+z=3$, so $z=3-x=3-2\cos t$. Therefore
+\[
+  \boxed{\vr(t)=\ip{2\cos t,\;2\sin t,\;3-2\cos t},\qquad0\le t\le2\pi.}
+\]
+Check: $x^2+y^2=4\cos^2t+4\sin^2t=4$\checkok\ and $x+z=2\cos t+3-2\cos t=3$\checkok.
+
+\textbf{(b)} \step{1}{Parameter of the point $(0,2,3)$.} We need $2\cos t=0$ and
+$2\sin t=2$, i.e. $\cos t=0$ and $\sin t=1$, so $t=\frac\pi2$. The third coordinate
+agrees: $3-2\cos\frac\pi2=3$.\checkok
+
+\step{2}{Tangent vector.} $\vr\,'(t)=\ip{-2\sin t,\;2\cos t,\;2\sin t}$ (the derivative of
+$3-2\cos t$ is $2\sin t$). At $t=\frac\pi2$: $\vr\,'\!\left(\frac\pi2\right)=\ip{-2,\;0,\;2}$.
+
+\step{3}{Tangent line.} The line through $(0,2,3)$ in the direction $\ip{-2,0,2}$ has
+parametric equations
+\[
+  \boxed{x=0-2s=-2s,\qquad y=2+0\cdot s=2,\qquad z=3+2s,\qquad s\in\R .}
+\]
+\textit{[(a) 5 pts, (b) 5 pts.]}
+
+% ---------------------------------------------------------------------
+\solhead{3}{5}
+\textbf{Idea.} Integrate each component, then use the initial condition to find the
+constant vector.
+
+\step{1}{Integrate.} $\int2t\,\dd t=t^2$, $\int3t^2\,\dd t=t^3$, $\int e^t\,\dd t=e^t$. So
+\[
+  \vr(t)=\ip{t^2,\;t^3,\;e^t}+\vb C,
+\]
+where $\vb C=\ip{C_1,C_2,C_3}$ is a constant \emph{vector} (one constant per component).
+
+\step{2}{Initial condition.} At $t=0$: $\vr(0)=\ip{0,0,e^0}+\vb C=\ip{0,0,1}+\vb C$. This must equal
+$\ip{1,0,-1}$, so $\vb C=\ip{1,0,-1}-\ip{0,0,1}=\ip{1,0,-2}$.
+
+\step{3}{Answer.}
+\[
+  \boxed{\vr(t)=\ip{t^2+1,\;t^3,\;e^t-2}}.
+\]
+Check: $\vr(0)=\ip{1,0,-1}$\checkok\ and $\vr\,'(t)=\ip{2t,3t^2,e^t}$\checkok.
+
+% ---------------------------------------------------------------------
+\solhead{4}{7}
+\textbf{Idea.} $L=\int_1^e\norm{\vr\,'(t)}\,\dd t$.
+
+\step{1}{Velocity.} $\vr\,'(t)=\ip{2,\;2t,\;\frac1t}$ (since $\frac{\dd}{\dd t}\ln t=\frac1t$).
+
+\step{2}{Speed.}
+\[
+  \norm{\vr\,'(t)}=\sqrt{2^2+(2t)^2+\left(\tfrac1t\right)^2}=\sqrt{4+4t^2+\frac{1}{t^2}} .
+\]
+To take this square root, notice that the expression under it is a perfect square:
+\[
+  \left(2t+\frac1t\right)^2=(2t)^2+2\cdot2t\cdot\frac1t+\left(\frac1t\right)^2=4t^2+4+\frac{1}{t^2}.
+\]
+Since $2t+\frac1t>0$ for $t$ in $[1,e]$, the square root is $\norm{\vr\,'(t)}=2t+\dfrac1t$.
+
+\step{3}{Integrate.}
+\[
+  L=\int_1^e\left(2t+\frac1t\right)\dd t=\Big[t^2+\ln t\Big]_1^e=\left(e^2+\ln e\right)-\left(1+\ln1\right)
+  =(e^2+1)-(1+0)=\boxed{e^2}.
+\]
+\textit{[Speed 2 pts, recognizing the perfect square 3 pts, integration 2 pts.]}
+
+\trap{Trying to integrate $\sqrt{4+4t^2+1/t^2}$ directly. Whenever an arc-length
+integrand looks impossible, look for a perfect square of the form $(A+B)^2=A^2+2AB+B^2$.}
+
+% ---------------------------------------------------------------------
+\solhead{5}{8}
+\textbf{Idea.} $\kappa=\dfrac{\norm{\vr\,'\times\vr\,''}}{\norm{\vr\,'}^3}$ at the parameter of the point.
+
+\step{1}{Parameter.} $(t,t^2,t^3)=(1,1,1)$ when $t=1$.
+\step{2}{Derivatives.} $\vr\,'=\ip{1,2t,3t^2}$ and $\vr\,''=\ip{0,2,6t}$; at $t=1$,
+$\vr\,'(1)=\ip{1,2,3}$ and $\vr\,''(1)=\ip{0,2,6}$.
+\step{3}{Cross product.}
+\[
+  \vr\,'(1)\times\vr\,''(1)=\begin{vmatrix}\vi&\vj&\vk\\1&2&3\\0&2&6\end{vmatrix}
+  =\vi(2\cdot6-3\cdot2)-\vj(1\cdot6-3\cdot0)+\vk(1\cdot2-2\cdot0)=\ip{6,\;-6,\;2}.
+\]
+\step{4}{Lengths.} $\norm{\ip{6,-6,2}}=\sqrt{36+36+4}=\sqrt{76}=2\sqrt{19}$ and
+$\norm{\vr\,'(1)}=\sqrt{1+4+9}=\sqrt{14}$, so $\norm{\vr\,'(1)}^3=14\sqrt{14}$.
+\step{5}{Curvature.}
+\[
+  \kappa(1)=\frac{2\sqrt{19}}{14\sqrt{14}}=\frac{\sqrt{19}}{7\sqrt{14}}
+  =\frac{\sqrt{19}\cdot\sqrt{14}}{7\cdot14}=\boxed{\frac{\sqrt{266}}{98}}\approx0.166 .
+\]
+
+% ---------------------------------------------------------------------
+\solhead{6}{8}
+\step{1}{Partial derivatives.} $f_x=3x^2-2y^2$ and $f_y=-4xy$. They are polynomials, hence
+continuous, so $f$ is differentiable and $\Du f=\grad f\cdot\vu$.
+\step{2}{Gradient at $P(1,-1)$.} $f_x=3(1)-2(1)=1$ and $f_y=-4(1)(-1)=4$, so $\grad f(1,-1)=\ip{1,4}$.
+\step{3}{Unit vector toward $Q$.} $\vecPQ=\ip{4-1,\;3-(-1)}=\ip{3,4}$, length $5$, so $\vu=\ip{\frac35,\frac45}$.
+\step{4}{Directional derivative.}
+\[
+  \Du f(1,-1)=1\cdot\frac35+4\cdot\frac45=\frac35+\frac{16}{5}=\boxed{\frac{19}{5}}.
+\]
+
+% ---------------------------------------------------------------------
+\solhead{7}{15}
+\step{1}{Gradient.} $T_x=2x$, $T_y=2y$, $T_z=-4z$, so $\grad T(1,1,1)=\ip{2,\;2,\;-4}$.
+
+\textbf{(a)} The direction from $P(1,1,1)$ toward the origin is $\ip{0-1,0-1,0-1}=\ip{-1,-1,-1}$,
+of length $\sqrt3$, so $\vu=\frac{1}{\sqrt3}\ip{-1,-1,-1}$. Then
+\[
+  \Du T(P)=\frac{1}{\sqrt3}\big(2(-1)+2(-1)+(-4)(-1)\big)=\frac{-2-2+4}{\sqrt3}=\boxed{0}.
+\]
+This is not an accident: $T(1,1,1)=1+1-2=0$, and the whole segment from $P$ to the
+origin lies on the level surface $T=0$ (for points $(s,s,s)$, $T=s^2+s^2-2s^2=0$). Along a level
+surface the function does not change, so the rate is $0$.
+
+\textbf{(b)} $T$ increases most rapidly in the direction of the gradient $\ip{2,2,-4}$, i.e. of
+the unit vector $\frac{1}{\sqrt{24}}\ip{2,2,-4}=\frac{1}{\sqrt6}\ip{1,1,-2}$. The maximum rate is
+$\norm{\ip{2,2,-4}}=\sqrt{4+4+16}=\sqrt{24}=\boxed{2\sqrt6}$.
+
+\textbf{(c)} The level surface through $P$ is $T=T(P)=0$, i.e. the cone $x^2+y^2-2z^2=0$.
+The gradient $\ip{2,2,-4}$ is normal to it at $P$, so the tangent plane is
+\[
+  2(x-1)+2(y-1)-4(z-1)=0\iff2x+2y-4z=0\iff\boxed{x+y-2z=0}.
+\]
+\textit{[(a) 5 pts, (b) 5 pts, (c) 5 pts.]}
+
+% ---------------------------------------------------------------------
+\solhead{8}{12}
+\step{1}{Gradient.} $f_x=2x+y$, $f_y=x$, so $\grad f(1,1)=\ip{3,1}$, with length $\sqrt{10}\approx3.16$.
+\step{2}{Equations for $\vu=\ip{a,b}$.} Directional derivative $1$: $3a+b=1$. Unit length: $a^2+b^2=1$.
+\step{3}{Solve.} From the first, $b=1-3a$. Substituting,
+\[
+  a^2+(1-3a)^2=1\;\Longrightarrow\;a^2+1-6a+9a^2=1\;\Longrightarrow\;10a^2-6a=0\;\Longrightarrow\;2a(5a-3)=0 .
+\]
+\begin{itemize}
+\item $a=0\Rightarrow b=1$: $\vu=\ip{0,1}$.
+\item $a=\frac35\Rightarrow b=1-\frac95=-\frac45$: $\vu=\ip{\frac35,-\frac45}$.
+\end{itemize}
+Check: $3\cdot0+1=1$\checkok; $3\cdot\frac35-\frac45=\frac95-\frac45=1$\checkok.
+\[
+  \boxed{\vu=\ip{0,1}\quad\text{or}\quad\vu=\ip{\tfrac35,-\tfrac45}}
+\]
+\step{4}{Can the rate be $4$?} No. For every unit vector,
+$\Du f=\norm{\grad f}\cos\theta\le\norm{\grad f}=\sqrt{10}\approx3.16$, and $4>\sqrt{10}$. (Algebraically,
+$3a+b=4$ together with $a^2+b^2=1$ has no real solution.)
+
+% ---------------------------------------------------------------------
+\solhead{9}{6}
+\step{1}{Compute the vectors.} $\vF(x,y)=\ip{1,x}$ depends only on $x$:
+\begin{itemize}
+\item on the line $x=-1$ (at $y=-1,0,1$): $\vF=\ip{1,-1}$;
+\item on the line $x=0$: $\vF=\ip{1,0}$;
+\item on the line $x=1$: $\vF=\ip{1,1}$.
+\end{itemize}
+\step{2}{Sketch.} Draw each vector starting at its point (here at half length):
+\begin{center}
+\begin{tikzpicture}[scale=1.1,>=Stealth]
+  \draw[->,gray] (-2,0) -- (2.6,0) node[right]{$x$};
+  \draw[->,gray] (0,-1.8) -- (0,1.9) node[above]{$y$};
+  \foreach \x in {-1,0,1}{ \foreach \y in {-1,0,1}{
+     \fill[NavyBlue] (\x,\y) circle (1.5pt);
+     \draw[->,thick,BrickRed] (\x,\y) -- ({\x+0.5},{\y+0.5*\x});
+  }}
+  \node[below left] at (0,0) {\small $0$};
+\end{tikzpicture}
+\end{center}
+\step{3}{Describe.} Every arrow points to the right (first component $1$). The tilt is
+determined by $x$: arrows point down-right for $x<0$, straight right on the $y$-axis,
+and up-right for $x>0$, tilting more steeply as $\abs x$ grows. All arrows on the same
+vertical line are identical, because $\vF$ does not depend on $y$.
+
+% ---------------------------------------------------------------------
+\solhead{10}{8}
+\step{1}{Component test.} $M=2x+y\cos(xy)$, $N=x\cos(xy)+3y^2$.
+By the product and chain rules,
+\[
+  M_y=0+\cos(xy)+y\cdot(-\sin(xy))\cdot x=\cos(xy)-xy\sin(xy),\qquad
+  N_x=\cos(xy)+x\cdot(-\sin(xy))\cdot y+0=\cos(xy)-xy\sin(xy).
+\]
+These are equal and continuous on $\R^2$, so $\vF$ \textbf{is conservative}.
+\step{2}{Integrate $M$ in $x$.} $\int2x\,\dd x=x^2$ and $\int y\cos(xy)\,\dd x=\sin(xy)$
+(check: $\pd{}{x}\sin(xy)=y\cos(xy)$). So $f=x^2+\sin(xy)+g(y)$.
+\step{3}{Match $N$.} $f_y=x\cos(xy)+g'(y)$ must equal $x\cos(xy)+3y^2$, so $g'(y)=3y^2$ and $g(y)=y^3+K$.
+\[
+  \boxed{f(x,y)=x^2+\sin(xy)+y^3+K}.
+\]
+\step{4}{Check.} $f_x=2x+y\cos(xy)=M$\checkok, $f_y=x\cos(xy)+3y^2=N$\checkok.
+
+% ---------------------------------------------------------------------
+\solhead{11}{9}
+\step{1}{Component test.} $M=2xz+y^2$, $N=2xy$, $P=x^2+3z^2$:
+$M_y=2y=N_x$;\ $N_z=0=P_y$;\ $P_x=2x=M_z$. All three hold on $\R^3$, so $\vF$ is conservative.
+\step{2}{Integrate $M$ in $x$.} $f=x^2z+xy^2+g(y,z)$.
+\step{3}{Match $N$.} $f_y=2xy+g_y=2xy\Rightarrow g_y=0\Rightarrow g=h(z)$, a function of $z$ only.
+\step{4}{Match $P$.} $f_z=x^2+h'(z)=x^2+3z^2\Rightarrow h'(z)=3z^2\Rightarrow h(z)=z^3+K$.
+So $f=x^2z+xy^2+z^3+K$.
+\step{5}{Use $f(0,0,0)=5$.} $f(0,0,0)=K=5$.
+\[
+  \boxed{f(x,y,z)=x^2z+xy^2+z^3+5}.
+\]
+
+% ---------------------------------------------------------------------
+\solhead{12}{7}
+\step{1}{Write the conditions.} $M=axy-z^3$, $N=(a-2)x^2$, $P=(1-a)xz^2$.
+\begin{itemize}
+\item $M_y=ax$ and $N_x=2(a-2)x$. Equal for all $x$ iff $a=2(a-2)=2a-4$, i.e. $a=4$.
+\item $N_z=0$ and $P_y=0$: always equal.
+\item $P_x=(1-a)z^2$ and $M_z=-3z^2$. Equal iff $1-a=-3$, i.e. $a=4$.
+\end{itemize}
+Both nontrivial conditions give the same value, so $\boxed{a=4}$, and then
+$\vF=\ip{4xy-z^3,\;2x^2,\;-3xz^2}$.
+\step{2}{Potential.} $f=\int(4xy-z^3)\,\dd x=2x^2y-xz^3+g(y,z)$.
+$f_y=2x^2+g_y=2x^2\Rightarrow g=h(z)$. $f_z=-3xz^2+h'(z)=-3xz^2\Rightarrow h=K$.
+\[
+  \boxed{f(x,y,z)=2x^2y-xz^3+K}.
+\]

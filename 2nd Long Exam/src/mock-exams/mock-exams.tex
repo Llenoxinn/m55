@@ -15,6 +15,7 @@
 % exam-specific helpers
 \newcommand{\pts}[1]{\hfill\textit{(#1 pts)}}
 \newcommand{\solhead}[2]{\par\bigskip\noindent\textbf{Problem #1}\ \textit{(#2 pts).}\ }
+\newcommand{\trap}[1]{\par\smallskip\noindent\textbf{Trap.}\ #1}
 % numbered exam questions; use \begin{questions}[resume] to continue numbering
 \newenvironment{questions}[1][]%
   {\begin{enumerate}[label=\textbf{\arabic*.},leftmargin=*,itemsep=10pt,#1]}%
@@ -42,6 +43,7 @@
 \pagenumbering{arabic}
 
 \input{sections/01-exam-a}
+\input{sections/01-exam-a-solutions}
 \input{sections/02-exam-b}
 \input{sections/03-answer-key}
 
