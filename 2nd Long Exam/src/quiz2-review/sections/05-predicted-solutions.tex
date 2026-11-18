@@ -2,150 +2,441 @@
 \section{Solutions to the Predicted Problems}\label{ch:predsol}
 % =====================================================================
 
+Every solution is written in full, in the form expected on the exam. Faster
+routes, when they exist, appear only afterwards in an \emph{Alternative
+method} box, to be used for checking.
+
 \subsection{Part A}
 
-\solhead{Problem 1 (22 points).}
-\textbf{(a)} $z=\frac43x$. Substituting:
-$x^2+y^2+\frac{16}{9}x^2=100\iff\frac{25}{9}x^2+y^2=100\iff\frac{x^2}{36}+\frac{y^2}{100}=1$.
-So $x=6\cos t$, $y=10\sin t$, $z=\frac43(6\cos t)=8\cos t$:
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 1 (22 points)}
+
+\textbf{(a) Parametrization.}
+
+\step{1}{Eliminate $z$ using the plane.} The orientation is described as seen
+from above, so we work with the shadow of the curve on the $xy$-plane and
+eliminate $z$: $4x-3z=0\Rightarrow z=\frac{4x}{3}$.
+
+\step{2}{Substitute into the sphere.}
 \[
-  \boxed{\vr(t)=\ip{6\cos t,\;10\sin t,\;8\cos t},\quad0\le t\le2\pi.}
+  x^2+y^2+\left(\frac{4x}{3}\right)^2=100
+  \;\Longrightarrow\;x^2+\frac{16x^2}{9}+y^2=100
+  \;\Longrightarrow\;\frac{25x^2}{9}+y^2=100 .
 \]
-Checks: $36\cos^2t+100\sin^2t+64\cos^2t=100$\checkok; $4(6\cos t)-3(8\cos t)=0$\checkok;
-$\vr(0)=\ip{6,0,8}$\checkok; the shadow $(6\cos t,10\sin t)$ runs counterclockwise\checkok.
-(Again a great circle of radius 10: $\vr=\cos t\ip{6,0,8}+\sin t\ip{0,10,0}$.)
+Dividing by $100$: $\dfrac{x^2}{36}+\dfrac{y^2}{100}=1$. This is the shadow of $C$: an
+ellipse with $a=6$ (along $x$) and $b=10$ (along $y$).
 
-\textbf{(b)} $R$: $6\cos t=3$, $10\sin t=5\sqrt3\Rightarrow t=\frac\pi3$ (and $8\cos\frac\pi3=4$\checkok).
-$\vr\,'(t)=\ip{-6\sin t,\;10\cos t,\;-8\sin t}$, so
-$\vr\,'\!\left(\frac\pi3\right)=\ip{-3\sqrt3,\;5,\;-4\sqrt3}$ and
+\step{3}{Parametrize the shadow.} $x=6\cos t$, $y=10\sin t$, $0\le t\le2\pi$. This
+starts at $(6,0)$ and runs counterclockwise, as required.
+
+\step{4}{Recover $z$.} $z=\frac43x=\frac43\cdot6\cos t=8\cos t$. Hence
 \[
-  \boxed{\mathbf L(s)=\ip{3,\,5\sqrt3,\,4}+s\ip{-3\sqrt3,\,5,\,-4\sqrt3}}.
+  \boxed{\vr(t)=\ip{6\cos t,\;10\sin t,\;8\cos t},\qquad0\le t\le2\pi .}
 \]
 
-\textbf{(c)} $\norm{\vr\,'}=\sqrt{36\sin^2t+100\cos^2t+64\sin^2t}=10$. $S(-6,0,-8)$ is $t=\pi$. So
-$L=\int_0^\pi10\,\dd t=\boxed{10\pi}$ (half of the great circle).
+\step{5}{Check.} Sphere: $36\cos^2t+100\sin^2t+64\cos^2t=100\cos^2t+100\sin^2t=100$.\checkok\
+Plane: $4(6\cos t)-3(8\cos t)=24\cos t-24\cos t=0$.\checkok\
+Start: $\vr(0)=\ip{6,0,8}=P$.\checkok\
+Orientation: the shadow goes $(6,0)\to(0,10)\to(-6,0)$, counterclockwise.\checkok
 
-\textbf{(d)} $\vr\,'(0)=\ip{0,10,0}$, $\vr\,''(0)=\ip{-6,0,-8}$,
-$\vr\,'\times\vr\,''=\ip{-80,0,60}$ with norm $100$; $\norm{\vr\,'}^3=1000$, so
-$\kappa=\boxed{\frac{1}{10}}$ (circle of radius $10$).
+\textbf{(b) Tangent line at $R(3,5\sqrt3,4)$.}
 
-\solhead{Problem 2 (15 points).}
-Term by term: $\pd{}{x}$: $3y^2+\frac{2x}{x^2+y^2}+\frac{2y}{x^2}$ (since $-2yx^{-1}\to2yx^{-2}$);
-$\pd{}{y}$: $6xy+\frac{2y}{x^2+y^2}-\frac2x$. At $(1,1)$: $f_x=3+1+2=6$, $f_y=6+1-2=5$, so
-$\grad f(P)=\ip{6,5}$.
+\step{1}{Find the parameter of $R$.} We need $6\cos t=3$ and $10\sin t=5\sqrt3$, i.e.
+$\cos t=\frac12$ and $\sin t=\frac{\sqrt3}{2}$. The angle with these values is
+$t=\frac\pi3$. The third coordinate agrees: $8\cos\frac\pi3=8\cdot\frac12=4$.\checkok
 
-\textbf{(a)} $\vecPQ=\ip{3,-4}$, $\vu=\ip{\frac35,-\frac45}$: $\Du f=\frac{18-20}{5}=\boxed{-\frac25}$ (decreasing).
+\step{2}{Tangent vector.} $\vr\,'(t)=\ip{-6\sin t,\;10\cos t,\;-8\sin t}$, so
+\[
+  \vr\,'\!\left(\tfrac\pi3\right)=\ip{-6\cdot\tfrac{\sqrt3}{2},\;10\cdot\tfrac12,\;-8\cdot\tfrac{\sqrt3}{2}}
+  =\ip{-3\sqrt3,\;5,\;-4\sqrt3}.
+\]
 
-\textbf{(b)} $\boxed{\frac{1}{\sqrt{61}}\ip{6,5}}$.\quad
-\textbf{(c)} $\boxed{\sqrt{61}}$.\quad
-\textbf{(d)} $\vu\perp\ip{6,5}$: $\boxed{\pm\frac{1}{\sqrt{61}}\ip{5,-6}}$.
+\step{3}{Line through $R$ with this direction.}
+\[
+  \boxed{\mathbf L(s)=\ip{3,\;5\sqrt3,\;4}+s\ip{-3\sqrt3,\;5,\;-4\sqrt3},\qquad s\in\R .}
+\]
 
-\solhead{Problem 3 (13 points).}
-\textbf{(a)} $M_y=\cos(xy)-xy\sin(xy)=N_x$; $N_z=e^z=P_y$; $P_x=2x=M_z$. All continuous on
-$\R^3$, so $\vF$ is conservative.
+\textbf{(c) Arc length from $P$ to $S(-6,0,-8)$.}
 
-\textbf{(b)} $f=\int M\,\dd x=\sin(xy)+x^2z+g(y,z)$.
-$f_y=x\cos(xy)+g_y=x\cos(xy)+e^z\Rightarrow g=ye^z+h(z)$.
-$f_z=x^2+ye^z+h'(z)=x^2+ye^z\Rightarrow h=K$.
-$f(0,0,0)=0+0+0+K=2$:
+\step{1}{Speed.}
+\[
+  \norm{\vr\,'(t)}=\sqrt{36\sin^2t+100\cos^2t+64\sin^2t}=\sqrt{100\sin^2t+100\cos^2t}=\sqrt{100}=10 .
+\]
+\step{2}{Parameter of $S$.} $6\cos t=-6$ and $10\sin t=0$ give $\cos t=-1$, $\sin t=0$,
+so $t=\pi$ (and $8\cos\pi=-8$\checkok). Following the orientation, $t$ runs from $0$ to $\pi$.
+\step{3}{Integrate.} $L=\displaystyle\int_0^\pi10\,\dd t=10\pi$.
+
+\finalans{$\boxed{L=10\pi}$.}
+
+\begin{altmethod}
+The plane passes through the centre of the sphere, so $C$ is a great circle of
+radius $10$. From $P$ to the opposite point $S=-P$ is half the circle:
+$\frac12\cdot2\pi\cdot10=10\pi$.
+\end{altmethod}
+
+\textbf{(d) Curvature at $P$.}
+
+\step{1}{Derivatives at $t=0$.} $\vr\,'(0)=\ip{0,10,0}$. Differentiating again,
+$\vr\,''(t)=\ip{-6\cos t,\;-10\sin t,\;-8\cos t}$, so $\vr\,''(0)=\ip{-6,0,-8}$.
+\step{2}{Cross product.}
+\[
+  \vr\,'(0)\times\vr\,''(0)=\begin{vmatrix}\vi&\vj&\vk\\0&10&0\\-6&0&-8\end{vmatrix}
+  =\vi\,(10\cdot(-8)-0)-\vj\,(0\cdot(-8)-0\cdot(-6))+\vk\,(0\cdot0-10\cdot(-6))=\ip{-80,\;0,\;60}.
+\]
+\step{3}{Lengths.} $\norm{\ip{-80,0,60}}=\sqrt{6400+3600}=\sqrt{10000}=100$ and
+$\norm{\vr\,'(0)}^3=10^3=1000$.
+\step{4}{Curvature.} $\kappa(P)=\dfrac{100}{1000}=\boxed{\dfrac{1}{10}}$.
+
+\begin{altmethod}
+$C$ is a circle of radius $10$, and a circle of radius $R$ has curvature $\frac1R$.
+\end{altmethod}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 2 (15 points)}
+
+\textbf{Gradient at $P(1,1)$.} We differentiate
+$f(x,y)=3xy^2+\ln(x^2+y^2)-\dfrac{2y}{x}$ term by term. It helps to write the last
+term as $-2y\,x^{-1}$.
+
+\emph{With respect to $x$} ($y$ constant):
+$\pd{}{x}(3xy^2)=3y^2$;\quad $\pd{}{x}\ln(x^2+y^2)=\dfrac{2x}{x^2+y^2}$;\quad
+$\pd{}{x}\left(-2y\,x^{-1}\right)=-2y\cdot(-1)x^{-2}=\dfrac{2y}{x^2}$. So
+\[
+  f_x=3y^2+\frac{2x}{x^2+y^2}+\frac{2y}{x^2}.
+\]
+\emph{With respect to $y$} ($x$ constant):
+$\pd{}{y}(3xy^2)=6xy$;\quad $\pd{}{y}\ln(x^2+y^2)=\dfrac{2y}{x^2+y^2}$;\quad
+$\pd{}{y}\left(-\dfrac{2y}{x}\right)=-\dfrac{2}{x}$. So
+\[
+  f_y=6xy+\frac{2y}{x^2+y^2}-\frac2x .
+\]
+These are continuous near $(1,1)$ (where $x\neq0$), so $f$ is differentiable there.
+At $(1,1)$, with $x^2+y^2=2$:
+\[
+  f_x(1,1)=3+\frac22+\frac21=3+1+2=6,\qquad f_y(1,1)=6+\frac22-\frac21=6+1-2=5,
+\]
+so $\grad f(1,1)=\ip{6,5}$.
+
+\textbf{(a)} $\vecPQ=\ip{4-1,\;-3-1}=\ip{3,-4}$, with length $\sqrt{9+16}=5$, so
+$\vu=\ip{\frac35,-\frac45}$. Then
+\[
+  \Du f(1,1)=\ip{6,5}\cdot\ip{\tfrac35,-\tfrac45}=\frac{18}{5}-\frac{20}{5}=\boxed{-\frac25}.
+\]
+The negative sign means that $f$ \emph{decreases} as we start moving from $P$ toward $Q$.
+
+\textbf{(b)} The direction of fastest increase is that of the gradient. Its length is
+$\norm{\ip{6,5}}=\sqrt{36+25}=\sqrt{61}$, so the unit vector is
+$\boxed{\ip{\frac{6}{\sqrt{61}},\frac{5}{\sqrt{61}}}}$.
+
+\textbf{(c)} The maximum rate is $\norm{\grad f(1,1)}=\boxed{\sqrt{61}}\approx7.81$.
+
+\textbf{(d)} The rate of change is $0$ exactly in the directions perpendicular to the
+gradient. A vector perpendicular to $\ip{6,5}$ is $\ip{5,-6}$ (their dot product is
+$30-30=0$). Its length is $\sqrt{61}$, so the two unit vectors are
+$\boxed{\pm\ip{\frac{5}{\sqrt{61}},-\frac{6}{\sqrt{61}}}}$.
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 3 (13 points)}
+
+Write $\vF=\ip{M,N,P}$ with $M=y\cos(xy)+2xz$, $N=x\cos(xy)+e^z$, $P=x^2+ye^z$.
+
+\textbf{(a) The component test.} We compute the three pairs of cross partial derivatives.
+\begin{itemize}
+\item $M_y$: by the product rule, $\pd{}{y}\big(y\cos(xy)\big)=\cos(xy)+y\cdot(-\sin(xy))\cdot x$,
+      and $\pd{}{y}(2xz)=0$. So $M_y=\cos(xy)-xy\sin(xy)$.\\
+      $N_x$: $\pd{}{x}\big(x\cos(xy)\big)=\cos(xy)+x\cdot(-\sin(xy))\cdot y$, and $\pd{}{x}e^z=0$.
+      So $N_x=\cos(xy)-xy\sin(xy)$. Hence $M_y=N_x$.
+\item $N_z=\pd{}{z}\big(x\cos(xy)+e^z\big)=e^z$ and $P_y=\pd{}{y}\big(x^2+ye^z\big)=e^z$. Hence $N_z=P_y$.
+\item $P_x=\pd{}{x}\big(x^2+ye^z\big)=2x$ and $M_z=\pd{}{z}\big(y\cos(xy)+2xz\big)=2x$. Hence $P_x=M_z$.
+\end{itemize}
+All three conditions hold and all partial derivatives are continuous on $\R^3$, so by
+the test for conservative fields in space, $\vF$ is conservative.
+
+\textbf{(b) The potential function.}
+
+\step{1}{Integrate $f_x=M$ with respect to $x$.} Holding $y$ and $z$ fixed:
+$\int y\cos(xy)\,\dd x=\sin(xy)$ (since $\pd{}{x}\sin(xy)=y\cos(xy)$) and $\int2xz\,\dd x=x^2z$. So
+\[
+  f(x,y,z)=\sin(xy)+x^2z+g(y,z),
+\]
+where $g(y,z)$ is an unknown function of $y$ and $z$.
+
+\step{2}{Differentiate with respect to $y$ and compare with $N$.}
+$f_y=x\cos(xy)+0+g_y(y,z)$. Setting $f_y=N=x\cos(xy)+e^z$ gives $g_y(y,z)=e^z$.
+Integrating with respect to $y$ (with $z$ fixed): $g(y,z)=ye^z+h(z)$. Now
+\[
+  f(x,y,z)=\sin(xy)+x^2z+ye^z+h(z).
+\]
+
+\step{3}{Differentiate with respect to $z$ and compare with $P$.}
+$f_z=x^2+ye^z+h'(z)$. Setting $f_z=P=x^2+ye^z$ gives $h'(z)=0$, so $h(z)=K$, a constant.
+Thus $f(x,y,z)=\sin(xy)+x^2z+ye^z+K$.
+
+\step{4}{Use the condition $f(0,0,0)=2$.} $f(0,0,0)=\sin0+0+0\cdot e^0+K=K$, so $K=2$:
 \[
   \boxed{f(x,y,z)=\sin(xy)+x^2z+ye^z+2}.
 \]
-\textbf{(c)} $\grad f(1,0,0)=\vF(1,0,0)=\ip{0+0,\;1+1,\;1+0}=\ip{0,2,1}$. Maximum rate
-$\boxed{\sqrt5}$. Toward $(1,2,2)$: $\vu=\frac{1}{\sqrt2}\ip{0,1,1}$, $\Du f=\frac{2+1}{\sqrt2}=\boxed{\frac{3\sqrt2}{2}}$.
 
-\solhead{Problem 4.}
-$\vr(0)=\ip{1,0,1}$, so start at $t=0$.
-$\vr\,'=e^t\ip{\cos t-\sin t,\;\sin t+\cos t,\;1}$ and
-$\norm{\vr\,'}^2=e^{2t}\left[(\cos t-\sin t)^2+(\sin t+\cos t)^2+1\right]=e^{2t}(2+1)=3e^{2t}$, so
-$\norm{\vr\,'}=\sqrt3\,e^t$ (not constant!).
-$s(t)=\int_0^t\sqrt3e^u\,\dd u=\sqrt3(e^t-1)$. Setting $s=\sqrt3$: $e^t=2$, $t=\ln2$.
+\step{5}{Check.} $f_x=y\cos(xy)+2xz=M$\checkok, $f_y=x\cos(xy)+e^z=N$\checkok, $f_z=x^2+ye^z=P$\checkok.
+
+\textbf{(c) Rates of change of $f$ at $(1,0,0)$.}
+Since $\grad f=\vF$, the gradient at $(1,0,0)$ is
 \[
-  \vr(\ln2)=\boxed{\left(2\cos(\ln2),\;2\sin(\ln2),\;2\right)}\approx(1.538,\,1.278,\,2).
+  \grad f(1,0,0)=\vF(1,0,0)=\ip{0\cdot\cos0+2\cdot1\cdot0,\;1\cdot\cos0+e^0,\;1^2+0\cdot e^0}=\ip{0,\;2,\;1}.
+\]
+The maximum rate of increase is its length, $\sqrt{0+4+1}=\boxed{\sqrt5}$.
+Toward $(1,2,2)$ the direction vector is $\ip{1-1,\;2-0,\;2-0}=\ip{0,2,2}$, of length
+$\sqrt8=2\sqrt2$, so $\vu=\ip{0,\frac{1}{\sqrt2},\frac{1}{\sqrt2}}$ and
+\[
+  \Du f(1,0,0)=\ip{0,2,1}\cdot\ip{0,\tfrac{1}{\sqrt2},\tfrac{1}{\sqrt2}}=\frac{2}{\sqrt2}+\frac{1}{\sqrt2}=\frac{3}{\sqrt2}=\boxed{\frac{3\sqrt2}{2}}.
 \]
 
-\solhead{Problem 5.}
-$\vr=\ip{t,\;b\sin t,\;0}$, $\vr\,'=\ip{1,b\cos t,0}$, $\vr\,''=\ip{0,-b\sin t,0}$. At $t=\frac\pi2$:
-$\vr\,'=\ip{1,0,0}$, $\vr\,''=\ip{0,-b,0}$, $\vr\,'\times\vr\,''=\ip{0,0,-b}$. So
-$\kappa=\frac{\abs b}{1}=2\Rightarrow\boxed{b=\pm2}$.
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 4}
 
-\solhead{Problem 6.}
-$\grad f=\ip{2x+2y,\;2x}$, $\grad f(1,1)=\ip{4,2}$ ($\norm{\grad f}=2\sqrt5>2$, so two answers).
-$4a+2b=2\Rightarrow b=1-2a$; $a^2+(1-2a)^2=1\iff5a^2-4a=0$:
-$\boxed{\vu=\ip{0,1}\ \text{or}\ \vu=\ip{\frac45,-\frac35}}$. Check: $2$ and $\frac{16}{5}-\frac65=2$.\checkok
+\step{1}{Starting parameter.} $\vr(0)=\ip{e^0\cos0,\;e^0\sin0,\;e^0}=\ip{1,0,1}$, so we start at $t=0$.
 
-\solhead{Problem 7.}
-$\grad f=\ip{2x-4,\;4y+4}=\lambda\ip{1,-1}$, $\lambda>0$: $2x-4=\lambda>0$ and $4y+4=-\lambda$.
-So $4y+4=-(2x-4)\iff y=-\frac x2$, with $x>2$:
-$\boxed{\left\{\left(x,-\tfrac x2\right):x>2\right\}}$ (the point $(2,-1)$, where $\grad f=\vzero$, is excluded).
+\step{2}{Velocity.} By the product rule,
+\[
+  \vr\,'(t)=\ip{e^t\cos t-e^t\sin t,\;e^t\sin t+e^t\cos t,\;e^t}=e^t\ip{\cos t-\sin t,\;\sin t+\cos t,\;1}.
+\]
 
-\solhead{Problem 8.}
-$M_y=2x$, $N_x=2bx\Rightarrow b=1$. $N_z=3$, $P_y=c\Rightarrow c=3$. $P_x=6z^2$, $M_z=3az^2\Rightarrow a=2$.
-With $\vF=\ip{2xy+2z^3,\;x^2+3z,\;6xz^2+3y}$:
-$f=x^2y+2xz^3+g(y,z)$; $f_y=x^2+g_y=x^2+3z\Rightarrow g=3yz+h(z)$;
-$f_z=6xz^2+3y+h'=6xz^2+3y\Rightarrow h=K$.
-$\boxed{a=2,\ b=1,\ c=3,\quad f=x^2y+2xz^3+3yz+K}$.
+\step{3}{Speed.} Expanding the squares,
+$(\cos t-\sin t)^2=\cos^2t-2\sin t\cos t+\sin^2t=1-2\sin t\cos t$ and
+$(\sin t+\cos t)^2=1+2\sin t\cos t$. Their sum is $2$, so
+\[
+  \norm{\vr\,'(t)}=e^t\sqrt{(1-2\sin t\cos t)+(1+2\sin t\cos t)+1}=e^t\sqrt3 .
+\]
+Unlike Quiz Problem 3, the speed is \emph{not} constant.
+
+\step{4}{Arc-length function.}
+$s(t)=\displaystyle\int_0^t\sqrt3\,e^u\,\dd u=\sqrt3\Big[e^u\Big]_0^t=\sqrt3\,(e^t-1)$.
+
+\step{5}{Solve $s(t)=\sqrt3$.} $\sqrt3(e^t-1)=\sqrt3\iff e^t-1=1\iff e^t=2\iff t=\ln2$.
+
+\step{6}{Position.} Since $e^{\ln2}=2$:
+\[
+  \vr(\ln2)=\ip{2\cos(\ln2),\;2\sin(\ln2),\;2}.
+\]
+\finalans{$\boxed{\left(2\cos(\ln2),\;2\sin(\ln2),\;2\right)}\approx(1.538,\;1.278,\;2)$.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 5}
+
+\step{1}{Vector parametrization.} With $x=t$: $\vr(t)=\ip{t,\;b\sin t,\;0}$; the point
+$x=\frac\pi2$ corresponds to $t=\frac\pi2$.
+\step{2}{Derivatives.} $\vr\,'(t)=\ip{1,\;b\cos t,\;0}$ and $\vr\,''(t)=\ip{0,\;-b\sin t,\;0}$.
+At $t=\frac\pi2$: $\cos\frac\pi2=0$ and $\sin\frac\pi2=1$, so
+$\vr\,'=\ip{1,0,0}$ and $\vr\,''=\ip{0,-b,0}$.
+\step{3}{Cross product.}
+\[
+  \ip{1,0,0}\times\ip{0,-b,0}=\begin{vmatrix}\vi&\vj&\vk\\1&0&0\\0&-b&0\end{vmatrix}=\ip{0,\;0,\;-b},
+\]
+with length $\abs b$.
+\step{4}{Curvature.} $\norm{\vr\,'}^3=1$, so $\kappa\!\left(\frac\pi2\right)=\abs b$.
+\step{5}{Solve.} $\abs b=2\iff b=2$ or $b=-2$.
+
+\finalans{$\boxed{b=\pm2}$.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 6}
+
+\step{1}{Gradient.} $f_x=2x+2y$, $f_y=2x$, so $\grad f(1,1)=\ip{4,2}$, with length
+$\sqrt{16+4}=2\sqrt5\approx4.47$. Since $2<2\sqrt5$, we expect two directions.
+\step{2}{Equations.} For $\vu=\ip{a,b}$: $4a+2b=2$ (the prescribed value) and $a^2+b^2=1$ (unit length).
+The first gives $b=1-2a$.
+\step{3}{Solve.}
+$a^2+(1-2a)^2=1\Rightarrow a^2+1-4a+4a^2=1\Rightarrow5a^2-4a=0\Rightarrow a(5a-4)=0$.
+\begin{itemize}
+\item $a=0\Rightarrow b=1$: $\vu=\ip{0,1}$.
+\item $a=\frac45\Rightarrow b=1-\frac85=-\frac35$: $\vu=\ip{\frac45,-\frac35}$.
+\end{itemize}
+\step{4}{Check.} $\ip{4,2}\cdot\ip{0,1}=2$\checkok\ and $\ip{4,2}\cdot\ip{\frac45,-\frac35}=\frac{16}{5}-\frac65=2$\checkok.
+
+\finalans{$\boxed{\vu=\ip{0,1}\ \text{or}\ \vu=\ip{\frac45,-\frac35}}$.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 7}
+
+\step{1}{Gradient.} $\grad f=\ip{2x-4,\;4y+4}$.
+\step{2}{Condition.} The direction of fastest increase is $\vi-\vj$ exactly when
+$\grad f$ is a positive multiple of $\ip{1,-1}$:
+$2x-4=\lambda$ and $4y+4=-\lambda$ for some $\lambda>0$.
+\step{3}{Eliminate $\lambda$.} Adding the two equations: $(2x-4)+(4y+4)=0\Rightarrow2x+4y=0\Rightarrow y=-\frac x2$.
+\step{4}{Positivity.} $\lambda=2x-4>0\iff x>2$.
+
+\finalans{$\boxed{\left\{\left(x,-\tfrac x2\right): x>2\right\}}$. The point $(2,-1)$, where
+$\grad f=\vzero$, is excluded.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 8}
+
+Write $M=2xy+az^3$, $N=bx^2+3z$, $P=6xz^2+cy$. A field is conservative (on $\R^3$) exactly when
+all three pairs of cross partials agree, and each pair gives one equation.
+\begin{itemize}
+\item $M_y=2x$ and $N_x=2bx$. Equal for all $x$ iff $2b=2$, i.e. $b=1$.
+\item $N_z=3$ and $P_y=c$. Equal iff $c=3$.
+\item $P_x=6z^2$ and $M_z=3az^2$. Equal for all $z$ iff $3a=6$, i.e. $a=2$.
+\end{itemize}
+So $a=2$, $b=1$, $c=3$, and $\vF=\ip{2xy+2z^3,\;x^2+3z,\;6xz^2+3y}$.
+
+\textbf{Potential.}
+\step{1}{$x$.} $f=\int(2xy+2z^3)\,\dd x=x^2y+2xz^3+g(y,z)$.
+\step{2}{$y$.} $f_y=x^2+g_y=x^2+3z\Rightarrow g_y=3z\Rightarrow g=3yz+h(z)$.
+\step{3}{$z$.} $f_z=6xz^2+3y+h'(z)=6xz^2+3y\Rightarrow h'(z)=0\Rightarrow h=K$.
+
+\finalans{$\boxed{a=2,\ b=1,\ c=3,\qquad f(x,y,z)=x^2y+2xz^3+3yz+K}$.
+Check: $\grad f=\ip{2xy+2z^3,\;x^2+3z,\;6xz^2+3y}$.\checkok}
 
 \subsection{Part B}
 
-\solhead{Problem 9.}
-\textbf{(a)} $x^2+\frac{y^2}{4}=1$: $\boxed{\vr(t)=\ip{\cos t,\;2\sin t,\;2}}$, $0\le t\le2\pi$.
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 9}
 
-\textbf{(b)} $\vr\,'=\ip{-\sin t,2\cos t,0}$, $\vr\,''=\ip{-\cos t,-2\sin t,0}$,
-$\vr\,'\times\vr\,''=\ip{0,0,2\sin^2t+2\cos^2t}=\ip{0,0,2}$, and
-$\norm{\vr\,'}^2=\sin^2t+4\cos^2t=4-3\sin^2t$. So
+\textbf{(a)} The plane $z=2$ fixes the height, and the cylinder gives the shadow.
+Dividing $4x^2+y^2=4$ by $4$: $x^2+\frac{y^2}{4}=1$, an ellipse with $a=1$ and $b=2$. So
+$x=\cos t$, $y=2\sin t$, $z=2$:
 \[
-  \kappa(t)=\frac{2}{(4-3\sin^2t)^{3/2}} .
+  \boxed{\vr(t)=\ip{\cos t,\;2\sin t,\;2},\qquad0\le t\le2\pi,}
 \]
-The major axis of this ellipse is along $y$ (semi-axis $2$), the minor axis along
-$x$ (semi-axis $1$).
+which starts at $(1,0,2)$ and runs counterclockwise from above.
+
+\textbf{(b)}
+\step{1}{Derivatives.} $\vr\,'=\ip{-\sin t,\;2\cos t,\;0}$, $\vr\,''=\ip{-\cos t,\;-2\sin t,\;0}$.
+\step{2}{Cross product.} Only the $\vk$-component is nonzero:
+$(-\sin t)(-2\sin t)-(2\cos t)(-\cos t)=2\sin^2t+2\cos^2t=2$. So $\vr\,'\times\vr\,''=\ip{0,0,2}$, of length $2$.
+\step{3}{Speed.} $\norm{\vr\,'}=\sqrt{\sin^2t+4\cos^2t}=\sqrt{\sin^2t+4(1-\sin^2t)}=\sqrt{4-3\sin^2t}$.
+\step{4}{Curvature.}
+\[
+  \kappa(t)=\frac{2}{\left(4-3\sin^2t\right)^{3/2}} .
+\]
+\step{5}{Extreme values.} $\kappa$ is largest when the denominator is smallest, i.e.
+when $\sin^2t$ is largest ($\sin^2t=1$, $t=\frac\pi2,\frac{3\pi}{2}$), and smallest when
+$\sin^2t=0$ ($t=0,\pi$).
 \begin{itemize}
-\item Maximum when the denominator is smallest, $\sin^2t=1$: $\boxed{\kappa_{\max}=2}$ at
-      $(0,\pm2,2)$, the ends of the \emph{major} axis, where the ellipse turns most sharply.
-\item Minimum when $\sin t=0$: $\boxed{\kappa_{\min}=\frac{2}{4^{3/2}}=\frac14}$ at $(\pm1,0,2)$,
-      the ends of the \emph{minor} axis, where it is flattest.
+\item Maximum: $\kappa=\dfrac{2}{1^{3/2}}=\boxed{2}$ at $(0,\pm2,2)$, the ends of the major
+      axis (length $2$ along $y$), where the ellipse turns most sharply.
+\item Minimum: $\kappa=\dfrac{2}{4^{3/2}}=\dfrac28=\boxed{\dfrac14}$ at $(\pm1,0,2)$, the ends of the
+      minor axis, where it is flattest.
 \end{itemize}
-(Check with $\frac{a}{b^2}$ and $\frac{b}{a^2}$ for $a=1,b=2$: $\frac14$ and $2$.\checkok)
 
-\textbf{(c)} $L=\displaystyle\int_0^{2\pi}\sqrt{\sin^2t+4\cos^2t}\,\dd t=\int_0^{2\pi}\sqrt{4-3\sin^2t}\,\dd t$
-(an elliptic integral, $\approx9.69$).
+\begin{altmethod}
+For the ellipse $\ip{a\cos t,b\sin t}$ the curvature is $\frac{b}{a^2}$ at $(0,\pm b)$
+and $\frac{a}{b^2}$ at $(\pm a,0)$. With $a=1$, $b=2$: $2$ and $\frac14$.
+\end{altmethod}
 
-\solhead{Problem 10.}
-$\norm{\vr\,'}=\sqrt{4\sin^2t+4\cos^2t+5}=3$, $\vr(0)=(2,0,0)$, so $t=\frac{6\pi}{3}=2\pi$:
-$\vr(2\pi)=\boxed{\left(2,\;0,\;2\sqrt5\,\pi\right)}$, exactly one turn of the helix higher.
-
-\solhead{Problem 11.}
-$\kappa(x)=\dfrac{e^x}{(1+e^{2x})^{3/2}}$. Differentiate:
+\textbf{(c)} Using the speed from Step~3,
 \[
-  \kappa'(x)=\frac{e^x(1+e^{2x})^{3/2}-e^x\cdot\frac32(1+e^{2x})^{1/2}\cdot2e^{2x}}{(1+e^{2x})^3}
-  =\frac{e^x(1+e^{2x})^{1/2}\left(1-2e^{2x}\right)}{(1+e^{2x})^3}.
+  L=\int_0^{2\pi}\sqrt{\sin^2t+4\cos^2t}\;\dd t=\int_0^{2\pi}\sqrt{4-3\sin^2t}\;\dd t .
 \]
-$\kappa'=0\iff e^{2x}=\frac12\iff x=-\frac{\ln2}{2}$; $\kappa'>0$ before and $<0$ after, so it is a maximum.
-Point: $\left(-\frac{\ln2}{2},\,\frac{1}{\sqrt2}\right)$; maximum curvature
-$\kappa=\dfrac{1/\sqrt2}{(3/2)^{3/2}}=\boxed{\dfrac{2\sqrt3}{9}}\approx0.385$.
+This integral has no elementary antiderivative (it is an elliptic integral, approximately $9.69$),
+which is why the problem only asks for the set-up.
 
-\solhead{Problem 12.}
-$\grad f=\ip{e^{yz}+\frac{1}{x+y+z},\;xze^{yz}+\frac{1}{x+y+z},\;xye^{yz}+\frac{1}{x+y+z}}$, so
-$\grad f(1,0,0)=\ip{2,1,1}$. Toward $(3,2,1)$: $\ip{2,2,1}/3$, $\Du f=\frac{4+2+1}{3}=\boxed{\frac73}$.
-Maximum rate $\boxed{\sqrt6}$.
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 10}
 
-\solhead{Problem 13.}
-$M_y=2y=N_x$ on the half-plane $y>0$ (simply connected): conservative.
-$f=\ln(1+x^2)+xy^2+g(y)$; $f_y=2xy+g'(y)=2xy+\frac1y\Rightarrow g=\ln y$.
-$\boxed{f=\ln(1+x^2)+xy^2+\ln y+K}$.
+\step{1}{Start.} $\vr(0)=\ip{2,0,0}$, so we start at $t=0$.
+\step{2}{Speed.} $\vr\,'=\ip{-2\sin t,\;2\cos t,\;\sqrt5}$, so
+$\norm{\vr\,'}=\sqrt{4\sin^2t+4\cos^2t+5}=\sqrt{4+5}=3$.
+\step{3}{Arc length.} $s(t)=\int_0^t3\,\dd u=3t$. Setting $3t=6\pi$ gives $t=2\pi$.
+\step{4}{Position.} $\vr(2\pi)=\ip{2\cos2\pi,\;2\sin2\pi,\;2\sqrt5\pi}=\ip{2,\;0,\;2\sqrt5\pi}$.
 
-\solhead{Problem 14.}
-$P_x=y+1$ but $M_z=y$; these differ everywhere, so $\vF$ is not conservative.
-(The other two conditions hold: $M_y=z=N_x$, $N_z=x=P_y$, which is why all three must be checked.)
+\finalans{$\boxed{\left(2,\;0,\;2\sqrt5\,\pi\right)}$: after exactly one turn of the helix, directly
+above the starting point.}
 
-\solhead{Problem 15.}
-\textbf{(a)} $\vF=\grad f=\ip{2xy,\;x^2+z^3,\;3yz^2}$. $M_y=2x=N_x$, $N_z=3z^2=P_y$, $P_x=0=M_z$.\checkok\\
-\textbf{(b)} $\grad f(1,2,-1)=\ip{4,\;1-1,\;6}=\ip{4,0,6}$: direction $\frac{1}{\sqrt{13}}\ip{2,0,3}$, maximum
-rate $\sqrt{52}=\boxed{2\sqrt{13}}$.\\
-\textbf{(c)} $\vecPQ=\ip{1,2,2}$, length $3$: $\Du f=\frac{4+0+12}{3}=\boxed{\frac{16}{3}}$.
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 11}
 
-\solhead{Problem 16.}
-$\vF(x,y)=\ip{y,x}$ vanishes only at the origin, has length $r$, is symmetric about
-$y=x$, points away from the origin along $y=x$ (e.g. $\vF(1,1)=\ip{1,1}$) and toward it
-along $y=-x$ ($\vF(1,-1)=\ip{-1,1}$): a saddle flow along the hyperbolas $x^2-y^2=c$.
-It is a gradient field: $M_y=1=N_x$ and $\vF=\grad(xy)$.
+\step{1}{Curvature as a function of $x$.} Parametrize $\vr(t)=\ip{t,e^t,0}$:
+$\vr\,'=\ip{1,e^t,0}$, $\vr\,''=\ip{0,e^t,0}$, $\vr\,'\times\vr\,''=\ip{0,0,e^t}$ and
+$\norm{\vr\,'}=\sqrt{1+e^{2t}}$. Writing $x$ for $t$:
+\[
+  \kappa(x)=\frac{e^x}{\left(1+e^{2x}\right)^{3/2}} .
+\]
+\step{2}{Differentiate} (quotient rule, with $\frac{\dd}{\dd x}(1+e^{2x})^{3/2}=\frac32(1+e^{2x})^{1/2}\cdot2e^{2x}$):
+\[
+  \kappa'(x)=\frac{e^x(1+e^{2x})^{3/2}-e^x\cdot3e^{2x}(1+e^{2x})^{1/2}}{(1+e^{2x})^{3}}
+  =\frac{e^x(1+e^{2x})^{1/2}\left[(1+e^{2x})-3e^{2x}\right]}{(1+e^{2x})^{3}}
+  =\frac{e^x\left(1-2e^{2x}\right)}{(1+e^{2x})^{5/2}} .
+\]
+\step{3}{Critical point.} The factor $e^x$ and the denominator are never zero, so
+$\kappa'(x)=0\iff1-2e^{2x}=0\iff e^{2x}=\frac12\iff x=\frac12\ln\frac12=-\frac{\ln2}{2}$.
+\step{4}{It is a maximum.} For $x<-\frac{\ln2}{2}$, $e^{2x}<\frac12$, so $\kappa'>0$ ($\kappa$ increases);
+for $x>-\frac{\ln2}{2}$, $\kappa'<0$ ($\kappa$ decreases).
+\step{5}{The point and the value.} $y=e^{-\ln2/2}=\frac{1}{\sqrt2}$, and $e^{2x}=\frac12$, so
+\[
+  \kappa_{\max}=\frac{1/\sqrt2}{\left(1+\frac12\right)^{3/2}}=\frac{1/\sqrt2}{\frac{3\sqrt3}{2\sqrt2}}=\frac{2}{3\sqrt3}=\frac{2\sqrt3}{9}.
+\]
+
+\finalans{Maximum curvature $\boxed{\frac{2\sqrt3}{9}\approx0.385}$ at the point
+$\boxed{\left(-\frac{\ln2}{2},\;\frac{1}{\sqrt2}\right)}$.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 12}
+
+\step{1}{Partial derivatives.} Let $w=x+y+z$. By the product and chain rules:
+\[
+  f_x=e^{yz}+\frac1w,\qquad f_y=xz\,e^{yz}+\frac1w,\qquad f_z=xy\,e^{yz}+\frac1w .
+\]
+\step{2}{At $(1,0,0)$.} Here $yz=0$ (so $e^{yz}=1$) and $w=1$:
+$f_x=1+1=2$, $f_y=0+1=1$, $f_z=0+1=1$. So $\grad f(1,0,0)=\ip{2,1,1}$.
+\step{3}{Direction.} Toward $(3,2,1)$: $\ip{3-1,\;2-0,\;1-0}=\ip{2,2,1}$, length $\sqrt{4+4+1}=3$,
+so $\vu=\frac13\ip{2,2,1}$.
+\step{4}{Directional derivative.} $\Du f=\frac13(2\cdot2+1\cdot2+1\cdot1)=\frac73$.
+\step{5}{Maximum rate.} $\norm{\ip{2,1,1}}=\sqrt{4+1+1}=\sqrt6$.
+
+\finalans{$\Du f(1,0,0)=\boxed{\frac73}$; maximum rate $\boxed{\sqrt6}$, in the direction of $\ip{2,1,1}$.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 13}
+
+\step{1}{Test.} $M=\frac{2x}{1+x^2}+y^2$ and $N=2xy+\frac1y$. Then $M_y=2y$ (the first term of $M$
+does not contain $y$) and $N_x=2y$ (the term $\frac1y$ does not contain $x$). They are equal, and
+the domain $y>0$ (a half-plane) has no holes, so $\vF$ is conservative.
+\step{2}{Integrate $M$ in $x$.} $\int\frac{2x}{1+x^2}\,\dd x=\ln(1+x^2)$ (substitute $w=1+x^2$) and
+$\int y^2\,\dd x=xy^2$. So $f=\ln(1+x^2)+xy^2+g(y)$.
+\step{3}{Match $N$.} $f_y=2xy+g'(y)=2xy+\frac1y\Rightarrow g'(y)=\frac1y\Rightarrow g(y)=\ln y+K$ (with $y>0$).
+
+\finalans{$\boxed{f(x,y)=\ln(1+x^2)+xy^2+\ln y+K}$. Check: $f_x=\frac{2x}{1+x^2}+y^2$\checkok, $f_y=2xy+\frac1y$\checkok.}
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 14}
+
+With $M=yz$, $N=xz$, $P=xy+x$, compute all three pairs:
+\begin{itemize}
+\item $M_y=z$ and $N_x=z$: equal.
+\item $N_z=x$ and $P_y=x$: equal.
+\item $P_x=y+1$ but $M_z=y$: \emph{not} equal (they differ by $1$ everywhere).
+\end{itemize}
+Since one of the three required equalities fails, $\vF$ is \textbf{not conservative}.
+Note that the first two conditions hold; checking only those would give the wrong
+conclusion. All three must be verified.
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 15}
+
+\textbf{(a)} $\vF=\grad f=\ip{f_x,f_y,f_z}=\ip{2xy,\;x^2+z^3,\;3yz^2}$. Component test:
+$M_y=2x=N_x$;\ $N_z=3z^2=P_y$;\ $P_x=0=M_z$. All hold, as they must for a gradient
+field with continuous second partial derivatives (Clairaut's theorem).
+
+\textbf{(b)} $\grad f(1,2,-1)=\ip{2(1)(2),\;1^2+(-1)^3,\;3(2)(-1)^2}=\ip{4,\;0,\;6}$. The maximum rate is
+$\norm{\ip{4,0,6}}=\sqrt{16+36}=\sqrt{52}=\boxed{2\sqrt{13}}$, in the direction of
+$\ip{4,0,6}$, i.e. of the unit vector $\boxed{\frac{1}{\sqrt{13}}\ip{2,0,3}}$.
+
+\textbf{(c)} $\vecPQ=\ip{2-1,\;4-2,\;1-(-1)}=\ip{1,2,2}$, length $3$, $\vu=\frac13\ip{1,2,2}$:
+$\Du f(P)=\frac13(4\cdot1+0\cdot2+6\cdot2)=\boxed{\frac{16}{3}}$.
+
+% ---------------------------------------------------------------------
+\subsubsection*{Problem 16}
+
+\step{1}{Values at sample points.} $\vF(1,0)=\ip{0,1}$, $\vF(0,1)=\ip{1,0}$, $\vF(1,1)=\ip{1,1}$,
+$\vF(1,-1)=\ip{-1,1}$, $\vF(-1,-1)=\ip{-1,-1}$, and $\vF(0,0)=\vzero$.
+\step{2}{Description.} The length is $\norm{\vF}=\sqrt{y^2+x^2}=r$, so arrows grow with
+the distance from the origin. Along the line $y=x$ the arrow $\ip{x,x}$ points
+\emph{away} from the origin; along $y=-x$ the arrow $\ip{-x,x}$ points \emph{toward} it.
+This is a saddle-type flow: in along $y=-x$, out along $y=x$, following the hyperbolas
+$x^2-y^2=$ constant.
+\step{3}{Is it a gradient field?} $M=y$, $N=x$, so $M_y=1=N_x$: conservative on $\R^2$.
+Integrating, $f=\int y\,\dd x=xy+g(y)$ and $f_y=x+g'(y)=x\Rightarrow g=K$.
+
+\finalans{Yes: $\vF=\grad(xy)$.}
