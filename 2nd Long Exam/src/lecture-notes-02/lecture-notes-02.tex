@@ -1,0 +1,42 @@
+% =====================================================================
+%  MATH 55 -- Lecture Notes & Reviewer No. 6
+%  Directional Derivatives and the Gradient Vector
+%  Build: latexmk -pdf -outdir=build lecture-notes-02.tex
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\newcommand{\NotesNumber}{6}
+\newcommand{\NotesKind}{Lecture Notes \& Reviewer No.~6}
+\newcommand{\NotesShortTitle}{Directional Derivatives}
+\newcommand{\NotesPdfTitle}{MATH 55 Lecture Notes 6: Directional Derivatives and the Gradient Vector}
+\input{../shared/preamble.tex}
+\graphicspath{{figures/}}
+
+\begin{document}
+\pagenumbering{roman}
+
+\makenotestitle{Directional Derivatives}
+  {and the Gradient Vector: Rates of Change in Every Direction}
+  {MATH 55: Elementary Analysis III -- Second Long Examination}
+  {\textbf{About these notes.} These notes expand the course slides
+   \emph{M55 -- 6 Directional Derivatives and The Gradient Vectors} into a
+   complete written treatment. Every definition, theorem and example of the
+   slides is reproduced with full, step-by-step reasoning, and the trio
+   activity is solved in full. Chapter~1 reviews the partial-derivative
+   facts the slides use without proof; Chapter~4 develops the geometry of
+   the gradient (level curves, tangent planes, steepest ascent), which
+   explains \emph{why} the gradient behaves the way it does. Chapter~5 is a
+   large bank of exam-style practice problems with complete solutions,
+   grouped by the patterns that appear on the slides.\par\medskip
+   \textbf{How to use.} Read a section, cover the solution of each example and
+   try it yourself first. Problems marked $(*)$ are harder or combine several
+   ideas. Every numerical answer in these notes has been checked with a
+   computer algebra system.}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/01-preliminaries}
+
+\end{document}

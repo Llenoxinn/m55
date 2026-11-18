@@ -1,0 +1,202 @@
+% =====================================================================
+\section{Preliminaries}\label{ch:prelim}
+% =====================================================================
+
+The slides open with a one-line reminder about partial derivatives and then
+repeatedly say ``these partial derivatives are continuous, hence $f$ is
+differentiable''. This chapter collects precisely the background behind those
+sentences, so that every later step can be justified.
+
+\subsection{Functions of several variables and level curves}
+
+\begin{definition}[Function of two variables]
+A \emph{function of two variables} $f$ assigns to each point $(x,y)$ of a set
+$D\subseteq\R^2$ (the \emph{domain}) a unique real number $f(x,y)$. Its
+\emph{graph} is the surface $z=f(x,y)$ in $\R^3$. Functions of three variables
+$w=f(x,y,z)$ are defined the same way on sets $D\subseteq\R^3$.
+\end{definition}
+
+\begin{definition}[Level curves and level surfaces]
+For a constant $k$, the \emph{level curve} of $f(x,y)$ at height $k$ is the set
+of points with $f(x,y)=k$. A drawing of several level curves is a \emph{contour
+map}. For $w=f(x,y,z)$ the sets $f(x,y,z)=k$ are \emph{level surfaces}.
+\end{definition}
+
+\begin{example}\label{ex:levelcurves}
+Describe the level curves of $f(x,y)=4-x^2-\tfrac14 y^2$, the function of
+Slides, Example~6.1.
+\end{example}
+\begin{solution}
+Set $f(x,y)=k$: $\;4-x^2-\tfrac14y^2=k \iff x^2+\dfrac{y^2}{4}=4-k.$
+\begin{itemize}
+  \item If $k<4$, this is the ellipse $\dfrac{x^2}{4-k}+\dfrac{y^2}{4(4-k)}=1$ with
+        semi-axes $\sqrt{4-k}$ (along $x$) and $2\sqrt{4-k}$ (along $y$).
+  \item If $k=4$, only the point $(0,0)$; if $k>4$, the level set is empty.
+\end{itemize}
+So the graph is a ``hill'' (an elliptic paraboloid opening downward) with summit
+$(0,0,4)$; the level curves are nested ellipses that get larger as $k$
+decreases (Figure~\ref{fig:contour-gradient} in Chapter~\ref{ch:geometry}).
+\end{solution}
+
+\subsection{Partial derivatives}
+
+\begin{definition}[Partial derivatives]\label{def:partials}
+Let $z=f(x,y)$. The partial derivatives of $f$ at $(x_0,y_0)$ are
+\[
+  f_x(x_0,y_0)=\lim_{h\to0}\frac{f(x_0+h,\,y_0)-f(x_0,y_0)}{h},\qquad
+  f_y(x_0,y_0)=\lim_{h\to0}\frac{f(x_0,\,y_0+h)-f(x_0,y_0)}{h},
+\]
+whenever these limits exist. Other notations: $f_x=\pd{f}{x}=\pd{z}{x}$,
+$f_y=\pd{f}{y}=\pd{z}{y}$.
+\end{definition}
+
+\textbf{How to compute.} To find $f_x$, treat $y$ as a constant and
+differentiate with respect to $x$ using ordinary single-variable rules; for
+$f_y$, treat $x$ as a constant.
+
+\textbf{Geometric meaning.} $f_x(x_0,y_0)$ is the slope, at $x=x_0$, of the
+curve cut from the surface $z=f(x,y)$ by the vertical plane $y=y_0$; it is the
+rate of change of $z$ as we move in the direction of $\vi=\ip{1,0}$.
+Similarly $f_y(x_0,y_0)$ is the rate of change of $z$ in the direction of
+$\vj=\ip{0,1}$. The whole of the next chapter is about replacing $\vi$ and
+$\vj$ by an \emph{arbitrary} unit vector $\vu$.
+
+\begin{example}\label{ex:partials}
+Let $f(x,y)=x^3+x^2y^3-2y^2$. Find $f_x(2,1)$ and $f_y(2,1)$.
+\end{example}
+\begin{solution}
+\step{1}{Differentiate in $x$ ($y$ constant).} $f_x(x,y)=3x^2+2xy^3$.
+\step{2}{Differentiate in $y$ ($x$ constant).} $f_y(x,y)=3x^2y^2-4y$.
+\step{3}{Evaluate.}
+$f_x(2,1)=3(4)+2(2)(1)=16$ and $f_y(2,1)=3(4)(1)-4(1)=8$.
+
+Interpretation: at $(2,1)$ the surface rises with slope $16$ in the
+$x$-direction and with slope $8$ in the $y$-direction.
+\end{solution}
+
+\begin{example}\label{ex:partials2}
+Find all first partial derivatives of
+(a) $f(x,y)=y\ln x+xy^2$ \quad (b) $g(x,y,z)=e^{xy}\sin z$ \quad
+(c) $h(x,y)=\dfrac{x}{x^2+y^2}$.
+\end{example}
+\begin{solution}
+\textbf{(a)} $f_x=\dfrac{y}{x}+y^2$ (since $\frac{\dd}{\dd x}\ln x=\frac1x$),
+\quad $f_y=\ln x+2xy$. (These are used in Slides, Example~6.3.)
+
+\textbf{(b)} Chain rule on $e^{xy}$:
+$g_x=ye^{xy}\sin z,\quad g_y=xe^{xy}\sin z,\quad g_z=e^{xy}\cos z.$
+
+\textbf{(c)} Quotient rule:
+\[
+h_x=\frac{(x^2+y^2)(1)-x(2x)}{(x^2+y^2)^2}=\frac{y^2-x^2}{(x^2+y^2)^2},\qquad
+h_y=\frac{(x^2+y^2)(0)-x(2y)}{(x^2+y^2)^2}=\frac{-2xy}{(x^2+y^2)^2}.
+\]
+\end{solution}
+
+\subsection{Differentiability}
+
+For one variable, ``differentiable'' just means the derivative exists. For two
+variables, the mere existence of $f_x$ and $f_y$ is \emph{not} enough for the
+formulas of this course; we need the stronger notion below.
+
+\begin{definition}[Differentiable function]
+$f(x,y)$ is \emph{differentiable} at $(x_0,y_0)$ if $f_x(x_0,y_0)$ and
+$f_y(x_0,y_0)$ exist and
+\[
+  f(x_0+\Delta x,\,y_0+\Delta y)-f(x_0,y_0)
+  = f_x(x_0,y_0)\,\Delta x+f_y(x_0,y_0)\,\Delta y+\varepsilon_1\Delta x+\varepsilon_2\Delta y,
+\]
+where $\varepsilon_1,\varepsilon_2\to0$ as $(\Delta x,\Delta y)\to(0,0)$.
+Geometrically: near $(x_0,y_0)$ the surface is well approximated by its
+tangent plane $z=f(x_0,y_0)+f_x(x_0,y_0)(x-x_0)+f_y(x_0,y_0)(y-y_0)$.
+\end{definition}
+
+Checking this definition directly is tedious. In practice we use the following
+sufficient condition, which is exactly what the slides invoke.
+
+\begin{theorem}[Continuous partials imply differentiability]\label{thm:C1}
+If $f_x$ and $f_y$ exist near $(x_0,y_0)$ and are continuous at $(x_0,y_0)$,
+then $f$ is differentiable at $(x_0,y_0)$. The same holds for functions of
+three variables.
+\end{theorem}
+
+\begin{remark}[How to use it on an exam]
+Polynomials, exponentials, $\sin$, $\cos$, and their sums, products, quotients
+(away from zeros of the denominator) and compositions have continuous partial
+derivatives on their domains. So a one-line justification such as
+``$f_x=2x\sin2y$ and $f_y=2x^2\cos2y$ are continuous on $\R^2$, hence $f$ is
+differentiable'' is enough, and you should write it, because the theorem of
+Chapter~\ref{ch:dirder} \emph{requires} differentiability.
+\end{remark}
+
+\begin{warning}
+Existence of $f_x$ and $f_y$ alone does \emph{not} imply differentiability.
+Problem~\ref{prob:nondiff} in Chapter~\ref{ch:practice} gives a function with
+$f_x(0,0)=f_y(0,0)=0$ whose directional derivatives at the origin do not obey
+the formula of Theorem~\ref{thm:Du-formula}.
+\end{warning}
+
+\subsection{The chain rule along a curve}
+
+\begin{theorem}[Chain rule, Case 1]\label{thm:chain}
+If $z=f(x,y)$ is differentiable and $x=x(t)$, $y=y(t)$ are differentiable
+functions of $t$, then $z$ is a differentiable function of $t$ and
+\[
+  \frac{\dd z}{\dd t}=\pd{f}{x}\frac{\dd x}{\dd t}+\pd{f}{y}\frac{\dd y}{\dd t}.
+\]
+For $w=f(x,y,z)$ along $x(t),y(t),z(t)$ there is one more term:
+$\frac{\dd w}{\dd t}=f_x x'(t)+f_y y'(t)+f_z z'(t)$.
+\end{theorem}
+
+\begin{example}\label{ex:chain}
+Let $z=x^2y+3xy^4$ with $x=\sin2t$, $y=\cos t$. Find $\dfrac{\dd z}{\dd t}$ at $t=0$.
+\end{example}
+\begin{solution}
+\step{1}{Partials.} $z_x=2xy+3y^4$, $z_y=x^2+12xy^3$.
+\step{2}{Point.} At $t=0$: $x=\sin0=0$, $y=\cos0=1$, so $z_x=0+3=3$ and $z_y=0+0=0$.
+\step{3}{Derivatives of $x,y$.} $x'(t)=2\cos2t$, $y'(t)=-\sin t$, so $x'(0)=2$, $y'(0)=0$.
+\step{4}{Chain rule.} $\dfrac{\dd z}{\dd t}\Big|_{t=0}=3\cdot2+0\cdot0=6.$
+\end{solution}
+
+The chain rule is the engine behind both the formula for directional
+derivatives (Theorem~\ref{thm:Du-formula}) and the fact that the gradient is
+perpendicular to level curves (Theorem~\ref{thm:grad-perp}).
+
+\subsection{Unit vectors, angles and the dot product}
+
+\begin{itemize}
+  \item The \emph{length} of $\vv=\ip{v_1,v_2}$ is $\norm{\vv}=\sqrt{v_1^2+v_2^2}$
+        (in $\R^3$: $\sqrt{v_1^2+v_2^2+v_3^2}$).
+  \item A \emph{unit vector} has length $1$. Any nonzero $\vv$ can be
+        \emph{normalized}: $\vu=\dfrac{\vv}{\norm{\vv}}$ is the unit vector with the
+        same direction as $\vv$.
+  \item The unit vector making angle $\theta$ with the positive $x$-axis is
+        $\vu=\ip{\cos\theta,\sin\theta}$.
+  \item The vector from $P(x_1,y_1)$ to $Q(x_2,y_2)$ is
+        $\vecPQ=\ip{x_2-x_1,\,y_2-y_1}$.
+  \item Dot product: $\vb a\cdot\vb b=a_1b_1+a_2b_2(+a_3b_3)
+        =\norm{\vb a}\norm{\vb b}\cos\theta$, where $\theta\in[0,\pi]$ is the angle
+        between $\vb a$ and $\vb b$. In particular $\vb a\cdot\vb b=0$ iff
+        $\vb a\perp\vb b$.
+\end{itemize}
+
+\begin{example}\label{ex:unit}
+(a) Normalize $\vv=3\vi-4\vj$. (b) Find the unit vector in the direction from
+$P(-\tfrac34,0)$ to $Q(0,1)$. (c) Write the unit vector at angle
+$\theta=\tfrac{2\pi}{3}$.
+\end{example}
+\begin{solution}
+\textbf{(a)} $\norm{\vv}=\sqrt{9+16}=5$, so $\vu=\ip{\tfrac35,-\tfrac45}$.
+
+\textbf{(b)} $\vecPQ=\ip{0-(-\tfrac34),\,1-0}=\ip{\tfrac34,1}$ and
+$\norm{\vecPQ}=\sqrt{\tfrac{9}{16}+1}=\sqrt{\tfrac{25}{16}}=\tfrac54$, so
+$\vu=\ip{\tfrac34,1}\big/\tfrac54=\ip{\tfrac35,\tfrac45}$.
+
+\textbf{(c)} $\vu=\ip{\cos\tfrac{2\pi}{3},\sin\tfrac{2\pi}{3}}=\ip{-\tfrac12,\tfrac{\sqrt3}{2}}$.
+\end{solution}
+
+\begin{remark}
+Clearing fractions before normalizing saves work: $\ip{\tfrac34,1}$ has the same
+direction as $4\ip{\tfrac34,1}=\ip{3,4}$, whose length is $5$. Hence
+$\vu=\ip{\tfrac35,\tfrac45}$ immediately.
+\end{remark}
