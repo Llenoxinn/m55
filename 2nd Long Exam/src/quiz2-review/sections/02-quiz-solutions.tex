@@ -1,0 +1,264 @@
+% =====================================================================
+\section{Quiz 2: Complete Solutions, Shortcuts and Traps}\label{ch:quizsol}
+% =====================================================================
+
+For each problem: \emph{what it tests}, a full solution in exam format, a
+shortcut to get or check the answer quickly, the traps that cost points, and
+how the problem could be changed on the exam.
+
+% ---------------------------------------------------------------------
+\subsection{Problem 1: a curve of intersection (22 points)}
+
+\textbf{What it tests.} Parametrizing a curve of intersection with a prescribed
+starting point and orientation (Slides~5, Example~5.4 pattern); tangent lines;
+arc length; curvature. All four parts depend on (a).
+
+\solhead{(a) Parametrization.}
+\step{1}{Eliminate $z$ using the plane.} $3x-4z=0\Rightarrow z=\dfrac{3x}{4}$.
+\step{2}{Substitute into the sphere.}
+\[
+  x^2+y^2+\frac{9x^2}{16}=25\iff\frac{25x^2}{16}+y^2=25\iff\frac{x^2}{16}+\frac{y^2}{25}=1 .
+\]
+This is the projection of $C$ onto the $xy$-plane: an ellipse with $a=4$, $b=5$.
+\step{3}{Parametrize the projection (hint).} $x=4\cos t$, $y=5\sin t$.
+\step{4}{Recover $z$.} $z=\frac34x=3\cos t$. Hence
+\[
+  \boxed{\vr(t)=\ip{4\cos t,\;5\sin t,\;3\cos t},\qquad0\le t\le2\pi.}
+\]
+\step{5}{Check every requirement.}
+\begin{itemize}
+\item On the sphere: $16\cos^2t+25\sin^2t+9\cos^2t=25(\cos^2t+\sin^2t)=25$.\checkok
+\item On the plane: $3(4\cos t)-4(3\cos t)=0$.\checkok
+\item Starts at $P$: $\vr(0)=\ip{4,0,3}$.\checkok
+\item Counterclockwise from above: the shadow $(4\cos t,5\sin t)$ goes
+      $(4,0)\to(0,5)\to(-4,0)\to(0,-5)$, counterclockwise.\checkok
+\end{itemize}
+
+\why{Eliminating $z$ gives the vertical cylinder that contains $C$ (its
+``shadow''). Parametrizing the shadow as the hint suggests automatically
+controls the view from above: $\ip{a\cos t,b\sin t}$ starts at $(a,0)$ and runs
+counterclockwise.}
+
+\shortcut{The plane $3x-4z=0$ passes through the centre of the sphere, so $C$ is a
+\textbf{great circle of radius 5}. Indeed
+\[
+  \vr(t)=\cos t\,\ip{4,0,3}+\sin t\,\ip{0,5,0}=5\big(\cos t\,\vb e_1+\sin t\,\vb e_2\big),
+  \quad \vb e_1=\ip{\tfrac45,0,\tfrac35},\ \vb e_2=\ip{0,1,0},
+\]
+with $\vb e_1,\vb e_2$ perpendicular unit vectors. Everything that follows (constant
+speed $5$, arc length $=5\times$ angle, curvature $\frac15$) is then immediate.}
+
+\trap{(1) Writing $x=4\cos t$, $y=-5\sin t$ (clockwise) or $x=4\sin t$,
+$y=5\cos t$ (starts at $(0,5,0)$, the wrong point). (2) Forgetting to express
+$z$ in terms of $t$. (3) Using $x^2+y^2=25$ (dropping the $\frac{9x^2}{16}$).}
+
+\variant{\emph{Clockwise} from above: $\vr(t)=\ip{4\cos t,-5\sin t,3\cos t}$. Starting at
+$(-4,0,-3)$: $\ip{-4\cos t,-5\sin t,-3\cos t}$ (still counterclockwise). A plane
+\emph{not} through the centre, e.g. $z=x+1$, still works the same way, but the
+shadow is then a shifted ellipse.}
+
+\begin{figure}[H]
+  \centering
+  \includegraphics[width=0.56\linewidth]{great_circle}
+  \caption{Problem 1: the curve $C$ (blue) is a great circle of the sphere of
+  radius 5. Red: the counterclockwise arc from $P$ to $Q$ (one quarter of
+  $C$). Green: the tangent line at $P$, parallel to $\vj$.}
+  \label{fig:gc}
+\end{figure}
+
+\solhead{(b) Tangent line at $P$.}
+$\vr\,'(t)=\ip{-4\sin t,\;5\cos t,\;-3\sin t}$ and $P$ corresponds to $t=0$, so
+$\vr\,'(0)=\ip{0,5,0}$. The tangent line is
+\[
+  \boxed{\mathbf L(s)=\ip{4,0,3}+s\ip{0,5,0}=\ip{4,\;5s,\;3}},\qquad s\in\R .
+\]
+(Any nonzero multiple of the direction, e.g. $\ip{0,1,0}$, is also correct.)
+
+\shortcut{The tangent to a circle is perpendicular to the radius $\ip{4,0,3}$ and
+lies in the plane (normal $\ip{3,0,-4}$), so it is parallel to
+$\ip{4,0,3}\times\ip{3,0,-4}=\ip{0,25,0}$: the $\vj$-direction, with no derivative needed.}
+
+\trap{Giving only the direction vector, or writing the line through the origin
+instead of through $P$.}
+
+\solhead{(c) Arc length from $P$ to $Q$.}
+\step{1}{Speed.}
+$\norm{\vr\,'(t)}=\sqrt{16\sin^2t+25\cos^2t+9\sin^2t}=\sqrt{25(\sin^2t+\cos^2t)}=5$.
+\step{2}{Parameter of $Q(0,5,0)$.} $4\cos t=0$ and $5\sin t=5\Rightarrow t=\frac\pi2$ (and $z=3\cos\frac\pi2=0$\checkok).
+Counterclockwise from $P$ ($t=0$) to $Q$ means $t$ runs from $0$ to $\frac\pi2$.
+\step{3}{Integrate.}
+\[
+  L=\int_0^{\pi/2}5\,\dd t=\boxed{\frac{5\pi}{2}}\approx7.85 .
+\]
+
+\shortcut{A quarter of a great circle of radius $5$: $\frac14(2\pi\cdot5)=\frac{5\pi}{2}$.}
+
+\trap{(1) Going the other way round: from $t=0$ \emph{backwards} to
+$t=-\frac{3\pi}{2}$ gives $\frac{15\pi}{2}$, the clockwise arc. (2) Not simplifying
+$16\sin^2t+9\sin^2t=25\sin^2t$; then the integral looks impossible.}
+
+\solhead{(d) Curvature at $P$.}
+$\vr\,'(0)=\ip{0,5,0}$ and $\vr\,''(t)=\ip{-4\cos t,\;-5\sin t,\;-3\cos t}$, so $\vr\,''(0)=\ip{-4,0,-3}$.
+\[
+  \vr\,'(0)\times\vr\,''(0)=\begin{vmatrix}\vi&\vj&\vk\\0&5&0\\-4&0&-3\end{vmatrix}
+  =\ip{5(-3)-0,\;-(0-0),\;0-5(-4)}=\ip{-15,0,20},
+\]
+$\norm{\vr\,'\times\vr\,''}=\sqrt{225+400}=25$, $\norm{\vr\,'(0)}^3=125$. Therefore
+\[
+  \kappa(P)=\frac{25}{125}=\boxed{\frac15}.
+\]
+
+\shortcut{A circle of radius $R$ has $\kappa=\frac1R=\frac15$ at every point. With
+constant speed $v$, $\vr\,''\perp\vr\,'$, so $\kappa=\dfrac{\norm{\vr\,''}}{v^2}=\dfrac{5}{25}$.}
+
+\trap{Computing the curvature of the \emph{shadow} ellipse
+$\frac{x^2}{16}+\frac{y^2}{25}=1$ at $(4,0)$ instead: that is $\frac{a}{b^2}=\frac{4}{25}\neq\frac15$.
+Projection changes curvature, so always use the 3D curve.}
+
+% ---------------------------------------------------------------------
+\subsection{Problem 2: directional derivative and maximum rate (13 points)}
+
+\textbf{What it tests.} Partial derivatives of a sum of three different kinds of
+terms (product, logarithm with chain rule, quotient), then Slides~6,
+Example~6.4 and the trio activity.
+
+\solhead{Partial derivatives.} Term by term:
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{lll}
+\toprule
+term & $\partial/\partial x$ & $\partial/\partial y$\\
+\midrule
+$2x^2y$ & $4xy$ & $2x^2$\\
+$\ln(x^2+y^2)$ & $\dfrac{2x}{x^2+y^2}$ & $\dfrac{2y}{x^2+y^2}$\\
+$\dfrac{4x}{y}=4x\,y^{-1}$ & $\dfrac{4}{y}$ & $-\dfrac{4x}{y^2}$\\
+\bottomrule
+\end{tabular}
+\end{center}
+At $P(1,1)$: $f_x=4+\frac22+4=9$ and $f_y=2+\frac22-4=-1$, so $\grad f(1,1)=\ip{9,-1}$. The
+partials are continuous near $P$ (where $y\neq0$), so $f$ is differentiable there.
+
+\solhead{(a)} $\vecPQ=\ip{3,4}$, $\norm{\vecPQ}=5$, $\vu=\ip{\frac35,\frac45}$:
+\[
+  \Du f(1,1)=9\cdot\tfrac35+(-1)\cdot\tfrac45=\frac{27-4}{5}=\boxed{\frac{23}{5}}.
+\]
+\solhead{(b)} $\vu=\dfrac{\grad f(P)}{\norm{\grad f(P)}}=\boxed{\ip{\dfrac{9}{\sqrt{82}},-\dfrac{1}{\sqrt{82}}}}$.
+
+\solhead{(c)} $\norm{\grad f(P)}=\sqrt{81+1}=\boxed{\sqrt{82}}\approx9.06$.
+
+\shortcut{Sanity check: always $\abs{\Du f}\le\norm{\grad f}$. Here
+$\frac{23}{5}=4.6\le9.06$.\checkok\ Also write $\frac{4x}{y}$ as $4xy^{-1}$ before
+differentiating in $y$: the power rule gives $-4xy^{-2}$ with the right sign at once.}
+
+\trap{(1) $\pd{}{x}\ln(x^2+y^2)=\frac{1}{x^2+y^2}$ (missing the chain-rule factor
+$2x$). (2) The sign of $\pd{}{y}\frac{4x}{y}$. (3) Not normalizing $\ip{3,4}$:
+answer $23$ instead of $\frac{23}{5}$. (4) Using $\vecPQ=\ip{-3,-4}$ (from $Q$ to $P$).
+(5) In (b) giving $\ip{9,-1}$: the question asks for the \emph{unit} vector.
+(6) In (c) giving a vector: the rate is a number.}
+
+\variant{Fastest \emph{decrease}: direction $\ip{-\frac{9}{\sqrt{82}},\frac{1}{\sqrt{82}}}$,
+rate $-\sqrt{82}$. Directions of zero change: $\pm\frac{1}{\sqrt{82}}\ip{1,9}$. Direction
+given by an angle $\theta$: $\Du f=9\cos\theta-\sin\theta$.}
+
+% ---------------------------------------------------------------------
+\subsection{Problem 3: moving a given distance along a curve}
+
+\textbf{What it tests.} The arc-length function $s(t)=\int_{t_0}^t\norm{\vr\,'(u)}\,\dd u$
+(Slides~5, \emph{reparametrization by arc length}).
+
+\step{1}{Starting parameter.} $\vr(0)=\ip{0,0,3}$, so we start at $t=0$.
+\step{2}{Speed.} $\vr\,'=\ip{3\cos t,\;4,\;-3\sin t}$,
+$\norm{\vr\,'}=\sqrt{9\cos^2t+16+9\sin^2t}=\sqrt{25}=5$.
+\step{3}{Arc length from the start.} $s(t)=\int_0^t5\,\dd u=5t$.
+\step{4}{Solve $s=5$.} $5t=5\Rightarrow t=1$.
+\step{5}{New position.}
+\[
+  \vr(1)=\boxed{\left(3\sin1,\;4,\;3\cos1\right)}\approx(2.524,\;4,\;1.621),
+\]
+with the angle $1$ in \emph{radians}.
+
+\shortcut{Constant speed $v$ means distance $=v\cdot\Delta t$, so $\Delta t=\frac{5}{5}=1$.
+(The curve is a helix of radius 3 about the $y$-axis.)}
+
+\trap{(1) Plugging $t=5$ ($\vr(5)$ is $25$ units away). (2) Using degrees for
+$\sin1$. (3) Leaving the answer as ``$t=1$'': the question asks for a point.}
+
+\variant{Move $5$ units in the direction of \emph{decreasing} $t$: $t=-1$, point
+$(-3\sin1,-4,3\cos1)$. Non-constant speed, e.g.
+$\vr(t)=\ip{e^t\cos t,e^t\sin t,e^t}$: then $s(t)=\sqrt3(e^t-1)$ and one solves
+$s(t)=$ distance for $t$ (Predicted Problem~\ref{pp:arc}).}
+
+% ---------------------------------------------------------------------
+\subsection{Problem 4: curvature with an unknown constant}
+
+\textbf{What it tests.} The curvature formula
+$\kappa=\dfrac{\norm{\vr\,'\times\vr\,''}}{\norm{\vr\,'}^3}$ applied to a plane curve
+(Slides~5, Example~5.13 style), then solving an equation with an absolute value.
+
+\step{1}{Parametrize in 3D} (the cross product needs three components):
+$\vr(t)=\ip{t,\;at^2,\;0}$.
+\step{2}{Derivatives.} $\vr\,'=\ip{1,2at,0}$, $\vr\,''=\ip{0,2a,0}$.
+\step{3}{Cross product.} $\vr\,'\times\vr\,''=\ip{0,0,2a}$, with norm $\abs{2a}$.
+\step{4}{At the origin ($t=0$).} $\norm{\vr\,'(0)}=1$, so $\kappa(0)=\dfrac{\abs{2a}}{1^3}=2\abs a$.
+\step{5}{Solve.} $2\abs a=4\iff\boxed{a=2\ \text{or}\ a=-2}$.
+
+\shortcut{For $y=g(x)$: $\kappa=\dfrac{\abs{g''(x)}}{\left(1+g'(x)^2\right)^{3/2}}$. At the
+vertex $g'(0)=0$ and $g''=2a$, so $\kappa=\abs{2a}$ instantly. (The note asks for
+the vector method, so present that and use this only to check.)}
+
+\why{$y=2x^2$ opens up and $y=-2x^2$ opens down, but they bend equally sharply:
+curvature measures \emph{how much}, not \emph{which way}. The osculating circle at
+the vertex has radius $\frac14$.}
+
+\trap{Answering only $a=2$ (``all values'' means both), or forgetting the
+absolute value.}
+
+% ---------------------------------------------------------------------
+\subsection{Problem 5: directions with a prescribed directional derivative}
+
+\textbf{What it tests.} Solving $\grad f\cdot\vu=c$ with $\norm{\vu}=1$
+(Lecture Notes No.~6, Example~3.8).
+
+\step{1}{Gradient.} $\grad f=\ip{2x+y,\;2y+x}$, so $\grad f(1,1)=\ip{3,3}$.
+\step{2}{Equations.} With $\vu=\ip{a,b}$: $3a+3b=3$ and $a^2+b^2=1$, i.e. $a+b=1$.
+\step{3}{Solve.} $b=1-a$: $a^2+(1-a)^2=1\iff2a^2-2a=0\iff a=0$ or $a=1$.
+\[
+  \boxed{\vu=\ip{0,1}=\vj\quad\text{or}\quad\vu=\ip{1,0}=\vi.}
+\]
+Check: $\grad f\cdot\vi=3$, $\grad f\cdot\vj=3$.\checkok
+
+\shortcut{Use $\Du f=\norm{\grad f}\cos\theta$: $\norm{\ip{3,3}}=3\sqrt2$, so
+$\cos\theta=\frac{3}{3\sqrt2}=\frac{1}{\sqrt2}$, $\theta=\pm45^\circ$ from the gradient.
+The gradient points at $45^\circ$, so $\vu$ points at $0^\circ$ ($\vi$) or $90^\circ$ ($\vj$),
+with no algebra. In general there are two answers if $\abs c<\norm{\grad f}$,
+one if $\abs c=\norm{\grad f}$ and none if $\abs c>\norm{\grad f}$.}
+
+\trap{Losing one of the two solutions; not normalizing the final vectors.}
+
+% ---------------------------------------------------------------------
+\subsection{Problem 6: points with a given direction of fastest increase}
+
+\textbf{What it tests.} The meaning of the gradient \emph{direction}
+(Slides~6, ``$\grad f$ points in the direction of fastest increase'').
+
+\step{1}{Gradient.} $\grad f=\ip{2x-2,\;2y-4}$.
+\step{2}{Condition.} The direction of fastest increase is $\vi+\vj$ iff
+$\grad f=\lambda\ip{1,1}$ for some $\lambda>0$:
+\[
+  2x-2=\lambda,\qquad2y-4=\lambda,\qquad\lambda>0 .
+\]
+\step{3}{Solve.} Equal components: $2x-2=2y-4\iff y=x+1$. Positivity: $2x-2>0\iff x>1$.
+\[
+  \boxed{\{(x,\,x+1):x>1\}},
+\]
+an open half-line starting at (but not including) $(1,2)$.
+
+\why{At $(1,2)$ the gradient is $\vzero$ (the minimum of the paraboloid), so there
+is no direction of fastest increase. For $x<1$ on the same line, $\grad f$ is a
+\emph{negative} multiple of $\ip{1,1}$: there $\vi+\vj$ is the direction of
+fastest \emph{decrease}.}
+
+\trap{Answering the whole line $y=x+1$ (ignoring $\lambda>0$), or including $(1,2)$.}
+
+\variant{Direction $\vi-\vj$: $2x-2=-(2y-4)>0\Rightarrow x+y=3$ with $x>1$. ``$\grad f$
+parallel to $\vi+\vj$'' (either sense): the whole line minus $(1,2)$.}
