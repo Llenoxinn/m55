@@ -9,6 +9,7 @@ Coverage (see `Coverage/`):
 | 7 Vector Calculus | `Lecture Notes 03.pdf` (No. 7) | source in `src/lecture-notes-03/` |
 | 5 + 6 + 7 | `Mock Exams.pdf` (two full mock exams with complete solutions) | source in `src/mock-exams/` |
 | Quiz 2 (5 + 6) → 5 + 6 + 7 | `Quiz 2 Review.pdf` (Quiz 2 solved with shortcuts/traps + predicted quiz and drills) | source in `src/quiz2-review/` |
+| 5 + 6 + 7 | `Cheat Sheet.pdf` (every formula + how to match a function to its graph) | source in `src/cheat-sheet/` |
 
 **Scope note:** Slides 7 Parts IV–VI (line integrals, line integrals in space, and the
 Fundamental Theorem for Line Integrals) are **not** covered by this exam and are intentionally excluded.
@@ -22,6 +23,10 @@ What each reviewer contains:
 - **No. 7 – Vector Calculus:** vector fields (Example 7.1, Exercises 1–3 solved with figures),
   gradient fields, the component test and why it works, the three-step potential method
   (Example 7.6, Exercise 4), the domain caveat (vortex field), 21 practice problems, summary.
+- **Cheat Sheet:** formula tables and standard methods for Topics 5, 6 and 7; checklists and
+  labelled galleries for matching vector functions to space curves and vector fields / gradients
+  to their plots (plus a picture → formula look-up table); 14 graph-identification practice items
+  with answers.
 - **Mock Exams:** Form A (12 problems) and Form B (14 problems), 100 pts each, full
   solutions with point breakdowns, and a one-page answer key mapping each problem to the notes.
 
