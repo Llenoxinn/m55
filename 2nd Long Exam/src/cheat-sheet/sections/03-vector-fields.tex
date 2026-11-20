@@ -1,0 +1,51 @@
+% =====================================================================
+\section{Topic 7: Vector Fields and Conservative Fields}\label{ch:fields}
+% =====================================================================
+
+\subsection*{Core formulas}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabularx}{\linewidth}{L{0.28\linewidth}Y}
+\toprule
+\textbf{Concept} & \textbf{Formula / fact}\\
+\midrule
+\fact{Vector field on $\R^2$}{$\vF(x,y)=\ip{M(x,y),N(x,y)}=M\vi+N\vj$: assigns a vector to each point.}
+\fact{Vector field on $\R^3$}{$\vF(x,y,z)=\ip{M,N,P}=M\vi+N\vj+P\vk$.}
+\fact{Position notation}{$\vx=\ip{x,y}$ (or $\ip{x,y,z}$), so $\vF(\vx)$ means $\vF(x,y)$; \ $\norm{\vx}=r$.}
+\fact{Sketching}{Draw the arrow $\vF(x,y)$ \emph{starting at the point} $(x,y)$, not at the origin.}
+\fact{Gradient field}{$\grad f=\ip{f_x,f_y}$ or $\ip{f_x,f_y,f_z}$ is a vector field.}
+\fact{Conservative}{$\vF$ is conservative if $\vF=\grad f$ for some $f$; $f$ is a \emph{potential function}
+  (unique up to $+C$).}
+\fact{Test in the plane}{$\vF=\ip{M,N}$ conservative $\iff \dfrac{\partial M}{\partial y}=\dfrac{\partial N}{\partial x}$
+  (on an open disk / region without holes).}
+\fact{Test in space}{$\vF=\ip{M,N,P}$ conservative $\iff M_y=N_x,\ \ M_z=P_x,\ \ N_z=P_y$ (all three!).}
+\fact{Why the test works}{If $\vF=\grad f$ then $M_y=f_{xy}=f_{yx}=N_x$ (Clairaut).}
+\fact{Rotation field}{$\ip{-y,x}$: $M_y=-1\ne1=N_x$, so it is \emph{not} conservative.}
+\fact{Useful potentials}{$\grad\bigl(\tfrac12(x^2+y^2+z^2)\bigr)=\ip{x,y,z}$;\quad
+  $\grad\tfrac1r=-\dfrac{\vx}{r^3}$;\quad $\grad\tfrac12\ln(x^2+y^2+z^2)=\dfrac{\vx}{r^2}$;\quad
+  $\grad(xy)=\ip{y,x}$;\quad $\grad(x^3+\tfrac12y^2)=\ip{3x^2,y}$.}
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\begin{strategy}{Finding a potential function (three-step method)}
+\begin{enumerate}
+\item Check the test ($M_y=N_x$, and in 3D the other two). If it fails, stop: not conservative.
+\item $f=\int M\,\dd x+g(y,z)$ (a \emph{function} of the other variables, not a constant).
+\item Differentiate: set $f_y=N$ to find $g$ up to $h(z)$; then $f_z=P$ to find $h$.
+  If $g'(y)$ still contains $x$, there is a mistake.
+\item Check: $\grad f=\vF$.
+\end{enumerate}
+Example: $\vF=\ip{2xy,\ x^2+3y^2}$. $M_y=2x=N_x$ \checkok. $f=x^2y+g(y)$, $f_y=x^2+g'(y)=x^2+3y^2\Rightarrow g=y^3$.
+So $f=x^2y+y^3+C$.
+\end{strategy}
+
+\subsection*{Common mistakes}
+\begin{itemize}
+\item Comparing $M_x$ with $N_y$. The test pairs $M_y$ with $N_x$ (cross partials).
+\item In 3D, checking only one pair.
+\item Writing $+C$ instead of $+g(y)$ after the first integration.
+\item The test needs a region without holes: $\vF=\dfrac{\ip{-y,x}}{x^2+y^2}$ passes $M_y=N_x$ but is not
+  conservative on the plane minus the origin.
+\end{itemize}

@@ -1,0 +1,50 @@
+% =====================================================================
+%  MATH 55 -- Cheat Sheet for Topics 5-7 (Second Long Exam)
+%  Every formula + how to match a function to its graph (MC items)
+%  Build: latexmk -pdf -outdir=build cheat-sheet.tex
+% =====================================================================
+\documentclass[11pt,a4paper]{article}
+
+\newcommand{\NotesNumber}{CS}
+\newcommand{\NotesKind}{Cheat Sheet: Topics 5--7}
+\newcommand{\NotesShortTitle}{Formulas and Graph Identification}
+\newcommand{\NotesPdfTitle}{MATH 55 Cheat Sheet: Topics 5-7 Formulas and Graph Identification}
+\input{../shared/preamble.tex}
+\graphicspath{{figures/}}
+
+% compact tables for a cheat sheet
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{Y}{>{\raggedright\arraybackslash}X}
+\newcommand{\fact}[2]{#1 & #2\\}
+
+\begin{document}
+\pagenumbering{roman}
+
+\makenotestitle{Cheat Sheet}
+  {Topics 5--7: Every Formula, and How to Match a Function to Its Graph}
+  {MATH 55: Elementary Analysis III -- Second Long Examination}
+  {\textbf{What this is.} A condensed reference for Slides~5 (Vector
+   Functions), 6 (Directional Derivatives and the Gradient) and 7 (Vector
+   Calculus, Parts I--III). Chapters~1--3 list every formula and the
+   standard method for each problem type. Chapters~4--5 cover the
+   multiple-choice items where you are given a function and have to pick its
+   graph, or the other way round: a step-by-step checklist, a labelled gallery
+   of the common curves and vector fields, and a reverse look-up table that
+   goes from a feature of the picture to a feature of the formula. Chapter~6
+   has practice items of that kind, with answers.\par\medskip
+   \emph{Scope:} line integrals and the Fundamental Theorem for Line
+   Integrals (Slides~7 Parts IV--VI) are not on this exam and are left out.
+   For full explanations see Lecture Notes Nos.~5--7.}
+
+\tableofcontents
+\clearpage
+\pagenumbering{arabic}
+
+\input{sections/01-vector-functions}
+\input{sections/02-gradient}
+\input{sections/03-vector-fields}
+\input{sections/04-identify-curves}
+\input{sections/05-identify-fields}
+\input{sections/06-drills}
+
+\end{document}

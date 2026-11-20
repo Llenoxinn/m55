@@ -1,0 +1,95 @@
+% =====================================================================
+\section{Topic 5: Vector Functions}\label{ch:vf}
+% =====================================================================
+
+\subsection*{Core formulas}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.45}
+\begin{tabularx}{\linewidth}{L{0.28\linewidth}Y}
+\toprule
+\textbf{Concept} & \textbf{Formula / fact}\\
+\midrule
+\fact{Vector function}{$\vr(t)=\ip{f(t),g(t),h(t)}=f(t)\vi+g(t)\vj+h(t)\vk$. Its domain is the
+  set of $t$ where \emph{all three} components are defined (intersect the domains).}
+\fact{Space curve}{$C$ is the set of points $(f(t),g(t),h(t))$ traced by the tip of $\vr(t)$.
+  Parametric equations: $x=f(t),\ y=g(t),\ z=h(t)$.}
+\fact{Line through $P_0$, direction $\vv$}{$\vr(t)=\vr_0+t\vv$, \quad i.e.\ $x=x_0+at,\ y=y_0+bt,\ z=z_0+ct$.}
+\fact{Segment from $\vr_0$ to $\vr_1$}{$\vr(t)=(1-t)\vr_0+t\,\vr_1,\quad 0\le t\le 1$ \ (start at $t=0$, end at $t=1$).}
+\fact{Derivative}{$\vr'(t)=\lim_{h\to0}\dfrac{\vr(t+h)-\vr(t)}{h}=\ip{f'(t),g'(t),h'(t)}$ (differentiate each component).}
+\fact{Tangent vector}{$\vr'(t_0)$ is tangent to $C$ at $\vr(t_0)$ (provided $\vr'(t_0)\ne\vzero$).}
+\fact{Unit tangent}{$\vT(t)=\dfrac{\vr'(t)}{\norm{\vr'(t)}}$}
+\fact{Tangent line at $t_0$}{$\vb{L}(s)=\vr(t_0)+s\,\vr'(t_0)$: \ point $=\vr(t_0)$, direction $=\vr'(t_0)$.}
+\fact{Integral}{$\displaystyle\int_a^b\vr(t)\,\dd t=\ip{\int_a^b f,\int_a^b g,\int_a^b h}$ (a \emph{vector}).
+  Indefinite: $\int\vr\,\dd t=\vb R(t)+\vb C$, with $\vb C$ a \emph{constant vector}.}
+\fact{Initial value problem}{Integrate each component, then solve $\vb R(0)+\vb C=\vr(0)$ for $\vb C$.}
+\fact{Smooth curve}{$\vr'$ continuous and $\vr'(t)\ne\vzero$ on the interval.}
+\fact{Arc length}{$L=\displaystyle\int_a^b\norm{\vr'(t)}\,\dd t=\int_a^b\sqrt{f'^2+g'^2+h'^2}\,\dd t$ \quad
+  (plane: $\int_a^b\sqrt{f'^2+g'^2}\,\dd t$).}
+\fact{Arc length function}{$s(t)=\displaystyle\int_a^t\norm{\vr'(u)}\,\dd u,\qquad \dfrac{\dd s}{\dd t}=\norm{\vr'(t)}$.}
+\fact{Curvature (definition)}{$\kappa=\norm*{\dfrac{\dd\vT}{\dd s}}=\dfrac{\norm{\vT'(t)}}{\norm{\vr'(t)}}$}
+\fact{Curvature (use this)}{$\kappa(t)=\dfrac{\norm{\vr'(t)\times\vr''(t)}}{\norm{\vr'(t)}^3}$ \quad
+  (for a plane curve put $0$ as the third component).}
+\fact{Graph $y=f(x)$}{$\kappa(x)=\dfrac{\abs{f''(x)}}{\bigl(1+f'(x)^2\bigr)^{3/2}}$ \quad (from $\vr(x)=\ip{x,f(x),0}$).}
+\fact{Ready-made curvatures}{Line: $\kappa=0$.\quad Circle of radius $a$: $\kappa=1/a$.\quad
+  Helix $\ip{a\cos t,a\sin t,ct}$: $\kappa=\dfrac{a}{a^2+c^2}$.\quad $y=ax^2$ at $0$: $\kappa=2\abs a$.}
+\bottomrule
+\end{tabularx}
+\end{center}
+
+\subsection*{Differentiation rules}
+For differentiable $\vu(t),\vv(t)$, scalar $c$ and real function $f(t)$:
+\[
+(\vu+\vv)'=\vu'+\vv',\quad (c\vu)'=c\vu',\quad (f\vu)'=f'\vu+f\vu',\quad
+(\vu\cdot\vv)'=\vu'\cdot\vv+\vu\cdot\vv',
+\]
+\[
+(\vu\times\vv)'=\vu'\times\vv+\vu\times\vv' \ (\text{keep the order}),\qquad
+\bigl(\vu(f(t))\bigr)'=f'(t)\,\vu'(f(t)).
+\]
+If $\norm{\vr(t)}$ is constant then $\vr(t)\cdot\vr'(t)=0$; in particular $\vT\perp\vT'$.
+
+\subsection*{Cross product (for the curvature formula)}
+\[
+\ip{a_1,a_2,a_3}\times\ip{b_1,b_2,b_3}
+=\ip{a_2b_3-a_3b_2,\ \ a_3b_1-a_1b_3,\ \ a_1b_2-a_2b_1}.
+\]
+
+\subsection*{Methods for the standard problems}
+
+\begin{strategy}{Curve of intersection of two surfaces (e.g.\ cylinder $\cap$ plane)}
+\begin{enumerate}
+\item Find the equation in only two variables (usually the cylinder, or eliminate a variable).
+  It is a circle or an ellipse in that coordinate plane.
+\item Parametrize it: $(x-h)^2+(y-k)^2=r^2\Rightarrow x=h+r\cos t,\ y=k+r\sin t$;
+  \ $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1\Rightarrow x=a\cos t,\ y=b\sin t$; \ $0\le t\le 2\pi$.
+\item Solve the other surface for the remaining variable: e.g.\ plane $y+z=2\Rightarrow z=2-\sin t$.
+\item Check the starting point and orientation the problem asks for. Viewed from above,
+  $(\cos t,\sin t)$ runs counterclockwise from $(1,0)$; to start elsewhere shift $t$ or swap
+  $\sin$ and $\cos$.
+\end{enumerate}
+\emph{Sphere $\cap$ plane through the origin} (Quiz~2): solve the plane for one variable, e.g.\
+$3x-4z=0\Rightarrow z=\tfrac34x$, substitute into the sphere: $x^2+y^2+\tfrac9{16}x^2=25\Rightarrow
+\frac{x^2}{16}+\frac{y^2}{25}=1$, an ellipse, so $x=4\cos t,\ y=5\sin t,\ z=3\cos t$.
+\end{strategy}
+
+\begin{strategy}{Move a distance $d$ along a curve (arc-length parametrization)}
+Compute $s(t)=\int_{t_0}^t\norm{\vr'(u)}\,\dd u$, solve $s(t)=d$ for $t$, plug that $t$ into
+$\vr$. \ Example: $\vr=\ip{3\sin t,4t,3\cos t}$, $\norm{\vr'}=\sqrt{9\cos^2t+16+9\sin^2t}=5$, so $s=5t$;
+moving $5$ units from $(0,0,3)$ gives $t=1$, position $(3\sin1,\,4,\,3\cos1)$.
+\end{strategy}
+
+\begin{strategy}{Curvature at a point}
+Find the $t$ for the point first. Compute $\vr'$, $\vr''$ at that $t$ (plug in \emph{before}
+taking the cross product, to save algebra), then $\kappa=\norm{\vr'\times\vr''}/\norm{\vr'}^3$.
+\end{strategy}
+
+\subsection*{Common mistakes}
+\begin{itemize}
+\item Using $\vr'(t_0)$ as the point of the tangent line. The point is $\vr(t_0)$.
+\item Forgetting that $\vT$ must be divided by $\norm{\vr'}$.
+\item Forgetting the \emph{vector} constant $\vb C=\ip{C_1,C_2,C_3}$ when integrating.
+\item In the arc length, integrating $\vr'$ instead of $\norm{\vr'}$, or using the wrong $t$-limits
+  (convert the endpoints to $t$ values first).
+\item Cubing the wrong thing in $\kappa$: the denominator is $\norm{\vr'}^{3}$, not $\norm{\vr''}^3$.
+\end{itemize}
